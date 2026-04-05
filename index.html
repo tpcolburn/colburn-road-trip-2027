@@ -126,7 +126,7 @@
         .day-header { display: flex; align-items: center; padding: 1.2rem 1.5rem; gap: 1rem; flex-wrap: wrap; }
         .day-number { background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); color: white; font-weight: 800; font-size: 0.85rem; padding: 0.4rem 0.8rem; border-radius: 20px; white-space: nowrap; }
         .day-number.denver { background: linear-gradient(135deg, var(--purple), #8B5CF6); }
-        .day-number.vegas { background: linear-gradient(135deg, #D4AF37, #B8860B); }
+        .day-number.finale { background: linear-gradient(135deg, #D4AF37, #B8860B); }
         .day-title { font-weight: 800; font-size: 1.15rem; flex: 1; min-width: 200px; }
         .day-drive { font-size: 0.8rem; color: rgba(255,255,255,0.5); white-space: nowrap; }
         .day-expand-icon { font-size: 1.2rem; transition: transform 0.3s; color: var(--sunset-gold); }
@@ -143,7 +143,6 @@
         .stay-badge:hover { opacity: 0.8; }
         .stay-badge.camp { background: rgba(91,140,90,0.2); border: 1px solid var(--sage-green); }
         .stay-badge.hotel { background: rgba(108,63,197,0.2); border: 1px solid var(--purple); }
-        .stay-badge.vegas-stay { background: rgba(212,175,55,0.2); border: 1px solid #D4AF37; }
 
         /* Parks */
         .parks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
@@ -537,15 +536,15 @@
             <div class="day-card fade-in" onclick="toggleDay(this, event)">
                 <div class="day-header">
                     <span class="day-number denver">DAY 3 &mdash; Sun Jun 13</span>
-                    <span class="day-title">Denver Bonus Day (NEW!)</span>
+                    <span class="day-title">Denver &mdash; Final Day with Friends</span>
                     <span class="day-drive">&#x1F3D9;&#xFE0F; Relaxed day</span>
                     <span class="day-expand-icon">&#x25BC;</span>
                 </div>
                 <div class="day-details"><div class="day-body">
                     <div class="day-activities"><h4>Activities</h4>
-                        <ul><li>Extra day in Denver &mdash; unique to the Northern Loop itinerary</li><li>Option: Drive up to <a class='spot-link' href='https://www.nps.gov/romo/' target='_blank' rel='noopener'>RMNP east side</a> as a day trip (optional scout)</li><li>Or: Downtown Denver &mdash; Children's Museum, Coors Field tour, Confluence Park</li><li>Big dinner out with friends (last one before RV food for a while!)</li><li>Pack and prep for RV pickup tomorrow morning</li></ul>
+                        <ul><li>Leisurely morning with breakfast at the Embassy Suites</li><li>Option: Drive up to <a class='spot-link' href='https://www.nps.gov/romo/' target='_blank' rel='noopener'>RMNP east side</a> as a day trip (optional scout)</li><li>Or: Downtown Denver &mdash; Children's Museum, Coors Field tour, Confluence Park</li><li>Big dinner out with friends (last one before RV food for a while!)</li><li>Pack and prep for RV pickup tomorrow morning</li></ul>
                     </div>
-                    <div class="day-info"><h4>Bonus Day Tips</h4><p>&#x1F4A1; This is the extra day you gain from not going to Vegas</p><p>&#x1F3EA; Use it to hit a grocery store and pre-buy bulk items for the RV (cheaper than King Soopers near the depot)</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 3)</a>
+                    <div class="day-info"><h4>Day-Before-RV Tips</h4><p>&#x1F3EA; Hit a grocery store and pre-buy bulk items for the RV (cheaper than the stores near the Cruise America depot)</p><p>&#x1F9F4; Stock up on sunscreen, bug spray, and reusable water bottles while you're at it</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 3)</a>
                     </div>
                 </div></div>
             </div>
@@ -799,7 +798,7 @@
             <!-- DAY 16 -->
             <div class="day-card fade-in" onclick="toggleDay(this, event)">
                 <div class="day-header">
-                    <span class="day-number vegas">DAY 16 &mdash; Sat Jun 26</span>
+                    <span class="day-number finale">DAY 16 &mdash; Sat Jun 26</span>
                     <span class="day-title">Denver &rarr; Home!</span>
                     <span class="day-drive">&#x2708;&#xFE0F; DEN &rarr; CLE</span>
                     <span class="day-expand-icon">&#x25BC;</span>
@@ -936,7 +935,7 @@
             <div class="budget-total-card fade-in">
                 <div class="budget-total-label">Estimated Total</div>
                 <div class="budget-total-amount">$9,050</div>
-                <div class="budget-total-note">~$566 per day for the family<br>or ~$2,263 per person<br><span style="color:#fff;">$1,115 less than the Vegas itinerary!</span></div>
+                <div class="budget-total-note">~$566 per day for the family<br>or ~$2,263 per person</div>
                 <div class="budget-bar-container">
                     <div class="budget-bar-item"><div class="budget-bar-header"><span>Transportation</span><span>$4,750</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:52%;background:var(--sky-blue);"></div></div></div>
                     <div class="budget-bar-item"><div class="budget-bar-header"><span>Lodging</span><span>$1,870</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:21%;background:var(--sage-green);"></div></div></div>
@@ -1064,7 +1063,6 @@
 <div style="text-align:center;padding:3rem;color:rgba(255,255,255,0.3);font-size:0.85rem;">
     <p>Made with &hearts; for the Colburn Family Adventure 2027 &mdash; Northern Loop variant</p>
     <p style="margin-top:0.5rem;">&#x1F690; Denver &rarr; RMNP &rarr; Grand Teton &rarr; Yellowstone (4 days!) &rarr; Cody &rarr; Thermopolis &rarr; Estes Park &rarr; Denver</p>
-    <p style="margin-top:0.8rem;"><a href="index.html" style="color:var(--sunset-gold);">&larr; Back to Original (Vegas One-Way) Itinerary</a></p>
 </div>
 
 <script>
@@ -1100,7 +1098,7 @@ const quizData=[
 {q:"What famous movie was filmed at Dead Horse Point?",options:["Star Wars","Thelma & Louise","Indiana Jones","Jurassic Park"],correct:1},
 {q:"Landscape Arch is longer than a...",options:["School bus","Basketball court","Football field","Swimming pool"],correct:2},
 {q:"How many bison live in Yellowstone?",options:["About 50","About 500","About 5,000","About 50,000"],correct:2},
-{q:"What city is called the Mile High City?",options:["Salt Lake City","Denver","Las Vegas","Phoenix"],correct:1},
+{q:"What city is called the Mile High City?",options:["Salt Lake City","Denver","Cheyenne","Phoenix"],correct:1},
 {q:"Where is the only full-hookup RV park INSIDE Yellowstone?",options:["Madison","Canyon Village","Fishing Bridge","Mammoth"],correct:2}
 ];
 let currentQ=0,score=0,answered=false;
