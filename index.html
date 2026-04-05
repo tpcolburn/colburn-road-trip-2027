@@ -77,10 +77,10 @@
         .photo-link:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(245,166,35,0.3); }
 
         /* Hero */
-        .hero { min-height: 100vh; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero_cartoon.jpg') center/cover no-repeat; opacity: 0.55; z-index: 0; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,12,41,0.7) 0%, rgba(48,43,99,0.35) 40%, rgba(15,12,41,0.85) 100%); z-index: 1; }
-        .hero-content { text-align: center; z-index: 3; padding: 2rem; position: relative; }
+        .hero { min-height: 100vh; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero_cartoon.jpg') center/cover no-repeat; opacity: 0.75; z-index: 0; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,12,41,0.85) 0%, rgba(15,12,41,0.55) 28%, rgba(15,12,41,0.05) 50%, rgba(15,12,41,0.15) 100%); z-index: 1; }
+        .hero-content { text-align: center; z-index: 3; padding: 2.5rem 2rem 2rem; position: relative; }
         .hero h1 { font-family: 'Bangers', cursive; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: 4px; color: var(--sunset-gold); line-height: 1.1; margin-bottom: 0.5rem; -webkit-text-stroke: 2px rgba(0,0,0,0.85); paint-order: stroke fill; text-shadow: 0 3px 0 rgba(0,0,0,0.75), 0 6px 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.6); }
         .hero h2 { font-size: clamp(1.2rem, 3vw, 2rem); color: var(--sand); font-weight: 600; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
         .hero .dates { font-size: 1.3rem; color: var(--sunset-gold); margin-bottom: 2rem; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
