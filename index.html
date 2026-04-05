@@ -230,6 +230,10 @@
 
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .day-map { grid-column: 1 / -1; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.5rem; }
+        .day-map iframe { width: 100%; height: 320px; border: 0; display: block; filter: hue-rotate(10deg) saturate(0.9); }
+        .day-map-label { background: rgba(245,166,35,0.15); border-left: 3px solid var(--sunset-gold); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 700; color: var(--sunset-gold); text-transform: uppercase; letter-spacing: 1px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
     </style>
@@ -352,9 +356,9 @@
                     <p style="margin-top:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">1420 Stout St &mdash; 2-room suites, complimentary breakfast, evening reception, indoor pool. Hilton Honors eligible.</p>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.denver.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a3080,#2a1860);"><span class="photo-emoji">&#x1F3D9;&#xFE0F;</span><span>16th Street Mall</span></a>
-                    <a class="photo-link" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#1a3a6a,#0d1f3c);"><span class="photo-emoji">&#x1F3E8;</span><span>Embassy Suites</span></a>
-                    <a class="photo-link" href="https://www.denver.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a3a20,#2d1a10);"><span class="photo-emoji">&#x1F304;</span><span>Denver Skyline</span></a>
+                    <a class="photo-link" href="https://www.denver.org/" target="_blank" rel="noopener" style="background-image:url('images/16th_street_mall_01.jpg');"><span class="photo-emoji">&#x1F3D9;&#xFE0F;</span><span>16th Street Mall</span></a>
+                    <a class="photo-link" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener" style="background-image:url('images/embassy_suites_03.jpg');"><span class="photo-emoji">&#x1F3E8;</span><span>Embassy Suites</span></a>
+                    <a class="photo-link" href="https://www.denver.org/" target="_blank" rel="noopener" style="background-image:url('images/denver_01.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Denver Skyline</span></a>
                 </div>
             </div></div>
         </div>
@@ -368,6 +372,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Denver Area</div>
+                    <iframe src="https://maps.google.com/maps?q=Denver,+CO&t=&z=11&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Free hot breakfast at the Embassy Suites</li>
@@ -387,9 +395,9 @@
                     <a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 2)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.redrocksonline.com/visit/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#8B3A2A,#4a1a10);"><span class="photo-emoji">&#x1F3B8;</span><span>Red Rocks Amphitheatre</span></a>
-                    <a class="photo-link" href="https://www.dmns.org/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2a4a3a,#1a2a20);"><span class="photo-emoji">&#x1F996;</span><span>Denver Museum</span></a>
-                    <a class="photo-link" href="https://unionstationindenver.com/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a3520,#2d1a10);"><span class="photo-emoji">&#x1F682;</span><span>Union Station</span></a>
+                    <a class="photo-link" href="https://www.redrocksonline.com/visit/" target="_blank" rel="noopener" style="background-image:url('images/red_rocks_amphitheatre_02.jpg');"><span class="photo-emoji">&#x1F3B8;</span><span>Red Rocks Amphitheatre</span></a>
+                    <a class="photo-link" href="https://www.dmns.org/" target="_blank" rel="noopener" style="background-image:url('images/denver_02.jpg');"><span class="photo-emoji">&#x1F996;</span><span>Denver Museum</span></a>
+                    <a class="photo-link" href="https://unionstationindenver.com/" target="_blank" rel="noopener" style="background-image:url('images/union_station_denver_01.jpg');"><span class="photo-emoji">&#x1F682;</span><span>Union Station</span></a>
                 </div>
             </div></div>
         </div>
@@ -403,6 +411,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Denver → RMNP → Grand Lake</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Denver,+CO&daddr=Estes+Park,+CO+to:Rocky+Mountain+National+Park+to:Grand+Lake,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Pick up RV at <a class="spot-link" href="https://www.cruiseamerica.com/" target="_blank" rel="noopener">Cruise America</a> Denver depot (9am)</li>
@@ -423,9 +435,9 @@
                     <a class="stay-badge camp" href="https://www.recreation.gov/camping/campgrounds/232450" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Elk Creek Campground, Grand Lake</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/romo/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2d5a3e,#1a3525);"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Trail Ridge Road</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/romo/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3a5a2e,#1a3015);"><span class="photo-emoji">&#x1F98C;</span><span>Elk Meadows</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/romo/alpine_visitor_center.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a6a5e,#2a4a35);"><span class="photo-emoji">&#x26F0;&#xFE0F;</span><span>Alpine Visitor Center</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/romo/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/trail_ridge_road_02.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Trail Ridge Road</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/romo/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/rocky_mountain_np_02.jpg');"><span class="photo-emoji">&#x1F98C;</span><span>Elk Meadows</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/romo/alpine_visitor_center.htm" target="_blank" rel="noopener" style="background-image:url('images/alpine_visitor_center_01.jpg');"><span class="photo-emoji">&#x26F0;&#xFE0F;</span><span>Alpine Visitor Center</span></a>
                 </div>
             </div></div>
         </div>
@@ -439,6 +451,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Lake → Grand Teton NP</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Grand+Lake,+CO&daddr=Grand+Teton+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Early departure &mdash; big drive day through Wyoming!</li>
@@ -458,8 +474,8 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/grte/planyourvisit/camping.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Gros Ventre Campground, Grand Teton NP</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/grte/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2d4a3e,#1a3025);"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Teton Range First View</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/grte/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3a4a2e,#1a3015);"><span class="photo-emoji">&#x1F305;</span><span>Wyoming Open Road</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/grte/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_01.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Teton Range First View</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/grte/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_03.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Wyoming Open Road</span></a>
                 </div>
             </div></div>
         </div>
@@ -473,6 +489,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Teton NP</div>
+                    <iframe src="https://maps.google.com/maps?q=Grand+Teton+National+Park&t=&z=10&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Sunrise at <a class="spot-link" href="https://www.nps.gov/places/000/schwabacher-landing.htm" target="_blank" rel="noopener">Schwabacher Landing</a> (iconic reflection shot!)</li>
@@ -491,10 +511,10 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/grte/planyourvisit/camping.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Gros Ventre Campground (Night 2)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/places/000/schwabacher-landing.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2d4a3e,#1a3025);"><span class="photo-emoji">&#x1F4F8;</span><span>Schwabacher Landing</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/grte/planyourvisit/jennylakeplan.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#1a3a5a,#0d1f3c);"><span class="photo-emoji">&#x1F30A;</span><span>Jenny Lake</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/000/mormon-row.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4a2a,#3d2a10);"><span class="photo-emoji">&#x1F3DA;&#xFE0F;</span><span>Mormon Row Barns</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/oxbowbend.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2a4a3a,#1a2a20);"><span class="photo-emoji">&#x1F98C;</span><span>Oxbow Bend Moose</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/000/schwabacher-landing.htm" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_02.jpg');"><span class="photo-emoji">&#x1F4F8;</span><span>Schwabacher Landing</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/grte/planyourvisit/jennylakeplan.htm" target="_blank" rel="noopener" style="background-image:url('images/jenny_lake_01.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Jenny Lake</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/000/mormon-row.htm" target="_blank" rel="noopener" style="background-image:url('images/mormon_row_01.jpg');"><span class="photo-emoji">&#x1F3DA;&#xFE0F;</span><span>Mormon Row Barns</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/oxbowbend.htm" target="_blank" rel="noopener" style="background-image:url('images/jenny_lake_02.jpg');"><span class="photo-emoji">&#x1F98C;</span><span>Oxbow Bend Moose</span></a>
                 </div>
             </div></div>
         </div>
@@ -508,6 +528,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Teton → Old Faithful</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Grand+Teton+National+Park&daddr=Old+Faithful,+Yellowstone+National+Park,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Drive north into <a class="spot-link" href="https://www.nps.gov/yell/" target="_blank" rel="noopener">Yellowstone</a> via the South Entrance</li>
@@ -526,10 +550,10 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/yell/planyourvisit/campgrounds.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Madison Campground, Yellowstone NP</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a3520,#2d1a10);"><span class="photo-emoji">&#x1F4A8;</span><span>Old Faithful</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/yell-trail-grand-prismatic-overlook.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2a5a6a,#104050);"><span class="photo-emoji">&#x1F308;</span><span>Grand Prismatic Spring</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4a3a,#3d2a1a);"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Morning Glory Pool</span></a>
-                    <a class="photo-link" href="https://www.yellowstonenationalparklodges.com/lodgings/hotel/old-faithful-inn/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3a2a1a,#1d150d);"><span class="photo-emoji">&#x1F3E8;</span><span>Old Faithful Inn</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm" target="_blank" rel="noopener" style="background-image:url('images/old_faithful_01.jpg');"><span class="photo-emoji">&#x1F4A8;</span><span>Old Faithful</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/yell-trail-grand-prismatic-overlook.htm" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_01.jpg');"><span class="photo-emoji">&#x1F308;</span><span>Grand Prismatic Spring</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_02.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Morning Glory Pool</span></a>
+                    <a class="photo-link" href="https://www.yellowstonenationalparklodges.com/lodgings/hotel/old-faithful-inn/" target="_blank" rel="noopener" style="background-image:url('images/old_faithful_01.jpg');"><span class="photo-emoji">&#x1F3E8;</span><span>Old Faithful Inn</span></a>
                 </div>
             </div></div>
         </div>
@@ -543,6 +567,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Yellowstone Loop</div>
+                    <iframe src="https://maps.google.com/maps?q=Yellowstone+National+Park&t=&z=9&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Early morning: <a class="spot-link" href="https://www.nps.gov/places/000/hayden-valley-at-alum-creek.htm" target="_blank" rel="noopener">Hayden Valley</a> for bison herds &amp; possibly wolves</li>
@@ -561,10 +589,10 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/yell/planyourvisit/campgrounds.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Madison Campground (Night 2)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/yell-grand-canyon-of-the-yellowstone.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#6a5a20,#3d3010);"><span class="photo-emoji">&#x1F4A7;</span><span>Lower Falls</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/000/lamar-valley-wildlife-watching.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a5a2e,#2a3a15);"><span class="photo-emoji">&#x1F43A;</span><span>Lamar Valley Wildlife</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/yell-norris-geyser-basin-trails.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3a5a4a,#1a3a2a);"><span class="photo-emoji">&#x1F30B;</span><span>Norris Geyser Basin</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/yell/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4a2a,#3d2a10);"><span class="photo-emoji">&#x1F403;</span><span>Bison Herds</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/yell-grand-canyon-of-the-yellowstone.htm" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_01.jpg');"><span class="photo-emoji">&#x1F4A7;</span><span>Lower Falls</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/000/lamar-valley-wildlife-watching.htm" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_01.jpg');"><span class="photo-emoji">&#x1F43A;</span><span>Lamar Valley Wildlife</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/yell-norris-geyser-basin-trails.htm" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_01.jpg');"><span class="photo-emoji">&#x1F30B;</span><span>Norris Geyser Basin</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/yell/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/hayden_valley_01.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Bison Herds</span></a>
                 </div>
             </div></div>
         </div>
@@ -578,6 +606,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Yellowstone → Moab</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Yellowstone+National+Park&daddr=Moab,+UT&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Depart early &mdash; exit Yellowstone via South Entrance</li>
@@ -607,6 +639,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Arches National Park</div>
+                    <iframe src="https://maps.google.com/maps?q=Arches+National+Park&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Enter <a class="spot-link" href="https://www.nps.gov/arch/" target="_blank" rel="noopener">Arches</a> early (timed entry &mdash; book at <a class="spot-link" href="https://www.recreation.gov/timed-entry/10088426" target="_blank" rel="noopener">recreation.gov</a>!)</li>
@@ -625,10 +661,10 @@
                     <a class="stay-badge camp" href="https://www.sunoutdoors.com/utah/sun-outdoors-arches-gateway" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Sun Outdoors Arches Gateway (Night 2)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/arch/planyourvisit/delicate-arch.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#8B3A2A,#4a1a10);"><span class="photo-emoji">&#x1FAA8;</span><span>Delicate Arch</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/landscape-arch-trail.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#6a3a1a,#3d2010);"><span class="photo-emoji">&#x1F309;</span><span>Landscape Arch</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/balanced-rock.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#7a4a2a,#4a2a10);"><span class="photo-emoji">&#x1FAA8;</span><span>Balanced Rock</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/arch/planyourvisit/the-windows.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a3020,#3d1a10);"><span class="photo-emoji">&#x1F5BC;&#xFE0F;</span><span>The Windows</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/arch/planyourvisit/delicate-arch.htm" target="_blank" rel="noopener" style="background-image:url('images/delicate_arch_01.jpg');"><span class="photo-emoji">&#x1FAA8;</span><span>Delicate Arch</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/landscape-arch-trail.htm" target="_blank" rel="noopener" style="background-image:url('images/landscape_arch_01.jpg');"><span class="photo-emoji">&#x1F309;</span><span>Landscape Arch</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/balanced-rock.htm" target="_blank" rel="noopener" style="background-image:url('images/balanced_rock_01.jpg');"><span class="photo-emoji">&#x1FAA8;</span><span>Balanced Rock</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/arch/planyourvisit/the-windows.htm" target="_blank" rel="noopener" style="background-image:url('images/arches_np_02.jpg');"><span class="photo-emoji">&#x1F5BC;&#xFE0F;</span><span>The Windows</span></a>
                 </div>
             </div></div>
         </div>
@@ -642,6 +678,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Moab → Dead Horse Point → Canyonlands</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Moab,+UT&daddr=Dead+Horse+Point+State+Park+to:Canyonlands+National+Park+Island+in+the+Sky&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li><a class="spot-link" href="https://stateparks.utah.gov/parks/dead-horse/" target="_blank" rel="noopener">Dead Horse Point State Park</a> &mdash; one of the most photographed overlooks in the West</li>
@@ -659,9 +699,9 @@
                     <a class="stay-badge camp" href="https://www.sunoutdoors.com/utah/sun-outdoors-arches-gateway" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Sun Outdoors Arches Gateway (Night 3)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://stateparks.utah.gov/parks/dead-horse/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#6B4226,#3d2010);"><span class="photo-emoji">&#x1F3DC;&#xFE0F;</span><span>Dead Horse Point</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/mesa-arch.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#8a5a2a,#4a2a10);"><span class="photo-emoji">&#x1F305;</span><span>Mesa Arch Sunrise</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/grand-view-point.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4020,#3d2010);"><span class="photo-emoji">&#x1F441;&#xFE0F;</span><span>Grand View Point</span></a>
+                    <a class="photo-link" href="https://stateparks.utah.gov/parks/dead-horse/" target="_blank" rel="noopener" style="background-image:url('images/dead_horse_point_01.jpg');"><span class="photo-emoji">&#x1F3DC;&#xFE0F;</span><span>Dead Horse Point</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/mesa-arch.htm" target="_blank" rel="noopener" style="background-image:url('images/mesa_arch_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Mesa Arch Sunrise</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/grand-view-point.htm" target="_blank" rel="noopener" style="background-image:url('images/canyonlands_np_01.jpg');"><span class="photo-emoji">&#x1F441;&#xFE0F;</span><span>Grand View Point</span></a>
                 </div>
             </div></div>
         </div>
@@ -675,6 +715,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Moab → Goblin Valley → Bryce Canyon</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Moab,+UT&daddr=Goblin+Valley+State+Park+to:Bryce+Canyon+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Pack up Moab &mdash; say goodbye to red rock country</li>
@@ -695,10 +739,10 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/brca/planyourvisit/campgrounds.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; North Campground, Bryce Canyon NP</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://stateparks.utah.gov/parks/goblin-valley/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#8a6a3a,#5a3a1a);"><span class="photo-emoji">&#x1F47E;</span><span>Goblin Valley</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/brca/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#D4652A,#7a3010);"><span class="photo-emoji">&#x1F5FC;</span><span>Bryce Hoodoos</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/brca/planyourvisit/brycepoint.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#C97B3A,#6B4020);"><span class="photo-emoji">&#x1F305;</span><span>Bryce Point Sunset</span></a>
-                    <a class="photo-link" href="https://www.visitutah.com/Articles/scenic-byway-12" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4a3a,#3d2a1a);"><span class="photo-emoji">&#x1F6E3;&#xFE0F;</span><span>Scenic UT-12</span></a>
+                    <a class="photo-link" href="https://stateparks.utah.gov/parks/goblin-valley/" target="_blank" rel="noopener" style="background-image:url('images/goblin_valley_01.jpg');"><span class="photo-emoji">&#x1F47E;</span><span>Goblin Valley</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/brca/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/bryce_canyon_np_01.jpg');"><span class="photo-emoji">&#x1F5FC;</span><span>Bryce Hoodoos</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/brca/planyourvisit/brycepoint.htm" target="_blank" rel="noopener" style="background-image:url('images/bryce_canyon_np_02.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Bryce Point Sunset</span></a>
+                    <a class="photo-link" href="https://www.visitutah.com/Articles/scenic-byway-12" target="_blank" rel="noopener" style="background-image:url('images/bryce_canyon_np_03.jpg');"><span class="photo-emoji">&#x1F6E3;&#xFE0F;</span><span>Scenic UT-12</span></a>
                 </div>
             </div></div>
         </div>
@@ -712,6 +756,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Bryce Canyon</div>
+                    <iframe src="https://maps.google.com/maps?q=Bryce+Canyon+National+Park&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Sunrise at <a class="spot-link" href="https://www.nps.gov/places/sunrise-point.htm" target="_blank" rel="noopener">Sunrise Point</a></li>
@@ -733,10 +781,10 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/brca/planyourvisit/campgrounds.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; North Campground, Bryce (Night 2)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/navajo-loop-trail.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#C1440E,#6a2008);"><span class="photo-emoji">&#x1F5FC;</span><span>Navajo Loop Trail</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/places/sunrise-point.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#D4652A,#7a3010);"><span class="photo-emoji">&#x1F305;</span><span>Sunrise Point</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/brca/planyourvisit/astronomyprograms.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#0f0c29,#302b63);"><span class="photo-emoji">&#x2B50;</span><span>Night Sky Program</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/go-horseback-riding.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4020,#3d2010);"><span class="photo-emoji">&#x1F434;</span><span>Horseback Riding</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/navajo-loop-trail.htm" target="_blank" rel="noopener" style="background-image:url('images/navajo_loop_01.jpg');"><span class="photo-emoji">&#x1F5FC;</span><span>Navajo Loop Trail</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/places/sunrise-point.htm" target="_blank" rel="noopener" style="background-image:url('images/navajo_loop_02.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Sunrise Point</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/brca/planyourvisit/astronomyprograms.htm" target="_blank" rel="noopener" style="background-image:url('images/navajo_loop_03.jpg');"><span class="photo-emoji">&#x2B50;</span><span>Night Sky Program</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/go-horseback-riding.htm" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_02.jpg');"><span class="photo-emoji">&#x1F434;</span><span>Horseback Riding</span></a>
                 </div>
             </div></div>
         </div>
@@ -750,6 +798,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Bryce Canyon → Zion</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Bryce+Canyon+National+Park&daddr=Zion+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li><a class="spot-link" href="https://www.nps.gov/thingstodo/mossy-cave-trail.htm" target="_blank" rel="noopener">Mossy Cave Trail</a> (0.8 mi) &mdash; waterfall + small cave</li>
@@ -770,9 +822,9 @@
                     <a class="stay-badge camp" href="https://www.nps.gov/zion/planyourvisit/campgrounds-in-zion.htm" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Watchman Campground, Zion NP</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/zion/planyourvisit/thenarrows.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3d5a3a,#1a3020);"><span class="photo-emoji">&#x1F30A;</span><span>The Narrows</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/zion/planyourvisit/the-zion-mount-carmel-tunnel.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#6a4a2a,#3d2a10);"><span class="photo-emoji">&#x1F6E3;&#xFE0F;</span><span>Zion Tunnel</span></a>
-                    <a class="photo-link" href="https://www.nps.gov/zion/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#8a4a2a,#4a2010);"><span class="photo-emoji">&#x1F305;</span><span>Canyon Walls Sunset</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/zion/planyourvisit/thenarrows.htm" target="_blank" rel="noopener" style="background-image:url('images/zion_narrows_01.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>The Narrows</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/zion/planyourvisit/the-zion-mount-carmel-tunnel.htm" target="_blank" rel="noopener" style="background-image:url('images/zion_mt_carmel_hwy_01.jpg');"><span class="photo-emoji">&#x1F6E3;&#xFE0F;</span><span>Zion Tunnel</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/zion/learn/photosmultimedia/photogallery.htm" target="_blank" rel="noopener" style="background-image:url('images/zion_np_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Canyon Walls Sunset</span></a>
                 </div>
             </div></div>
         </div>
@@ -786,6 +838,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Zion → Las Vegas</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Zion+National+Park&daddr=Mandalay+Bay+Resort,+Las+Vegas,+NV&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Early morning: <a class="spot-link" href="https://www.nps.gov/thingstodo/hike-middle-emerald-pools-trail.htm" target="_blank" rel="noopener"><strong>Emerald Pools Trail</strong></a> (Lower 1.2 mi, Upper add 1 mi)</li>
@@ -804,9 +860,9 @@
                     <a class="stay-badge vegas-stay" href="https://mandalaybay.mgmresorts.com/" target="_blank" rel="noopener">&#x1F3E8; Mandalay Bay Resort &amp; Casino</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://www.nps.gov/thingstodo/hike-middle-emerald-pools-trail.htm" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3d5a3a,#1a3020);"><span class="photo-emoji">&#x1F4A7;</span><span>Emerald Pools</span></a>
-                    <a class="photo-link" href="https://mandalaybay.mgmresorts.com/en/amenities/mandalay-bay-beach.html" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#1a5a7a,#0a3a5a);"><span class="photo-emoji">&#x1F3CA;</span><span>Mandalay Bay Beach</span></a>
-                    <a class="photo-link" href="https://bellagio.mgmresorts.com/en/entertainment/fountains-of-bellagio.html" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2a2a5a,#1a1a3a);"><span class="photo-emoji">&#x26F2;</span><span>Bellagio Fountains</span></a>
+                    <a class="photo-link" href="https://www.nps.gov/thingstodo/hike-middle-emerald-pools-trail.htm" target="_blank" rel="noopener" style="background-image:url('images/emerald_pools_01.jpg');"><span class="photo-emoji">&#x1F4A7;</span><span>Emerald Pools</span></a>
+                    <a class="photo-link" href="https://mandalaybay.mgmresorts.com/en/amenities/mandalay-bay-beach.html" target="_blank" rel="noopener" style="background-image:url('images/mandalay_bay_01.jpg');"><span class="photo-emoji">&#x1F3CA;</span><span>Mandalay Bay Beach</span></a>
+                    <a class="photo-link" href="https://bellagio.mgmresorts.com/en/entertainment/fountains-of-bellagio.html" target="_blank" rel="noopener" style="background-image:url('images/fountains_of_bellagio_01.jpg');"><span class="photo-emoji">&#x26F2;</span><span>Bellagio Fountains</span></a>
                 </div>
             </div></div>
         </div>
@@ -820,6 +876,10 @@
                 <span class="day-expand-icon">&#x25BC;</span>
             </div>
             <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: The Las Vegas Strip</div>
+                    <iframe src="https://maps.google.com/maps?q=Las+Vegas+Strip&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="day-activities"><h4>Activities</h4>
                     <ul>
                         <li>Sleep in &mdash; you&rsquo;ve earned it!</li>
@@ -841,10 +901,10 @@
                     <a class="stay-badge vegas-stay" href="https://mandalaybay.mgmresorts.com/" target="_blank" rel="noopener">&#x1F3E8; Mandalay Bay Resort (Night 2)</a>
                 </div>
                 <div class="photo-strip">
-                    <a class="photo-link" href="https://mandalaybay.mgmresorts.com/en/entertainment/shark-reef-aquarium.html" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#1a3a5a,#0a2040);"><span class="photo-emoji">&#x1F988;</span><span>Shark Reef Aquarium</span></a>
-                    <a class="photo-link" href="https://www.caesars.com/linq/things-to-do/attractions/high-roller" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3a2a5a,#1a1040);"><span class="photo-emoji">&#x1F3A1;</span><span>High Roller Wheel</span></a>
-                    <a class="photo-link" href="https://mandalaybay.mgmresorts.com/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#5a4a10,#3d3008);"><span class="photo-emoji">&#x1F3B0;</span><span>The Strip at Night</span></a>
-                    <a class="photo-link" href="https://www.cosmopolitanlasvegas.com/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a2020,#2d1010);"><span class="photo-emoji">&#x1F355;</span><span>Secret Pizza</span></a>
+                    <a class="photo-link" href="https://mandalaybay.mgmresorts.com/en/entertainment/shark-reef-aquarium.html" target="_blank" rel="noopener" style="background-image:url('images/mandalay_bay_02.jpg');"><span class="photo-emoji">&#x1F988;</span><span>Shark Reef Aquarium</span></a>
+                    <a class="photo-link" href="https://www.caesars.com/linq/things-to-do/attractions/high-roller" target="_blank" rel="noopener" style="background-image:url('images/las_vegas_strip_02.jpg');"><span class="photo-emoji">&#x1F3A1;</span><span>High Roller Wheel</span></a>
+                    <a class="photo-link" href="https://mandalaybay.mgmresorts.com/" target="_blank" rel="noopener" style="background-image:url('images/las_vegas_strip_01.jpg');"><span class="photo-emoji">&#x1F3B0;</span><span>The Strip at Night</span></a>
+                    <a class="photo-link" href="https://www.cosmopolitanlasvegas.com/" target="_blank" rel="noopener" style="background-image:url('images/bellagio_03.jpg');"><span class="photo-emoji">&#x1F355;</span><span>Secret Pizza</span></a>
                 </div>
             </div></div>
         </div>
@@ -886,49 +946,49 @@
 <div class="section">
     <h2 class="section-title">OUR 6 NATIONAL PARKS</h2>
     <div class="parks-grid">
-        <a class="park-card fade-in" href="https://www.nps.gov/romo/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#2d5a3e,#1a3525);">
+        <a class="park-card fade-in" href="https://www.nps.gov/romo/" target="_blank" rel="noopener" style="background-image: url(\'images/rocky_mountain_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1F3D4;&#xFE0F;</div>
             <h3>Rocky Mountain</h3>
             <p>Trail Ridge Road climbs above 12,000 feet through alpine tundra. Elk meadows, waterfalls, and views that go on forever.</p>
             <div class="park-facts"><span class="park-fact">&#x1F4CD; Colorado</span><span class="park-fact">&#x26F0;&#xFE0F; 12,183 ft road</span><span class="park-fact">&#x1F4C5; Day 3</span></div>
             <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/romo/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/romo/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/romo/planyourvisit/camping.htm','_blank')">&#x1F3D5;&#xFE0F; Camping</span></div>
         </a>
-        <a class="park-card fade-in" href="https://www.nps.gov/grte/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#2d4a3e,#1a3025);">
+        <a class="park-card fade-in" href="https://www.nps.gov/grte/" target="_blank" rel="noopener" style="background-image: url(\'images/grand_teton_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1F3D4;&#xFE0F;</div>
             <h3>Grand Teton</h3>
             <p>Jagged peaks rising 7,000 feet above the valley floor. Jenny Lake, moose, and the most dramatic mountain views in America.</p>
             <div class="park-facts"><span class="park-fact">&#x1F4CD; Wyoming</span><span class="park-fact">&#x1F3D4;&#xFE0F; 13,775 ft peak</span><span class="park-fact">&#x1F4C5; Days 4-5</span></div>
             <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/grte/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/grte/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/grte/planyourvisit/camping.htm','_blank')">&#x1F3D5;&#xFE0F; Camping</span></div>
         </a>
-        <a class="park-card fade-in" href="https://www.nps.gov/yell/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#4a3520,#2d1a10);">
+        <a class="park-card fade-in" href="https://www.nps.gov/yell/" target="_blank" rel="noopener" style="background-image: url(\'images/yellowstone_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1F30B;</div>
             <h3>Yellowstone</h3>
             <p>The world&rsquo;s first national park. Geysers, hot springs, the Grand Canyon of Yellowstone, and incredible wildlife.</p>
             <div class="park-facts"><span class="park-fact">&#x1F4CD; Wyoming</span><span class="park-fact">&#x1F321;&#xFE0F; 10,000+ thermal features</span><span class="park-fact">&#x1F4C5; Days 6-7</span></div>
             <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/yell/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/yell/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/yell/planyourvisit/campgrounds.htm','_blank')">&#x1F3D5;&#xFE0F; Camping</span></div>
         </a>
-        <a class="park-card fade-in" href="https://www.nps.gov/arch/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#8B3A2A,#4a1a10);">
+        <a class="park-card fade-in" href="https://www.nps.gov/arch/" target="_blank" rel="noopener" style="background-image: url(\'images/arches_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1FAA8;</div>
             <h3>Arches</h3>
             <p>Over 2,000 natural sandstone arches including the iconic Delicate Arch &mdash; Utah&rsquo;s symbol on every license plate.</p>
             <div class="park-facts"><span class="park-fact">&#x1F4CD; Utah</span><span class="park-fact">&#x1FAA8; 2,000+ arches</span><span class="park-fact">&#x1F4C5; Day 9</span></div>
             <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/arch/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/arch/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span></div>
         </a>
-        <a class="park-card fade-in" href="https://www.nps.gov/cany/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#6B4226,#3d2010);">
+        <a class="park-card fade-in" href="https://www.nps.gov/cany/" target="_blank" rel="noopener" style="background-image: url(\'images/canyonlands_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1F3DC;&#xFE0F;</div>
             <h3>Canyonlands</h3>
             <p>Vast wilderness of canyons, mesas, and buttes carved by the Colorado and Green Rivers. Grand View Point is breathtaking.</p>
             <div class="park-facts"><span class="park-fact">&#x1F4CD; Utah</span><span class="park-fact">&#x1F441;&#xFE0F; 100-mile views</span><span class="park-fact">&#x1F4C5; Day 10</span></div>
             <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/cany/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/cany/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span></div>
         </a>
-        <a class="park-card fade-in" href="https://www.nps.gov/brca/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#D4652A,#7a3010);">
+        <a class="park-card fade-in" href="https://www.nps.gov/brca/" target="_blank" rel="noopener" style="background-image: url(\'images/bryce_canyon_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1F5FC;</div>
             <h3>Bryce Canyon</h3>
             <p>An alien landscape of towering hoodoos. The largest concentration on Earth. We get a full two days here!</p>
             <div class="park-facts"><span class="park-fact">&#x1F4CD; Utah</span><span class="park-fact">&#x1F5FC; Hoodoo capital</span><span class="park-fact">&#x1F4C5; Days 11-12</span></div>
             <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/brca/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/brca/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/brca/planyourvisit/campgrounds.htm','_blank')">&#x1F3D5;&#xFE0F; Camping</span></div>
         </a>
-        <a class="park-card fade-in" href="https://www.nps.gov/zion/" target="_blank" rel="noopener" style="background: linear-gradient(135deg,#3d5a3a,#1a3020);">
+        <a class="park-card fade-in" href="https://www.nps.gov/zion/" target="_blank" rel="noopener" style="background-image: url(\'images/zion_np_01.jpg\'); background-size: cover; background-position: center;">
             <div class="park-emoji">&#x1F3DE;&#xFE0F;</div>
             <h3>Zion</h3>
             <p>Towering red cliffs, the Virgin River Narrows, and the most awe-inspiring canyon scenery on the planet.</p>
