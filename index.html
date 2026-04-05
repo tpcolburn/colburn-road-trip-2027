@@ -334,6 +334,41 @@
             .passport-grid { grid-template-columns: 1fr; }
         }
 
+
+        /* ===== BOOKING TIMELINE ===== */
+        .booking-timeline { max-width: 900px; margin: 0 auto; }
+        .booking-phase { margin-bottom: 2rem; }
+        .booking-phase-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; padding: 0.8rem 1.2rem; border-radius: 12px; }
+        .booking-phase-header.critical { background: linear-gradient(90deg, rgba(193,68,14,0.25), rgba(193,68,14,0.05)); border-left: 4px solid var(--canyon-red); }
+        .booking-phase-header.important { background: linear-gradient(90deg, rgba(245,166,35,0.2), rgba(245,166,35,0.05)); border-left: 4px solid var(--sunset-gold); }
+        .booking-phase-header.moderate { background: linear-gradient(90deg, rgba(91,140,90,0.2), rgba(91,140,90,0.05)); border-left: 4px solid var(--sage-green); }
+        .booking-phase-header.flexible { background: linear-gradient(90deg, rgba(59,130,246,0.15), rgba(59,130,246,0.03)); border-left: 4px solid var(--sky-blue); }
+        .phase-icon { font-size: 1.8rem; }
+        .phase-title { font-family: 'Bangers', cursive; font-size: 1.5rem; letter-spacing: 1px; }
+        .booking-phase-header.critical .phase-title { color: var(--canyon-red); }
+        .booking-phase-header.important .phase-title { color: var(--sunset-gold); }
+        .booking-phase-header.moderate .phase-title { color: var(--sage-green); }
+        .booking-phase-header.flexible .phase-title { color: var(--sky-blue); }
+        .phase-when { margin-left: auto; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); white-space: nowrap; }
+
+        .booking-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.2rem 1.4rem; margin-bottom: 0.8rem; }
+        .booking-card-header { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.6rem; }
+        .booking-emoji { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .booking-name { font-weight: 800; font-size: 1.05rem; }
+        .booking-day { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.1rem; }
+        .booking-details { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; font-size: 0.88rem; }
+        .booking-detail-item { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 0.6rem 0.8rem; }
+        .booking-detail-item .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-bottom: 0.2rem; font-weight: 700; }
+        .booking-detail-item .value { font-weight: 700; color: #fff; }
+        .booking-detail-item .value a { color: var(--sunset-gold); text-decoration: none; border-bottom: 1px dotted rgba(245,166,35,0.4); }
+        .booking-detail-item .value a:hover { color: #fff; }
+        .booking-backup { margin-top: 0.6rem; background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.2); border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.85rem; }
+        .booking-backup .backup-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; color: var(--sunset-gold); font-weight: 800; margin-bottom: 0.2rem; }
+        .booking-tip { background: rgba(91,140,90,0.1); border: 1px solid rgba(91,140,90,0.3); border-radius: 10px; padding: 0.8rem 1rem; font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .booking-tip strong { color: var(--sage-green); }
+
+        @media (max-width: 640px) { .booking-details { grid-template-columns: 1fr; } .phase-when { display: none; } }
+
         .tab-content { display: none; }
         .tab-content.active { display: block; }
     </style>
@@ -360,6 +395,7 @@
     <button class="nav-btn" data-tab="parks">National Parks</button>
     <button class="nav-btn" data-tab="rv">Our RV</button>
     <button class="nav-btn" data-tab="budget">Budget</button>
+    <button class="nav-btn" data-tab="booking">&#x1F4C5; Booking Timeline</button>
     <button class="nav-btn" data-tab="packing">Packing List</button>
     <button class="nav-btn" data-tab="quiz">Fun Facts Quiz</button>
     <button class="nav-btn" data-tab="passport">&#x1F3D5;&#xFE0F; Passport Game</button>
@@ -563,7 +599,8 @@
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Pick up RV at <a class="spot-link" href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener">Cruise America</a> Denver depot (9am)</li><li>RV orientation &amp; walkthrough</li><li>Drive to <a class="spot-link" href="https://www.visitestespark.com/" target="_blank" rel="noopener">Estes Park</a> (gateway to RMNP, ~1.5 hrs)</li><li>Enter <a class="spot-link" href="https://www.nps.gov/romo/" target="_blank" rel="noopener">Rocky Mountain NP</a>, drive the legendary <a class="spot-link" href="https://www.nps.gov/thingstodo/enjoy-a-scenic-drive-on-trail-ridge-road.htm" target="_blank" rel="noopener">Trail Ridge Road</a></li><li>Stop at <a class="spot-link" href="https://www.nps.gov/romo/alpine_visitor_center.htm" target="_blank" rel="noopener">Alpine Visitor Center</a> (11,796 ft!)</li><li>Exit west side &rarr; camp near Grand Lake</li></ul>
                     </div>
-                    <div class="day-info"><h4>Rocky Mountain NP</h4><p>&#x26F0;&#xFE0F; <strong>Trail Ridge Road:</strong> Highest continuous paved road in North America &mdash; 12,183 ft!</p><p>&#x1F3AB; <strong>Timed Entry:</strong> Reserve at <a class="spot-link" href="https://www.recreation.gov/timed-entry/10086910" target="_blank" rel="noopener">recreation.gov</a></p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.recreation.gov/camping/campgrounds/260552" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Timber Creek Campground, RMNP West (single night)</a>
+                    <div class="day-info"><h4>Rocky Mountain NP</h4><p>&#x26F0;&#xFE0F; <strong>Trail Ridge Road:</strong> Highest continuous paved road in North America &mdash; 12,183 ft!</p><p>&#x1F3AB; <strong>Timed Entry:</strong> Reserve at <a class="spot-link" href="https://www.recreation.gov/timed-entry/10086910" target="_blank" rel="noopener">recreation.gov</a></p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.windingriverresort.com/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Winding River Resort, Grand Lake (single night, full hookups)</a>
+                    <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;">Note: Timber Creek Campground (RMNP west) is closed for sewer rehab through 2027</p>
                     </div>
                 <div class="photo-strip"><a class="photo-link" href="images/trail_ridge_tundra.jpg" target="_blank" rel="noopener" style="background-image:url('images/trail_ridge_tundra.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Trail Ridge Tundra</span></a><a class="photo-link" href="images/dream_lake_romo.jpg" target="_blank" rel="noopener" style="background-image:url('images/dream_lake_romo.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Dream Lake</span></a><a class="photo-link" href="images/alpine_visitor_center_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/alpine_visitor_center_01.jpg');"><span class="photo-emoji">&#x26F0;&#xFE0F;</span><span>Alpine Visitor Center</span></a></div>
                 </div></div>
@@ -955,6 +992,344 @@
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+</div>
+
+<!-- BOOKING TIMELINE -->
+<div class="tab-content" id="tab-booking">
+<div class="section">
+    <h2 class="section-title">BOOKING TIMELINE</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto;">When to book each reservation, sorted by urgency. Miss these windows and you'll be scrambling for backup options.</p>
+
+    <div class="booking-timeline">
+
+        <!-- ===== PHASE 1: BOOK NOW (13 months out) ===== -->
+        <div class="booking-phase">
+            <div class="booking-phase-header critical">
+                <span class="phase-icon">&#x1F6A8;</span>
+                <span class="phase-title">BOOK IMMEDIATELY (13 months out)</span>
+                <span class="phase-when">May&ndash;Jun 2026</span>
+            </div>
+
+            <div class="booking-tip"><strong>&#x26A0;&#xFE0F; Why so early?</strong> Yellowstone&rsquo;s concessionaire (Xanterra) releases reservations 13 months in advance on the 5th of each month. For June 2027 dates, you need to be ready on <strong>May 5, 2026</strong> when June reservations drop.</div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Fishing Bridge RV Park, Yellowstone</div><div class="booking-day">Days 7&ndash;10 (4 nights) &middot; Jun 17&ndash;21</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">May 5, 2026 at 12:00 AM MT</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.yellowstonenationalparklodges.com/stay/plan/reservations/" target="_blank" rel="noopener">yellowstonenationalparklodges.com</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--canyon-red);">&#x1F525; Extremely competitive</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Only full-hookup RV park in Yellowstone. Hard-sided vehicles only (C-25 qualifies). Call 1-866-439-7375 if website crashes.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup options if sold out</div>
+                    <strong>Option A:</strong> Canyon Campground or Madison Campground (in-park NPS, no hookups, book at <a href="https://www.recreation.gov/" target="_blank" rel="noopener" style="color:var(--sunset-gold);">recreation.gov</a> 6 months out)<br>
+                    <strong>Option B:</strong> Lake Hotel or Canyon Lodge (in-park hotel, ~$350&ndash;500/night, same Xanterra 13-month window)<br>
+                    <strong>Option C:</strong> Yellowstone Grizzly RV Park, West Yellowstone (private, full hookups, ~$90/night, book anytime)
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3E8;</span>
+                    <div><div class="booking-name">Yellowstone Lodges (backup if Fishing Bridge fails)</div><div class="booking-day">Days 7&ndash;10 &middot; Lake Hotel, Canyon Lodge, or Lake Lodge</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">May 5, 2026 (same 13-month window)</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.yellowstonenationalparklodges.com/lodgings/" target="_blank" rel="noopener">yellowstonenationalparklodges.com</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--canyon-red);">&#x1F525; Very competitive</div></div>
+                    <div class="booking-detail-item"><div class="label">Cost</div><div class="value">$350&ndash;500/night (vs ~$95/night at Fishing Bridge)</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PHASE 2: 12 MONTHS OUT ===== -->
+        <div class="booking-phase">
+            <div class="booking-phase-header critical">
+                <span class="phase-icon">&#x1F4CB;</span>
+                <span class="phase-title">BOOK AT 12 MONTHS (rolling)</span>
+                <span class="phase-when">Jun 2026</span>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Grand Teton Lodges &amp; Cabins (backup for Colter Bay RV)</div><div class="booking-day">Days 5&ndash;6 &middot; Jackson Lake Lodge or Colter Bay Cabins</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">366 days (12 months) rolling basis</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.gtlc.com/lodges/" target="_blank" rel="noopener">gtlc.com</a> or call 307-543-3100</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--desert-orange);">&#x1F525; High for June</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Book as backup while waiting for the Colter Bay RV Park window at 6 months. Cancel if RV park comes through.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PHASE 3: 6 MONTHS OUT ===== -->
+        <div class="booking-phase">
+            <div class="booking-phase-header important">
+                <span class="phase-icon">&#x1F4C6;</span>
+                <span class="phase-title">BOOK AT 6 MONTHS</span>
+                <span class="phase-when">Dec 2026</span>
+            </div>
+
+            <div class="booking-tip"><strong>&#x1F4A1; Key date:</strong> recreation.gov opens NPS campground reservations on a 6-month rolling window at <strong>10:00 AM ET</strong>. For Jun 15 dates, be online Dec 15, 2026 at 10 AM sharp.</div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Colter Bay RV Park, Grand Teton NP</div><div class="booking-day">Days 5&ndash;6 (2 nights) &middot; Jun 15&ndash;17</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">Dec 15, 2026 at 10:00 AM ET</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.recreation.gov/camping/campgrounds/258831" target="_blank" rel="noopener">recreation.gov</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--canyon-red);">&#x1F525; Extremely competitive</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">112 full-hookup RV sites inside the park. Be logged in and ready to click at exactly 10 AM.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup options if sold out</div>
+                    <strong>Option A:</strong> Colter Bay Campground (same park, no hookups, also at recreation.gov)<br>
+                    <strong>Option B:</strong> Colter Bay Cabins or Jackson Lake Lodge (GTLC, should already be booked from Phase 2 as insurance)<br>
+                    <strong>Option C:</strong> Snake River Park KOA, Jackson (private, full hookups, 45 min south)
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F690;</span>
+                    <div><div class="booking-name">Cruise America RV Rental (C-25)</div><div class="booking-day">Pickup Jun 14 &middot; Return Jun 25 (11 days)</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">6+ months out (sooner is better)</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener">cruiseamerica.com</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--desert-orange);">Moderate &mdash; summer C-25s go fast</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Round-trip Denver. Request VIP insurance package. Confirm hard-sided classification for Fishing Bridge.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup options</div>
+                    <strong>Option A:</strong> Cruise America C-30 (bigger, slightly more expensive, same depot)<br>
+                    <strong>Option B:</strong> El Monte RV or Outdoorsy peer-to-peer rental from Denver<br>
+                    <strong>Option C:</strong> Reserve early &mdash; summer RVs in Denver sell out by March
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Winding River Resort, Grand Lake</div><div class="booking-day">Day 4 (1 night) &middot; Jun 14</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">6 months out (private resort, flexible)</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.windingriverresort.com/" target="_blank" rel="noopener">windingriverresort.com</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Moderate</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Private resort near Grand Lake with full hookups. Timber Creek NPS campground is closed for sewer rehab through 2027.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup</div>
+                    <strong>Option A:</strong> Elk Creek Campground, Grand Lake (private)<br>
+                    <strong>Option B:</strong> Stay in Estes Park instead and enter RMNP from east side only
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Sinks Canyon State Park, Lander WY</div><div class="booking-day">Day 12 (1 night) &middot; Jun 22</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">Up to 6 months out</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://reserve.wyoming.gov/" target="_blank" rel="noopener">reserve.wyoming.gov</a> or 1-877-996-7275</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Low&ndash;Moderate</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Small state park with 24 sites. Reservable May&ndash;September.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup</div>
+                    <strong>Option A:</strong> Lander city park or private RV park (walk-up availability typical)
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PHASE 4: 3-4 MONTHS OUT ===== -->
+        <div class="booking-phase">
+            <div class="booking-phase-header moderate">
+                <span class="phase-icon">&#x2708;&#xFE0F;</span>
+                <span class="phase-title">BOOK 3&ndash;4 MONTHS OUT</span>
+                <span class="phase-when">Feb&ndash;Mar 2027</span>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x2708;&#xFE0F;</span>
+                    <div><div class="booking-name">Flights: CLE &harr; DEN</div><div class="booking-day">Jun 11 (evening) &amp; Jun 26 (afternoon)</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">Feb&ndash;Mar 2027 (sweet spot for summer fares)</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value">Google Flights, United, Frontier, Southwest</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Low &mdash; CLE&harr;DEN is well-served</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Set a Google Flights alert now to track prices. Outbound: evening departure Jun 11. Return: afternoon Jun 26.</div></div>
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3E8;</span>
+                    <div><div class="booking-name">Embassy Suites Denver Downtown (4 nights)</div><div class="booking-day">Jun 11&ndash;14 (3 before) + Jun 25 (1 after)</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">3&ndash;4 months out (or use Hilton Honors points)</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">hilton.com</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Low</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Book refundable rate. Free breakfast + evening reception. Check Hilton Honors award availability.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup</div>
+                    <strong>Option A:</strong> Homewood Suites Denver Downtown (also Hilton, also suites)<br>
+                    <strong>Option B:</strong> Hampton Inn Denver Downtown Convention Center
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Estes Park KOA Holiday</div><div class="booking-day">Days 14&ndash;15 (2 nights) &middot; Jun 24&ndash;26</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">3&ndash;6 months out</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://koa.com/campgrounds/estes-park/" target="_blank" rel="noopener">koa.com</a> or call 1-970-586-2888</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Moderate</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Full hookups. Max 35 ft RV (C-25 is 25 ft, fine). Pool, hot tub, playground.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup</div>
+                    <strong>Option A:</strong> Spruce Lake RV Park, Estes Park<br>
+                    <strong>Option B:</strong> Moraine Park Campground in RMNP (NPS, no hookups, recreation.gov)
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PHASE 5: 1-2 MONTHS OUT ===== -->
+        <div class="booking-phase">
+            <div class="booking-phase-header flexible">
+                <span class="phase-icon">&#x1F3AB;</span>
+                <span class="phase-title">BOOK 1&ndash;2 MONTHS OUT</span>
+                <span class="phase-when">Apr&ndash;May 2027</span>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3AB;</span>
+                    <div><div class="booking-name">RMNP Timed Entry Permit</div><div class="booking-day">Day 4 &middot; Jun 14 (and Days 14&ndash;15)</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">Monthly release on <a href="https://www.recreation.gov/timed-entry/10086910" target="_blank" rel="noopener">recreation.gov</a> starting May 1 for June dates</div></div>
+                    <div class="booking-detail-item"><div class="label">Cost</div><div class="value">$2.00 per vehicle per day</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--desert-orange);">Moderate &mdash; popular time slots go fast</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Required May 22&ndash;Oct 19 for Bear Lake Road (5&ndash;6 AM entry) and park-wide (9 AM&ndash;2 PM). Non-refundable, non-transferable.</div></div>
+                </div>
+                <div class="booking-backup">
+                    <div class="backup-label">&#x1F504; Backup</div>
+                    <strong>Day-before FCFS:</strong> Additional permits released at <strong>7:00 PM MT the night before</strong> on recreation.gov. Set an alarm!<br>
+                    <strong>Or:</strong> Enter before 5 AM or after 2 PM (no permit needed outside peak hours)
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Ponderosa Campground, Cody WY</div><div class="booking-day">Day 11 (1 night) &middot; Jun 21</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">Anytime &mdash; accepts year-round reservations</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://codyponderosa.com/" target="_blank" rel="noopener">codyponderosa.com</a> or call (307) 587-9203</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Low (140 RV sites)</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Phone reservations only (9 AM&ndash;9 PM daily). Close to Buffalo Bill Center and Cody Nite Rodeo.</div></div>
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3D5;&#xFE0F;</span>
+                    <div><div class="booking-name">Cheyenne KOA</div><div class="booking-day">Day 13 (1 night) &middot; Jun 23</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to book</div><div class="value">1&ndash;2 months out</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://koa.com/campgrounds/cheyenne/" target="_blank" rel="noopener">koa.com</a></div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sage-green);">Low (unless Frontier Days overlap)</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Frontier Days is late July; mid-June should be fine. Full hookups available.</div></div>
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3AB;</span>
+                    <div><div class="booking-name">America the Beautiful Annual Pass</div><div class="booking-day">Covers all NPS sites for 12 months</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">When to buy</div><div class="value">Anytime before the trip</div></div>
+                    <div class="booking-detail-item"><div class="label">Platform</div><div class="value"><a href="https://www.nps.gov/planyourvisit/passes.htm" target="_blank" rel="noopener">nps.gov</a> or buy at first park entrance</div></div>
+                    <div class="booking-detail-item"><div class="label">Cost</div><div class="value">$80 (saves $25 vs paying per park: $35 &times; 3 = $105)</div></div>
+                    <div class="booking-detail-item"><div class="label">Difficulty</div><div class="value" style="color:var(--sky-blue);">None &mdash; always available</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PHASE 6: NO ADVANCE BOOKING NEEDED ===== -->
+        <div class="booking-phase">
+            <div class="booking-phase-header flexible">
+                <span class="phase-icon">&#x2705;</span>
+                <span class="phase-title">NO ADVANCE BOOKING NEEDED</span>
+                <span class="phase-when">Walk-up / at gate</span>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F6A3;</span>
+                    <div><div class="booking-name">Jenny Lake Boat Shuttle</div><div class="booking-day">Day 6 &middot; Grand Teton</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">Booking</div><div class="value">Walk-up only &mdash; purchase at East Boat Dock</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Boats run every 10&ndash;15 min. No advance tickets available. Arrive before 9 AM to avoid lines. Call (307) 734-9227 for schedule.</div></div>
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F434;</span>
+                    <div><div class="booking-name">Cody Nite Rodeo</div><div class="booking-day">Day 11 &middot; 8 PM nightly Jun 1&ndash;Aug 31</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">Booking</div><div class="value">Available at gate or <a href="https://www.codystampederodeo.com/" target="_blank" rel="noopener">advance online</a> (from March)</div></div>
+                    <div class="booking-detail-item"><div class="label">Cost</div><div class="value">From $11/person. Kids often half price.</div></div>
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F3DB;&#xFE0F;</span>
+                    <div><div class="booking-name">Buffalo Bill Center of the West</div><div class="booking-day">Day 11 &middot; Cody, WY</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">Booking</div><div class="value">Recommended online at <a href="https://centerofthewest.org/" target="_blank" rel="noopener">centerofthewest.org</a>, not required</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">Ticket good for 2 consecutive days. 5 museums inside &mdash; budget 3&ndash;4 hours minimum.</div></div>
+                </div>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-card-header">
+                    <span class="booking-emoji">&#x1F54D;</span>
+                    <div><div class="booking-name">Thermopolis State Bath House</div><div class="booking-day">Day 12 &middot; Hot Springs State Park</div></div>
+                </div>
+                <div class="booking-details">
+                    <div class="booking-detail-item"><div class="label">Booking</div><div class="value">No reservation needed &mdash; free admission</div></div>
+                    <div class="booking-detail-item"><div class="label">Notes</div><div class="value">104&deg;F mineral water pool. Open daily. Free by 1896 treaty. Just show up!</div></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 </div>
