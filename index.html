@@ -232,7 +232,9 @@
 
         .day-map { grid-column: 1 / -1; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.5rem; }
         .day-map iframe { width: 100%; height: 320px; border: 0; display: block; filter: hue-rotate(10deg) saturate(0.9); }
-        .day-map-label { background: rgba(245,166,35,0.15); border-left: 3px solid var(--sunset-gold); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 700; color: var(--sunset-gold); text-transform: uppercase; letter-spacing: 1px; }
+        .day-map-label { background: rgba(245,166,35,0.15); border-left: 3px solid var(--sunset-gold); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 700; color: var(--sunset-gold); text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .day-map-label .gmaps-link { color: #fff; background: rgba(91,140,90,0.6); padding: 0.2rem 0.6rem; border-radius: 12px; text-decoration: none; font-size: 0.7rem; letter-spacing: 0.5px; transition: background 0.2s; white-space: nowrap; }
+        .day-map-label .gmaps-link:hover { background: var(--sage-green); }
 
         /* ===== PASSPORT GAME ===== */
         .passport-wrap { max-width: 1100px; margin: 0 auto; }
@@ -520,8 +522,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Denver Area</div>
-                    <iframe src="https://maps.google.com/maps?q=Denver,+CO&t=&z=11&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Denver Area</span><a class="gmaps-link" href="https://www.google.com/maps/search/?api=1&query=Denver,CO" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-105.15,39.58,-104.83,39.90&amp;layer=mapnik&amp;marker=39.7392,-104.9903" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Free hot breakfast at Embassy Suites</li><li>Hang with friends &mdash; their pick</li><li><a class="spot-link" href="https://www.dmns.org/" target="_blank" rel="noopener">Denver Museum of Nature &amp; Science</a> (dinosaur hall is amazing)</li><li><a class="spot-link" href="https://www.redrocksonline.com/" target="_blank" rel="noopener">Red Rocks Park &amp; Amphitheatre</a></li><li>Hotel pool time for the kids</li></ul>
@@ -559,8 +561,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Denver &rarr; RMNP &rarr; Grand Lake</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Denver,+CO&daddr=Estes+Park,+CO+to:Rocky+Mountain+National+Park+to:Grand+Lake,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Denver &rarr; RMNP &rarr; Grand Lake</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Denver,CO&destination=Grand+Lake,CO&waypoints=Estes+Park,CO%7CRocky+Mountain+National+Park" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-106.00,39.50,-104.70,40.55&amp;layer=mapnik&amp;marker=40.2472,-105.8220" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Pick up RV at <a class="spot-link" href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener">Cruise America</a> Denver depot (9am)</li><li>RV orientation &amp; walkthrough</li><li>Drive to <a class="spot-link" href="https://www.visitestespark.com/" target="_blank" rel="noopener">Estes Park</a> (gateway to RMNP, ~1.5 hrs)</li><li>Enter <a class="spot-link" href="https://www.nps.gov/romo/" target="_blank" rel="noopener">Rocky Mountain NP</a>, drive the legendary <a class="spot-link" href="https://www.nps.gov/thingstodo/enjoy-a-scenic-drive-on-trail-ridge-road.htm" target="_blank" rel="noopener">Trail Ridge Road</a></li><li>Stop at <a class="spot-link" href="https://www.nps.gov/romo/alpine_visitor_center.htm" target="_blank" rel="noopener">Alpine Visitor Center</a> (11,796 ft!)</li><li>Exit west side &rarr; camp near Grand Lake</li></ul>
@@ -581,8 +583,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Lake &rarr; Grand Teton</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Grand+Lake,+CO&daddr=Colter+Bay+Village,+Grand+Teton+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Grand Lake &rarr; Grand Teton</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Grand+Lake,CO&destination=Colter+Bay+Village,Grand+Teton+National+Park,WY" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-111.10,40.00,-105.50,44.10&amp;layer=mapnik&amp;marker=43.9019,-110.6412" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Early departure &mdash; the longest drive of the trip</li><li>Head north on US-40 &rarr; I-80 W through Rawlins, WY</li><li>Lunch stop in Rock Springs or Pinedale, WY</li><li>Scenery shifts from plains to mountain valleys</li><li>Arrive at Grand Teton NP by late afternoon</li><li>First views of the Teton Range &mdash; jaw-dropping</li><li>Set up camp at Colter Bay RV Park, early night</li></ul>
@@ -621,8 +623,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Teton &rarr; Fishing Bridge</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Colter+Bay+Village,+WY&daddr=Fishing+Bridge+RV+Park,+Yellowstone+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Grand Teton &rarr; Fishing Bridge</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Colter+Bay+Village,WY&destination=Fishing+Bridge+RV+Park,Yellowstone+National+Park" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-110.85,43.75,-110.20,44.75&amp;layer=mapnik&amp;marker=44.5583,-110.3711" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Easy morning at Colter Bay, pack up</li><li>Drive north into <a class="spot-link" href="https://www.nps.gov/yell/" target="_blank" rel="noopener">Yellowstone</a> via South Entrance</li><li>Stop at <a class="spot-link" href="https://www.nps.gov/places/lewis-falls.htm" target="_blank" rel="noopener">Lewis Falls</a></li><li>Continue to Fishing Bridge RV Park &mdash; set up camp for 4 nights!</li><li><a class="spot-link" href="https://www.nps.gov/thingstodo/yell-trail-west-thumb-geyser-basin.htm" target="_blank" rel="noopener">West Thumb Geyser Basin</a> &mdash; geothermal pools on Yellowstone Lake</li><li>Dinner at Lake Hotel or at camp</li><li>Explore Fishing Bridge / Lake area, walk the boardwalk</li></ul>
@@ -697,8 +699,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Yellowstone &rarr; Cody</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Fishing+Bridge+RV+Park,+Yellowstone&daddr=Cody,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Yellowstone &rarr; Cody</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Fishing+Bridge+RV+Park,Yellowstone+National+Park&destination=Cody,WY" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-110.55,44.20,-108.85,44.85&amp;layer=mapnik&amp;marker=44.5263,-109.0565" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Leisurely morning, break camp at Fishing Bridge</li><li>Exit Yellowstone via the East Entrance &mdash; most scenic route out!</li><li>Drive through <a class="spot-link" href="https://en.wikipedia.org/wiki/Wapiti_Valley" target="_blank" rel="noopener">Wapiti Valley</a> (Teddy Roosevelt called it &ldquo;the most scenic 50 miles in America&rdquo;)</li><li>Arrive in <a class="spot-link" href="https://www.codychamber.org/" target="_blank" rel="noopener">Cody, WY</a></li><li>Visit the <a class="spot-link" href="https://centerofthewest.org/" target="_blank" rel="noopener"><strong>Buffalo Bill Center of the West</strong></a> &mdash; 5 museums in one! Plains Indians, firearms, Western art, natural history, Buffalo Bill himself</li><li>Kids love the Plains Indian Museum and the Draper Natural History Museum</li><li>Evening: <a class="spot-link" href="https://www.codystampederodeo.com/" target="_blank" rel="noopener">Cody Nite Rodeo</a> (runs nightly all summer &mdash; "Rodeo Capital of the World")</li></ul>
@@ -719,8 +721,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Cody &rarr; Thermopolis &rarr; Lander</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Cody,+WY&daddr=Hot+Springs+State+Park,+Thermopolis,+WY+to:Lander,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Cody &rarr; Thermopolis &rarr; Lander</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Cody,WY&destination=Lander,WY&waypoints=Hot+Springs+State+Park,Thermopolis,WY" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-109.30,42.55,-107.95,44.80&amp;layer=mapnik&amp;marker=42.8330,-108.7307" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Morning: one more stop at Buffalo Bill Center if kids want</li><li>Drive south to <a class="spot-link" href="https://wyoparks.wyo.gov/index.php/places-to-go/hot-springs" target="_blank" rel="noopener"><strong>Hot Springs State Park</strong></a> in Thermopolis, WY (~85 mi, 1.5 hrs)</li><li>Swim at the <strong>State Bath House</strong> &mdash; free! (yes, really free) Home to the world's largest mineral hot springs</li><li>Kids will love the hot soak + the (small) water slides at nearby commercial pools</li><li>See the Rainbow Terraces and the bison herd in the state park</li><li>Lunch in Thermopolis</li><li>Continue south to Lander, WY (~120 mi, 2.5 hrs)</li><li>Camp overnight in Lander &mdash; quaint gateway town to Wind River Range</li></ul>
@@ -741,8 +743,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Lander &rarr; Cheyenne</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Lander,+WY&daddr=Cheyenne,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Lander &rarr; Cheyenne</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Lander,WY&destination=Cheyenne,WY" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-109.05,40.90,-104.50,43.10&amp;layer=mapnik&amp;marker=41.1400,-104.8202" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Morning walk in Lander or Sinks Canyon State Park (5 mi from town &mdash; where the Popo Agie River disappears underground!)</li><li>Drive southeast through the Red Desert &mdash; vast open Wyoming</li><li>Lunch stop in Rawlins or Medicine Bow</li><li>Arrive Cheyenne, Wyoming's capital, mid-afternoon</li><li>Visit the <a class="spot-link" href="https://www.oldwestmuseum.org/" target="_blank" rel="noopener">Cheyenne Frontier Days Old West Museum</a></li><li>Walk around <a class="spot-link" href="https://www.cheyenne.org/" target="_blank" rel="noopener">downtown Cheyenne</a> &mdash; historic Wyoming State Capitol, big boot statues, Union Pacific depot</li><li>Dinner in Cheyenne</li></ul>
@@ -762,8 +764,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Cheyenne &rarr; Estes Park</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Cheyenne,+WY&daddr=Estes+Park,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Cheyenne &rarr; Estes Park</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Cheyenne,WY&destination=Estes+Park,CO" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-105.80,40.15,-104.55,41.35&amp;layer=mapnik&amp;marker=40.3772,-105.5217" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Relaxed morning departure &mdash; short drive today!</li><li>Cross back into Colorado</li><li>Arrive <a class="spot-link" href="https://www.visitestespark.com/" target="_blank" rel="noopener">Estes Park</a> &mdash; the east-side gateway to RMNP</li><li>Check in at RV resort, set up camp for 2 nights</li><li>Afternoon: enter RMNP east side &mdash; completely different feel from the west!</li><li><a class="spot-link" href="https://www.nps.gov/places/bear-lake.htm" target="_blank" rel="noopener">Bear Lake</a> &mdash; easy 0.8 mi paved loop around the lake, stunning</li><li>Drive to Sprague Lake or Dream Lake for another short hike</li><li>Stroll Estes Park downtown &mdash; Taffy Shop (since 1935!), Ben &amp; Jerry's</li></ul>
@@ -784,8 +786,8 @@
                 </div>
                 <div class="day-details"><div class="day-body">
                 <div class="day-map">
-                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Estes Park &rarr; Denver</div>
-                    <iframe src="https://maps.google.com/maps?saddr=Estes+Park,+CO&daddr=Denver,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="day-map-label"><span>&#x1F5FA;&#xFE0F; Route: Estes Park &rarr; Denver</span><a class="gmaps-link" href="https://www.google.com/maps/dir/?api=1&origin=Estes+Park,CO&destination=Denver,CO" target="_blank" rel="noopener">Open in Google Maps &#x2197;</a></div>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-105.75,39.55,-104.75,40.55&amp;layer=mapnik&amp;marker=39.7392,-104.9903" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                     <div class="day-activities"><h4>Activities</h4>
                         <ul><li>Sunrise at Bear Lake &mdash; breathtaking when the light hits</li><li><a class="spot-link" href="https://www.nps.gov/thingstodo/romo_emeraldlake.htm" target="_blank" rel="noopener">Emerald Lake Trail</a> (3.6 mi round trip, moderate) &mdash; best day hike on the east side</li><li>Or easier option: Alberta Falls (1.6 mi) + Nymph Lake</li><li>Picnic lunch at the trailhead</li><li>Afternoon: last wildlife drive along Moraine Park for elk</li><li>Drop RV at Cruise America Denver by 4pm</li><li>Uber / rental transfer back to Embassy Suites Denver for one final hotel night</li><li>Celebratory family dinner downtown &mdash; you earned it!</li></ul>
