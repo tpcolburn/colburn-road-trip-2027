@@ -349,9 +349,8 @@
         <h2>Colburn Family Adventure &mdash; Denver Round Trip</h2>
         <div class="dates">June 11 &ndash; June 26, 2027 &nbsp;|&nbsp; 16 Days &nbsp;|&nbsp; 3 National Parks + Bonus Stops</div>
         <p style="color:rgba(255,255,255,0.6);max-width:700px;margin:0 auto;">Denver &rarr; Rocky Mountain NP &rarr; Grand Teton &rarr; Yellowstone (4 days) &rarr; Cody &rarr; Thermopolis &rarr; Estes Park &rarr; Denver</p>
-        <p style="margin-top:1rem;">
-            <a href="index.html" style="color:var(--sunset-gold);border:1px solid var(--sunset-gold);padding:0.4rem 1rem;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:700;margin:0 0.3rem;display:inline-block;">&larr; View Original (Vegas One-Way)</a>
-            <a href="compare.html" style="color:#fff;background:linear-gradient(135deg,var(--canyon-red),var(--desert-orange));border:1px solid var(--desert-orange);padding:0.4rem 1rem;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:700;margin:0 0.3rem;display:inline-block;">&#x2696;&#xFE0F; Compare Both Trips</a>
+        <p style="margin-top:0.6rem;">
+            <span style="display:inline-block;padding:0.35rem 0.9rem;background:rgba(91,140,90,0.25);border:1px solid var(--sage-green);border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:1px;color:var(--sage-green);text-transform:uppercase;">&#x2713; Family's Pick</span>
         </p>
     </div>
     <div class="scroll-hint" onclick="document.querySelector('.nav-bar').scrollIntoView({behavior:'smooth'})">&#x2B07;&#xFE0F;</div>
@@ -1125,7 +1124,7 @@ const passportParks = [
         id: 'romo',
         name: 'Rocky Mountain',
         icon: '\u26F0\uFE0F',
-        days: 'Day 3',
+        days: 'Days 4 & 14-15',
         heroImage: 'rocky_mountain_np_01.jpg',
         quiz: [
             { q: "What's the highest paved road in any US national park?", options: ["Trail Ridge Road", "Sky High Highway", "Eagle Pass", "Alpine Way"], correct: 0 },
@@ -1135,13 +1134,13 @@ const passportParks = [
             { q: "What's at 11,796 ft in RMNP?", options: ["A hotel", "Alpine Visitor Center", "A ski resort", "A waterfall"], correct: 1 }
         ],
         memory: ['rocky_mountain_np_01.jpg','rocky_mountain_np_02.jpg','rocky_mountain_np_03.jpg','trail_ridge_road_02.jpg','alpine_visitor_center_01.jpg','trail_ridge_road_03.jpg'],
-        spotIt: { q: 'Which photo shows Trail Ridge Road?', correct: 'trail_ridge_road_02.jpg', decoys: ['old_faithful_01.jpg','delicate_arch_01.jpg','zion_narrows_01.jpg'] }
+        spotIt: { q: 'Which photo shows Trail Ridge Road?', correct: 'trail_ridge_road_02.jpg', decoys: ['old_faithful_01.jpg','grand_teton_np_01.jpg','yellowstone_np_01.jpg'] }
     },
     {
         id: 'grte',
         name: 'Grand Teton',
-        icon: '\u1F3D4\uFE0F',
-        days: 'Days 4-5',
+        icon: '🏔️',
+        days: 'Days 5-6',
         heroImage: 'grand_teton_np_01.jpg',
         quiz: [
             { q: "How tall is the Grand Teton peak?", options: ["8,000 ft", "10,500 ft", "13,775 ft", "20,000 ft"], correct: 2 },
@@ -1151,23 +1150,23 @@ const passportParks = [
             { q: "What state is Grand Teton in?", options: ["Idaho", "Wyoming", "Montana", "Utah"], correct: 1 }
         ],
         memory: ['grand_teton_np_01.jpg','grand_teton_np_02.jpg','grand_teton_np_03.jpg','jenny_lake_01.jpg','mormon_row_01.jpg','oxbow_bend_01.jpg'],
-        spotIt: { q: "Which photo shows Mormon Row's famous barns?", correct: 'mormon_row_01.jpg', decoys: ['bellagio_01.jpg','old_faithful_01.jpg','bryce_canyon_np_01.jpg'] }
+        spotIt: { q: "Which photo shows Mormon Row's famous barns?", correct: 'mormon_row_01.jpg', decoys: ['old_faithful_01.jpg','trail_ridge_road_02.jpg','alpine_visitor_center_01.jpg'] }
     },
     {
         id: 'yell',
         name: 'Yellowstone',
-        icon: '\u1F30B',
-        days: 'Days 6-7',
+        icon: '🌋',
+        days: 'Days 7-10 (4 days!)',
         heroImage: 'yellowstone_np_01.jpg',
         quiz: [
             { q: "How often does Old Faithful erupt?", options: ["Every 10 min", "About every 90 min", "Once a day", "Every 6 hours"], correct: 1 },
             { q: "Yellowstone sits on top of a...", options: ["Glacier", "Gold mine", "Supervolcano", "Underground lake"], correct: 2 },
             { q: "What's the famous rainbow-colored hot spring?", options: ["Grand Prismatic", "Rainbow Pool", "Morning Glory", "Castle Geyser"], correct: 0 },
             { q: "About how many bison live in Yellowstone?", options: ["About 50", "About 500", "About 5,000", "About 50,000"], correct: 2 },
-            { q: "How tall is Lower Yellowstone Falls?", options: ["100 ft", "308 ft (twice Niagara!)", "500 ft", "1,000 ft"], correct: 1 }
+            { q: "How many nights are we camping at Fishing Bridge?", options: ["1 night", "2 nights", "3 nights", "4 nights"], correct: 3 }
         ],
         memory: ['yellowstone_np_01.jpg','yellowstone_np_02.jpg','yellowstone_np_03.jpg','old_faithful_01.jpg','grand_prismatic_spring_01.jpg','grand_canyon_yellowstone_01.jpg'],
-        spotIt: { q: 'Which photo shows Grand Prismatic Spring?', correct: 'grand_prismatic_spring_01.jpg', decoys: ['jenny_lake_01.jpg','mesa_arch_01.jpg','zion_narrows_01.jpg'] }
+        spotIt: { q: 'Which photo shows Grand Prismatic Spring?', correct: 'grand_prismatic_spring_01.jpg', decoys: ['jenny_lake_01.jpg','trail_ridge_road_02.jpg','bear_lake_01.jpg'] }
     }
 ];
 
@@ -1229,7 +1228,7 @@ function renderPassportHome() {
     html += `<div class="progress-overall-header"><span>${escapeHtml(active.name)}'s Progress</span><span style="color:var(--sunset-gold)">${totalStamps} / ${maxStamps} stamps</span></div>`;
     html += `<div class="progress-bar-big"><div class="progress-bar-big-fill" style="width:${pct}%"></div></div>`;
     if (totalStamps === maxStamps) {
-        html += '<div style="text-align:center;margin-top:0.8rem;"><button class="game-btn" onclick="showCertificate()">\u1F3C6 View Your Certificate!</button></div>';
+        html += '<div style="text-align:center;margin-top:0.8rem;"><button class="game-btn" onclick="showCertificate()">🏆 View Your Certificate!</button></div>';
     }
     html += '</div>';
 
@@ -1238,7 +1237,7 @@ function renderPassportHome() {
         const stamps = getStamps(park.id);
         const earned = stamps.filter(Boolean).length;
         const isComplete = earned === 3;
-        const icons = ['\u1F4DC','\u1F9E9','\u1F50D']; // trivia, memory, spot-it
+        const icons = ['📜','🧩','🔍']; // trivia, memory, spot-it
         let stampsHtml = '';
         for (let i = 0; i < 3; i++) {
             if (stamps[i]) {
@@ -1292,9 +1291,9 @@ function openParkDetail(parkId) {
     if (!park) return;
     const stamps = getStamps(parkId);
     const challenges = [
-        { idx: 0, icon: '\u1F4DC', title: 'Park Trivia', desc: '5 questions about this park' },
-        { idx: 1, icon: '\u1F9E9', title: 'Memory Match', desc: 'Find all 6 matching pairs' },
-        { idx: 2, icon: '\u1F50D', title: 'Spot It!', desc: 'Which photo is the landmark?' }
+        { idx: 0, icon: '📜', title: 'Park Trivia', desc: '5 questions about this park' },
+        { idx: 1, icon: '🧩', title: 'Memory Match', desc: 'Find all 6 matching pairs' },
+        { idx: 2, icon: '🔍', title: 'Spot It!', desc: 'Which photo is the landmark?' }
     ];
     let html = `<div class="modal-title">${park.name}</div>`;
     html += `<div class="modal-subtitle">${park.days} \u00B7 Complete all 3 challenges to earn your Park Expert badge</div>`;
@@ -1328,7 +1327,7 @@ function renderTrivia(park) {
             const passed = score >= 4;
             let html = `<div class="modal-title">${park.name}</div><div class="game-result">`;
             html += `<div class="big">${score}/${questions.length}</div>`;
-            html += `<p style="margin-top:0.8rem;">${passed ? 'Great job! You earned the Trivia stamp! \u1F4DC' : 'Keep trying! You need 4/5 to earn the stamp.'}</p>`;
+            html += `<p style="margin-top:0.8rem;">${passed ? 'Great job! You earned the Trivia stamp! 📜' : 'Keep trying! You need 4/5 to earn the stamp.'}</p>`;
             html += `<button class="game-btn" onclick="${passed ? `awardStamp('${park.id}',0)` : `renderTrivia(passportParks.find(p=>p.id==='${park.id}'))`}">${passed ? 'Collect Stamp' : 'Try Again'}</button>`;
             html += `<button class="game-btn" style="margin-left:0.5rem;background:rgba(255,255,255,0.1);" onclick="closePassportModal();openParkDetail('${park.id}')">Back</button>`;
             html += '</div>';
@@ -1417,7 +1416,7 @@ function renderMemory(park) {
     function finish() {
         setTimeout(() => {
             let html = `<div class="modal-title">${park.name}</div><div class="game-result">`;
-            html += `<div class="big">\u1F389</div>`;
+            html += `<div class="big">🎉</div>`;
             html += `<p>You matched all 6 pairs in ${moves} moves!</p>`;
             html += `<button class="game-btn" onclick="awardStamp('${park.id}',1)">Collect Stamp</button>`;
             html += '</div>';
@@ -1450,7 +1449,7 @@ function renderSpotIt(park) {
             setTimeout(() => {
                 let html = `<div class="modal-title">${park.name}</div><div class="game-result">`;
                 if (correct) {
-                    html += `<div class="big">\u1F31F Correct!</div><p>You spotted it!</p>`;
+                    html += `<div class="big">🌟 Correct!</div><p>You spotted it!</p>`;
                     html += `<button class="game-btn" onclick="awardStamp('${park.id}',2)">Collect Stamp</button>`;
                 } else {
                     html += `<div class="big">\u274C</div><p>Not quite! Try again.</p>`;
@@ -1473,7 +1472,7 @@ function awardStamp(parkId, idx) {
 
 function showStampEarnedAnimation(parkId, idx) {
     const park = passportParks.find(p => p.id === parkId);
-    const icons = ['\u1F4DC','\u1F9E9','\u1F50D'];
+    const icons = ['📜','🧩','🔍'];
     const titles = ['Trivia Master!','Memory Pro!','Eagle Eye!'];
     const overlay = document.createElement('div');
     overlay.className = 'stamp-earned-overlay';
@@ -1504,12 +1503,12 @@ function showCertificate() {
     const dateStr = 'June 11 \u2013 June 26, 2027';
     let html = `<div class="certificate">
         <h2>Junior Ranger Certificate</h2>
-        <div class="seal">\u1F3C5</div>
+        <div class="seal">🏅</div>
         <p style="font-size:1.05rem;">This certifies that</p>
         <div class="name">${escapeHtml(active.name)}</div>
         <p style="font-size:1.05rem;margin-top:0.8rem;">has successfully visited all 7 National Parks<br>on the Great Western Road Trip</p>
         <p style="font-style:italic;margin-top:0.5rem;">${dateStr}</p>
-        <p style="margin-top:1rem;font-weight:700;">Congratulations, Junior Ranger! \u1F389</p>
+        <p style="margin-top:1rem;font-weight:700;">Congratulations, Junior Ranger! 🎉</p>
     </div>
     <div style="text-align:center;margin-top:1rem;"><button class="game-btn" onclick="closePassportModal()">Close</button></div>`;
     openPassportModal(html);
