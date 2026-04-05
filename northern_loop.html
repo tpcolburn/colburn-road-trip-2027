@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colburn Road Trip 2027 &mdash; Northern Loop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap');
+        :root {
+            --canyon-red: #C1440E;
+            --desert-orange: #E8751A;
+            --sunset-gold: #F5A623;
+            --sage-green: #5B8C5A;
+            --sky-blue: #3B82F6;
+            --deep-blue: #1E3A5F;
+            --sand: #F4E8D1;
+            --dark: #1a1a2e;
+            --purple: #6C3FC5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; }
+
+        /* Links */
+        a.spot-link {
+            color: var(--sunset-gold);
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(245,166,35,0.4);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        a.spot-link:hover { color: #fff; border-bottom-color: #fff; }
+        .day-activities a.spot-link { color: #fff; border-bottom-color: rgba(255,255,255,0.3); }
+        .day-activities a.spot-link:hover { color: var(--sunset-gold); border-bottom-color: var(--sunset-gold); }
+
+        /* Photo strip */
+        .photo-strip {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--desert-orange) transparent;
+        }
+        .photo-strip::-webkit-scrollbar { height: 6px; }
+        .photo-strip::-webkit-scrollbar-thumb { background: var(--desert-orange); border-radius: 3px; }
+        .photo-link {
+            flex-shrink: 0;
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.3rem;
+            text-decoration: none;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 0.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        .photo-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        .photo-link span { position: relative; z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
+        .photo-link .photo-emoji { font-size: 1.5rem; position: relative; z-index: 2; }
+        .photo-link:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(245,166,35,0.3); }
+
+        /* Hero */
+        .hero { min-height: 100vh; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .stars { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 3s infinite alternate; }
+        @keyframes twinkle { 0% { opacity: 0.3; transform: scale(1); } 100% { opacity: 1; transform: scale(1.3); } }
+        .hero-content { text-align: center; z-index: 2; padding: 2rem; }
+        .hero h1 { font-family: 'Bangers', cursive; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: 4px; background: linear-gradient(135deg, var(--sunset-gold), var(--desert-orange), var(--canyon-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; margin-bottom: 0.5rem; }
+        .hero h2 { font-size: clamp(1.2rem, 3vw, 2rem); color: var(--sand); font-weight: 600; margin-bottom: 1rem; }
+        .hero .dates { font-size: 1.3rem; color: var(--sunset-gold); margin-bottom: 2rem; font-weight: 700; }
+        .rv-emoji { font-size: 5rem; animation: drive 4s ease-in-out infinite; display: inline-block; }
+        @keyframes drive { 0%,100%{transform:translateX(0) rotate(0deg)} 25%{transform:translateX(30px) rotate(1deg)} 75%{transform:translateX(-30px) rotate(-1deg)} }
+        .scroll-hint { position: absolute; bottom: 2rem; animation: bounce 2s infinite; font-size: 2rem; cursor: pointer; }
+        @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(15px)} }
+
+        /* Nav */
+        .nav-bar { position: sticky; top: 0; z-index: 100; background: rgba(26,26,46,0.95); backdrop-filter: blur(10px); border-bottom: 2px solid var(--desert-orange); display: flex; justify-content: center; gap: 0.5rem; padding: 0.8rem 1rem; flex-wrap: wrap; }
+        .nav-btn { background: transparent; color: var(--sand); border: 2px solid transparent; padding: 0.5rem 1.2rem; border-radius: 25px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; }
+        .nav-btn:hover, .nav-btn.active { border-color: var(--desert-orange); background: rgba(232,117,26,0.15); color: var(--sunset-gold); }
+
+        /* Section */
+        .section { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
+        .section-title { font-family: 'Bangers', cursive; font-size: 2.8rem; letter-spacing: 2px; color: var(--sunset-gold); text-align: center; margin-bottom: 2rem; }
+
+        /* Stats */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(232,117,26,0.2); }
+        .stat-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: var(--sunset-gold); }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Map */
+        .route-map-container { position: relative; background: linear-gradient(180deg, #1a3350 0%, #2d1810 40%, #4a2c1a 70%, #3d2415 100%); border-radius: 20px; padding: 2rem; margin-bottom: 3rem; overflow: hidden; min-height: 500px; }
+        .map-svg { width: 100%; height: auto; }
+        .map-pin { cursor: pointer; transition: transform 0.3s; }
+        .map-pin:hover { transform: scale(1.3); }
+        .map-tooltip { display: none; position: absolute; background: rgba(0,0,0,0.9); border: 2px solid var(--sunset-gold); border-radius: 12px; padding: 1rem; max-width: 250px; z-index: 10; pointer-events: none; }
+        .map-tooltip.show { display: block; }
+        .map-tooltip h4 { color: var(--sunset-gold); margin-bottom: 0.3rem; }
+        .map-tooltip p { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 3rem; }
+        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--purple), var(--sky-blue), var(--sage-green), var(--sunset-gold), var(--canyon-red), var(--desert-orange)); }
+        .day-card { position: relative; background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; margin-bottom: 1.5rem; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+        .day-card::before { content: ''; position: absolute; left: -2.35rem; top: 1.5rem; width: 16px; height: 16px; background: var(--sunset-gold); border-radius: 50%; border: 3px solid var(--dark); z-index: 2; }
+        .day-card:hover { border-color: var(--desert-orange); box-shadow: 0 5px 25px rgba(232,117,26,0.15); }
+        .day-header { display: flex; align-items: center; padding: 1.2rem 1.5rem; gap: 1rem; flex-wrap: wrap; }
+        .day-number { background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); color: white; font-weight: 800; font-size: 0.85rem; padding: 0.4rem 0.8rem; border-radius: 20px; white-space: nowrap; }
+        .day-number.denver { background: linear-gradient(135deg, var(--purple), #8B5CF6); }
+        .day-number.vegas { background: linear-gradient(135deg, #D4AF37, #B8860B); }
+        .day-title { font-weight: 800; font-size: 1.15rem; flex: 1; min-width: 200px; }
+        .day-drive { font-size: 0.8rem; color: rgba(255,255,255,0.5); white-space: nowrap; }
+        .day-expand-icon { font-size: 1.2rem; transition: transform 0.3s; color: var(--sunset-gold); }
+        .day-card.expanded .day-expand-icon { transform: rotate(180deg); }
+        .day-details { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .day-card.expanded .day-details { max-height: 2000px; }
+        .day-body { padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .day-activities, .day-info { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1rem; }
+        .day-activities h4, .day-info h4 { color: var(--sunset-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .day-activities ul { list-style: none; padding: 0; }
+        .day-activities li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem; }
+        .day-activities li::before { content: '\25B8'; position: absolute; left: 0; color: var(--desert-orange); }
+        .stay-badge { display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 8px; padding: 0.3rem 0.7rem; font-size: 0.85rem; margin-top: 0.5rem; text-decoration: none; color: white; transition: opacity 0.2s; }
+        .stay-badge:hover { opacity: 0.8; }
+        .stay-badge.camp { background: rgba(91,140,90,0.2); border: 1px solid var(--sage-green); }
+        .stay-badge.hotel { background: rgba(108,63,197,0.2); border: 1px solid var(--purple); }
+        .stay-badge.vegas-stay { background: rgba(212,175,55,0.2); border: 1px solid #D4AF37; }
+
+        /* Parks */
+        .parks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .park-card { border-radius: 20px; overflow: hidden; position: relative; min-height: 350px; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: white; background-size: cover; background-position: center; }
+        .park-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .park-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%); z-index: 1; }
+        .park-card > * { position: relative; z-index: 2; }
+        .park-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+        .park-card h3 { font-family: 'Bangers', cursive; font-size: 1.8rem; letter-spacing: 1px; color: var(--sunset-gold); }
+        .park-card p { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-top: 0.3rem; }
+        .park-facts { display: flex; gap: 1rem; margin-top: 0.8rem; flex-wrap: wrap; }
+        .park-fact { background: rgba(255,255,255,0.1); padding: 0.3rem 0.7rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .park-link-row { display: flex; gap: 0.5rem; margin-top: 0.8rem; flex-wrap: wrap; }
+        .park-link-btn { background: rgba(245,166,35,0.2); border: 1px solid var(--sunset-gold); border-radius: 15px; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 700; color: var(--sunset-gold); text-decoration: none; transition: background 0.2s; }
+        .park-link-btn:hover { background: rgba(245,166,35,0.4); }
+
+        /* RV */
+        .rv-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+        .rv-visual { background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border-radius: 20px; padding: 2rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        .rv-big-emoji { font-size: 8rem; display: block; margin-bottom: 1rem; }
+        .rv-specs { display: grid; gap: 0.8rem; }
+        .rv-spec { display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 0.7rem 1rem; border-radius: 10px; }
+        .rv-spec-label { color: rgba(255,255,255,0.6); }
+        .rv-spec-value { font-weight: 700; color: var(--sunset-gold); }
+
+        /* Budget */
+        .budget-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+        .budget-items { display: grid; gap: 0.8rem; }
+        .budget-item { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; background: rgba(255,255,255,0.05); padding: 1rem 1.2rem; border-radius: 12px; transition: background 0.3s; }
+        .budget-item:hover { background: rgba(255,255,255,0.08); }
+        .budget-icon { font-size: 1.5rem; }
+        .budget-label { font-weight: 600; }
+        .budget-sublabel { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+        .budget-amount { font-weight: 800; font-size: 1.1rem; color: var(--sunset-gold); text-align: right; }
+        .budget-total-card { background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); border-radius: 20px; padding: 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; position: sticky; top: 80px; }
+        .budget-total-label { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; }
+        .budget-total-amount { font-family: 'Bangers', cursive; font-size: 3.5rem; letter-spacing: 2px; margin: 0.5rem 0; }
+        .budget-total-note { font-size: 0.85rem; opacity: 0.8; }
+        .budget-bar-container { margin-top: 1.5rem; }
+        .budget-bar-item { margin-bottom: 0.8rem; }
+        .budget-bar-header { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.3rem; }
+        .budget-bar { height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden; }
+        .budget-bar-fill { height: 100%; border-radius: 4px; transition: width 1.5s ease; }
+
+        /* Packing */
+        .packing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .packing-category { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); }
+        .packing-category h3 { font-size: 1.1rem; color: var(--sunset-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .pack-item { display: flex; align-items: center; gap: 0.7rem; padding: 0.4rem 0; cursor: pointer; transition: opacity 0.3s; }
+        .pack-item.checked { opacity: 0.4; text-decoration: line-through; }
+        .pack-check { width: 20px; height: 20px; border: 2px solid var(--desert-orange); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.3s; }
+        .pack-item.checked .pack-check { background: var(--desert-orange); }
+        .pack-item.checked .pack-check::after { content: '\2713'; color: white; font-size: 0.8rem; font-weight: 800; }
+
+        /* Quiz */
+        .quiz-container { max-width: 700px; margin: 0 auto; }
+        .quiz-card { background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center; }
+        .quiz-question { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; min-height: 3rem; }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .quiz-option { background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 1rem; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 600; color: white; transition: all 0.3s; }
+        .quiz-option:hover { border-color: var(--sunset-gold); background: rgba(245,166,35,0.15); }
+        .quiz-option.correct { border-color: var(--sage-green); background: rgba(91,140,90,0.3); }
+        .quiz-option.wrong { border-color: var(--canyon-red); background: rgba(193,68,14,0.3); }
+        .quiz-score { margin-top: 1.5rem; font-size: 1.1rem; color: var(--sunset-gold); }
+        .quiz-next { margin-top: 1rem; background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); border: none; color: white; padding: 0.7rem 2rem; border-radius: 25px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; transition: transform 0.2s; }
+        .quiz-next:hover { transform: scale(1.05); }
+
+        /* Countdown */
+        .countdown-section { text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(193,68,14,0.15), rgba(232,117,26,0.1)); border-radius: 20px; margin: 2rem auto; max-width: 800px; }
+        .countdown-grid { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
+        .countdown-number { font-family: 'Bangers', cursive; font-size: 3.5rem; color: var(--sunset-gold); line-height: 1; }
+        .countdown-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .day-body { grid-template-columns: 1fr; }
+            .rv-showcase { grid-template-columns: 1fr; }
+            .budget-container { grid-template-columns: 1fr; }
+            .budget-total-card { position: static; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .timeline { padding-left: 2rem; }
+            .day-card::before { left: -1.6rem; }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .day-map { grid-column: 1 / -1; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 0.5rem; }
+        .day-map iframe { width: 100%; height: 320px; border: 0; display: block; filter: hue-rotate(10deg) saturate(0.9); }
+        .day-map-label { background: rgba(245,166,35,0.15); border-left: 3px solid var(--sunset-gold); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 700; color: var(--sunset-gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ===== PASSPORT GAME ===== */
+        .passport-wrap { max-width: 1100px; margin: 0 auto; }
+        .profile-switcher { display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+        .profile-switcher .label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+        .profile-btn { background: rgba(255,255,255,0.08); border: 2px solid transparent; color: #fff; padding: 0.5rem 1rem; border-radius: 20px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+        .profile-btn.active { border-color: var(--sunset-gold); background: rgba(245,166,35,0.15); color: var(--sunset-gold); }
+        .profile-btn:hover { background: rgba(245,166,35,0.1); }
+        .profile-btn .stamps-count { font-size: 0.7rem; opacity: 0.7; }
+        .profile-name-input { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0.35rem 0.7rem; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 0.9rem; width: 140px; }
+        .progress-overall { background: rgba(255,255,255,0.05); border-radius: 14px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
+        .progress-overall-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; font-weight: 700; }
+        .progress-bar-big { height: 14px; background: rgba(255,255,255,0.1); border-radius: 7px; overflow: hidden; }
+        .progress-bar-big-fill { height: 100%; background: linear-gradient(90deg, var(--sunset-gold), var(--desert-orange), var(--canyon-red)); transition: width 0.6s ease; border-radius: 7px; }
+
+        .passport-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+        .passport-park-card { position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; min-height: 220px; background-size: cover; background-position: center; border: 2px solid rgba(255,255,255,0.1); }
+        .passport-park-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(232,117,26,0.25); border-color: var(--sunset-gold); }
+        .passport-park-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.2) 100%); z-index: 1; }
+        .passport-park-card.complete { border-color: var(--sunset-gold); box-shadow: 0 0 0 3px rgba(245,166,35,0.3), 0 10px 30px rgba(245,166,35,0.2); }
+        .passport-park-card-inner { position: relative; z-index: 2; height: 100%; padding: 1.2rem; display: flex; flex-direction: column; justify-content: space-between; color: #fff; }
+        .passport-park-name { font-family: 'Bangers', cursive; font-size: 1.6rem; letter-spacing: 1px; color: var(--sunset-gold); line-height: 1.1; }
+        .passport-park-days { font-size: 0.75rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem; }
+        .stamp-row { display: flex; gap: 0.5rem; margin-top: auto; }
+        .stamp-slot { flex: 1; aspect-ratio: 1; border: 2px dashed rgba(255,255,255,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; background: rgba(0,0,0,0.3); max-width: 48px; transition: all 0.3s; }
+        .stamp-slot.earned { border: 3px solid var(--sunset-gold); background: radial-gradient(circle, rgba(245,166,35,0.4), rgba(193,68,14,0.6)); box-shadow: 0 0 15px rgba(245,166,35,0.6); transform: rotate(-8deg); }
+        .stamp-slot.earned::after { content: attr(data-icon); font-size: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7)); }
+
+        /* Game modal overlay */
+        .game-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; }
+        .game-modal.open { display: flex; }
+        .game-modal-inner { background: linear-gradient(135deg, #1a1a2e, #24243e); border: 2px solid var(--sunset-gold); border-radius: 20px; max-width: 700px; width: 100%; padding: 2rem; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .game-modal-close { position: absolute; top: 0.8rem; right: 1rem; background: rgba(255,255,255,0.1); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 700; line-height: 1; transition: background 0.2s; }
+        .game-modal-close:hover { background: rgba(255,255,255,0.2); }
+        .modal-title { font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 2px; color: var(--sunset-gold); text-align: center; margin-bottom: 0.3rem; }
+        .modal-subtitle { text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .challenge-list { display: grid; gap: 0.8rem; margin-top: 1rem; }
+        .challenge-card { display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem 1.2rem; cursor: pointer; transition: all 0.2s; text-align: left; color: #fff; font-family: 'Nunito', sans-serif; }
+        .challenge-card:hover { background: rgba(245,166,35,0.1); border-color: var(--sunset-gold); transform: translateX(4px); }
+        .challenge-card.done { border-color: var(--sage-green); background: rgba(91,140,90,0.15); }
+        .challenge-icon { font-size: 2rem; flex-shrink: 0; }
+        .challenge-title { font-weight: 800; font-size: 1.05rem; }
+        .challenge-desc { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.15rem; }
+        .challenge-status { margin-left: auto; font-size: 1.4rem; color: var(--sage-green); }
+
+        /* Trivia game */
+        .trivia-q { font-size: 1.15rem; font-weight: 700; text-align: center; margin-bottom: 1.2rem; min-height: 3rem; display: flex; align-items: center; justify-content: center; }
+        .trivia-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+        .trivia-opt { background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 0.9rem; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 600; color: #fff; transition: all 0.2s; text-align: left; }
+        .trivia-opt:hover { border-color: var(--sunset-gold); background: rgba(245,166,35,0.12); }
+        .trivia-opt.correct { border-color: var(--sage-green); background: rgba(91,140,90,0.3); }
+        .trivia-opt.wrong { border-color: var(--canyon-red); background: rgba(193,68,14,0.3); }
+        .trivia-progress { text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 0.8rem; }
+        .game-result { text-align: center; padding: 1rem; }
+        .game-result .big { font-family: 'Bangers', cursive; font-size: 2.5rem; color: var(--sunset-gold); letter-spacing: 2px; }
+        .game-btn { background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); border: none; color: #fff; padding: 0.8rem 2rem; border-radius: 25px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 1rem; transition: transform 0.15s; }
+        .game-btn:hover { transform: scale(1.05); }
+
+        /* Memory match */
+        .memory-stats { display: flex; justify-content: space-around; background: rgba(0,0,0,0.3); border-radius: 10px; padding: 0.6rem; margin-bottom: 1rem; font-size: 0.9rem; }
+        .memory-stats strong { color: var(--sunset-gold); font-size: 1.1rem; }
+        .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; max-width: 500px; margin: 0 auto; }
+        .memory-card { aspect-ratio: 3/4; perspective: 1000px; cursor: pointer; }
+        .memory-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; }
+        .memory-card.flipped .memory-card-inner, .memory-card.matched .memory-card-inner { transform: rotateY(180deg); }
+        .memory-card-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 10px; overflow: hidden; border: 2px solid rgba(255,255,255,0.2); }
+        .memory-card-front { background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+        .memory-card-back { transform: rotateY(180deg); background-size: cover; background-position: center; }
+        .memory-card.matched .memory-card-face { border-color: var(--sage-green); box-shadow: 0 0 10px rgba(91,140,90,0.6); }
+
+        /* Spot It */
+        .spot-q { font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: 1rem; }
+        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; max-width: 500px; margin: 0 auto; }
+        .spot-option { aspect-ratio: 4/3; background-size: cover; background-position: center; border-radius: 12px; cursor: pointer; border: 3px solid rgba(255,255,255,0.2); position: relative; transition: transform 0.2s, border-color 0.2s; }
+        .spot-option:hover { transform: scale(1.03); border-color: var(--sunset-gold); }
+        .spot-option.correct { border-color: var(--sage-green); box-shadow: 0 0 20px rgba(91,140,90,0.6); }
+        .spot-option.wrong { border-color: var(--canyon-red); box-shadow: 0 0 20px rgba(193,68,14,0.5); opacity: 0.5; }
+
+        /* Stamp earned animation */
+        .stamp-earned-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2000; pointer-events: none; }
+        .stamp-earned-badge { background: radial-gradient(circle, var(--sunset-gold), var(--desert-orange), var(--canyon-red)); border: 6px double #fff; color: #fff; width: 220px; height: 220px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Bangers', cursive; text-align: center; padding: 1rem; box-shadow: 0 0 80px rgba(245,166,35,0.8), 0 0 120px rgba(245,166,35,0.4); animation: stampPop 2.2s ease forwards; }
+        .stamp-earned-badge .icon { font-size: 3.5rem; }
+        .stamp-earned-badge .title { font-size: 1.3rem; letter-spacing: 1px; margin-top: 0.3rem; }
+        .stamp-earned-badge .sub { font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 700; opacity: 0.9; margin-top: 0.3rem; }
+        @keyframes stampPop { 0% { transform: scale(0) rotate(-180deg); opacity: 0; } 50% { transform: scale(1.15) rotate(-5deg); opacity: 1; } 70% { transform: scale(1) rotate(-8deg); } 100% { transform: scale(1) rotate(-8deg); opacity: 1; } }
+        .confetti { position: absolute; width: 10px; height: 14px; opacity: 0; animation: confettiFall 2.5s ease-out forwards; }
+        @keyframes confettiFall { 0% { transform: translate(0,0) rotate(0deg); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)) rotate(720deg); opacity: 0; } }
+
+        /* Certificate */
+        .certificate { background: linear-gradient(135deg, #f4e8d1, #e8d4a8); color: #3d2a10; border: 8px double #8B4513; border-radius: 20px; padding: 2rem; text-align: center; font-family: 'Georgia', serif; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .certificate h2 { font-family: 'Bangers', cursive; font-size: 2.5rem; color: #8B4513; letter-spacing: 3px; margin-bottom: 0.5rem; }
+        .certificate .name { font-size: 2rem; font-style: italic; color: var(--canyon-red); margin: 1rem 0; border-bottom: 2px solid #8B4513; padding-bottom: 0.5rem; display: inline-block; min-width: 250px; }
+        .certificate .seal { font-size: 5rem; margin: 0.5rem 0; }
+
+        @media (max-width: 640px) {
+            .trivia-opts { grid-template-columns: 1fr; }
+            .memory-board { grid-template-columns: repeat(3, 1fr); max-width: 360px; }
+            .passport-grid { grid-template-columns: 1fr; }
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+    <div class="stars" id="stars"></div>
+    <div class="hero-content">
+        <div class="rv-emoji">&#x1F690;</div>
+        <h1>THE NORTHERN LOOP<br>ROAD TRIP</h1>
+        <h2>Colburn Family Adventure &mdash; Denver Round Trip</h2>
+        <div class="dates">June 18 &ndash; July 3, 2027 &nbsp;|&nbsp; 16 Days &nbsp;|&nbsp; 3 National Parks + Bonus Stops</div>
+        <p style="color:rgba(255,255,255,0.6);max-width:700px;margin:0 auto;">Denver &rarr; Rocky Mountain NP &rarr; Grand Teton &rarr; Yellowstone (4 days) &rarr; Cody &rarr; Thermopolis &rarr; Estes Park &rarr; Denver</p>
+        <p style="margin-top:1rem;"><a href="index.html" style="color:var(--sunset-gold);border:1px solid var(--sunset-gold);padding:0.4rem 1rem;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:700;">&larr; View Original (Vegas One-Way) Itinerary</a></p>
+    </div>
+    <div class="scroll-hint" onclick="document.querySelector('.nav-bar').scrollIntoView({behavior:'smooth'})">&#x2B07;&#xFE0F;</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar" id="nav">
+    <button class="nav-btn active" data-tab="overview">Overview</button>
+    <button class="nav-btn" data-tab="itinerary">Day by Day</button>
+    <button class="nav-btn" data-tab="parks">National Parks</button>
+    <button class="nav-btn" data-tab="rv">Our RV</button>
+    <button class="nav-btn" data-tab="budget">Budget</button>
+    <button class="nav-btn" data-tab="packing">Packing List</button>
+    <button class="nav-btn" data-tab="quiz">Fun Facts Quiz</button>
+    <button class="nav-btn" data-tab="passport">&#x1F3D5;&#xFE0F; Passport Game</button>
+</nav>
+
+<!-- OVERVIEW -->
+<div class="tab-content active" id="tab-overview">
+<div class="section">
+    <h2 class="section-title">THE ADVENTURE AT A GLANCE</h2>
+    <div class="stats-grid">
+        <div class="stat-card fade-in"><div class="stat-icon">&#x2708;&#xFE0F;</div><div class="stat-number">2</div><div class="stat-label">Flights</div></div>
+        <div class="stat-card fade-in"><div class="stat-icon">&#x1F3DE;&#xFE0F;</div><div class="stat-number">3</div><div class="stat-label">National Parks</div></div>
+        <div class="stat-card fade-in"><div class="stat-icon">&#x1F690;</div><div class="stat-number">~1,850</div><div class="stat-label">Miles Driven</div></div>
+        <div class="stat-card fade-in"><div class="stat-icon">&#x1F3D5;&#xFE0F;</div><div class="stat-number">11</div><div class="stat-label">Campground Nights</div></div>
+        <div class="stat-card fade-in"><div class="stat-icon">&#x1F30B;</div><div class="stat-number">4</div><div class="stat-label">Days in Yellowstone</div></div>
+        <div class="stat-card fade-in"><div class="stat-icon">&#x1F3E8;</div><div class="stat-number">4</div><div class="stat-label">Denver Hotel Nights</div></div>
+    </div>
+
+    <!-- MAP -->
+    <div class="route-map-container fade-in">
+        <svg class="map-svg" viewBox="0 0 950 600" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 200 30 L 700 30 L 700 260 L 200 260 Z" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+            <text x="450" y="150" fill="rgba(255,255,255,0.1)" font-size="28" font-weight="700" text-anchor="middle">WYOMING</text>
+            <path d="M 200 260 L 700 260 L 700 560 L 200 560 Z" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+            <text x="450" y="420" fill="rgba(255,255,255,0.1)" font-size="28" font-weight="700" text-anchor="middle">COLORADO</text>
+            <!-- Route line: Denver -> RMNP -> Grand Teton -> Yellowstone -> Cody -> Thermopolis -> Lander -> Cheyenne -> Estes -> Denver -->
+            <path d="M 620 370
+                     C 580 360, 540 350, 520 340
+                     C 500 330, 420 170, 300 80
+                     C 260 60, 230 50, 250 80
+                     C 280 130, 320 180, 340 60
+                     C 380 40, 450 55, 470 110
+                     C 500 160, 540 180, 560 190
+                     C 600 210, 640 230, 640 260
+                     C 630 290, 600 300, 580 300
+                     C 550 320, 530 340, 540 360
+                     C 570 380, 600 380, 620 370 Z"
+                  fill="none" stroke="var(--desert-orange)" stroke-width="3" stroke-dasharray="8,4" opacity="0.85"/>
+            <!-- Animated dot along simplified path -->
+            <circle r="6" fill="var(--sunset-gold)"><animateMotion dur="14s" repeatCount="indefinite" path="M 620 370 L 520 340 L 300 80 L 340 60 L 470 110 L 560 190 L 640 260 L 580 300 L 540 360 L 620 370 Z"/></circle>
+            <!-- Denver (start and end) -->
+            <g class="map-pin" data-name="Denver" data-info="Start & end! 3 nights with friends before, 1 night after" transform="translate(620,370)">
+                <circle r="16" fill="var(--purple)" opacity="0.3"/>
+                <circle r="9" fill="var(--purple)"/>
+                <text y="-24" fill="white" font-size="13" font-weight="700" text-anchor="middle">Denver</text>
+                <text y="32" fill="var(--purple)" font-size="10" font-weight="600" text-anchor="middle">START &amp; END &#x2708;</text>
+            </g>
+            <!-- RMNP west -->
+            <g class="map-pin" data-name="Rocky Mountain NP (West)" data-info="Trail Ridge Road, Grand Lake &mdash; Day 4" transform="translate(520,340)">
+                <circle r="12" fill="var(--sage-green)" opacity="0.3"/>
+                <circle r="7" fill="var(--sage-green)"/>
+                <text y="-18" fill="white" font-size="11" font-weight="700" text-anchor="middle">RMNP West</text>
+            </g>
+            <!-- Grand Teton -->
+            <g class="map-pin" data-name="Grand Teton NP" data-info="Jenny Lake, Mormon Row, Oxbow Bend &mdash; Days 5-6" transform="translate(300,80)">
+                <circle r="13" fill="var(--sage-green)" opacity="0.3"/>
+                <circle r="8" fill="var(--sage-green)"/>
+                <text y="-20" fill="white" font-size="12" font-weight="700" text-anchor="middle">Grand Teton</text>
+            </g>
+            <!-- Yellowstone -->
+            <g class="map-pin" data-name="Yellowstone NP" data-info="4 full days! Old Faithful, Grand Prismatic, Lamar Valley &mdash; Days 7-10" transform="translate(340,60)">
+                <circle r="16" fill="var(--sunset-gold)" opacity="0.3"/>
+                <circle r="10" fill="var(--sunset-gold)"/>
+                <text y="-22" fill="white" font-size="13" font-weight="700" text-anchor="middle">Yellowstone</text>
+                <text y="26" fill="var(--sunset-gold)" font-size="9" font-weight="600" text-anchor="middle">4 DAYS &#x1F30B;</text>
+            </g>
+            <!-- Cody -->
+            <g class="map-pin" data-name="Cody, WY" data-info="Buffalo Bill Center of the West &mdash; Day 11" transform="translate(470,110)">
+                <circle r="11" fill="var(--canyon-red)" opacity="0.3"/>
+                <circle r="6" fill="var(--canyon-red)"/>
+                <text y="-16" fill="white" font-size="10" font-weight="700" text-anchor="middle">Cody</text>
+            </g>
+            <!-- Thermopolis -->
+            <g class="map-pin" data-name="Thermopolis" data-info="World's largest mineral hot springs &mdash; Day 12" transform="translate(560,190)">
+                <circle r="11" fill="var(--desert-orange)" opacity="0.3"/>
+                <circle r="6" fill="var(--desert-orange)"/>
+                <text y="-16" fill="white" font-size="10" font-weight="700" text-anchor="middle">Thermopolis</text>
+            </g>
+            <!-- Lander -->
+            <g class="map-pin" data-name="Lander, WY" data-info="Overnight stop on return &mdash; Day 12" transform="translate(640,260)">
+                <circle r="9" fill="var(--canyon-red)" opacity="0.25"/>
+                <circle r="5" fill="var(--canyon-red)"/>
+                <text y="-14" fill="white" font-size="10" font-weight="700" text-anchor="middle">Lander</text>
+            </g>
+            <!-- Cheyenne -->
+            <g class="map-pin" data-name="Cheyenne, WY" data-info="Overnight stop on return &mdash; Day 13" transform="translate(580,300)">
+                <circle r="9" fill="var(--canyon-red)" opacity="0.25"/>
+                <circle r="5" fill="var(--canyon-red)"/>
+                <text y="-14" fill="white" font-size="10" font-weight="700" text-anchor="middle">Cheyenne</text>
+            </g>
+            <!-- Estes Park / RMNP East -->
+            <g class="map-pin" data-name="Estes Park / RMNP East" data-info="Bear Lake, east side RMNP &mdash; Days 14-15" transform="translate(540,360)">
+                <circle r="13" fill="var(--sage-green)" opacity="0.3"/>
+                <circle r="8" fill="var(--sage-green)"/>
+                <text y="-18" fill="white" font-size="11" font-weight="700" text-anchor="middle">Estes Park</text>
+            </g>
+            <!-- Distance labels -->
+            <text x="560" y="345" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~90 mi</text>
+            <text x="420" y="200" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~480 mi</text>
+            <text x="320" y="45" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~60 mi</text>
+            <text x="410" y="100" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~80 mi</text>
+            <text x="520" y="155" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~85 mi</text>
+            <text x="615" y="230" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~80 mi</text>
+            <text x="620" y="290" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~250 mi</text>
+            <text x="570" y="340" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~180 mi</text>
+            <text x="590" y="370" fill="rgba(255,255,255,0.3)" font-size="9" text-anchor="middle">~70 mi</text>
+        </svg>
+        <div class="map-tooltip" id="mapTooltip"><h4 id="tooltipName"></h4><p id="tooltipInfo"></p></div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-section fade-in">
+        <h2 class="section-title" style="margin-bottom:0.5rem;">COUNTDOWN TO ADVENTURE</h2>
+        <p style="color:rgba(255,255,255,0.6);">June 18, 2027</p>
+        <div class="countdown-grid" id="countdown">
+            <div><div class="countdown-number" id="cd-days">---</div><div class="countdown-label">Days</div></div>
+            <div><div class="countdown-number" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+            <div><div class="countdown-number" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
+            <div><div class="countdown-number" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ITINERARY -->
+<div class="tab-content" id="tab-itinerary">
+<div class="section">
+    <h2 class="section-title">DAY BY DAY ITINERARY</h2>
+    <div class="timeline" id="timeline">
+
+                    <!-- DAY 1 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number denver">DAY 1 &mdash; Fri Jun 18</span>
+                    <span class="day-title">Cleveland &#x2708; Denver</span>
+                    <span class="day-drive">&#x2708;&#xFE0F; ~3.5h flight</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Morning flight CLE &rarr; DEN (United direct, ~3.5 hrs)</li><li>Check into hotel, drop bags, freshen up</li><li>Meet up with friends!</li><li>Explore the <a class="spot-link" href="https://www.the16thstreetmall.com/" target="_blank" rel="noopener">16th Street Mall</a></li><li>Dinner with friends at a local favorite</li><li>Take it easy &mdash; altitude adjustment at 5,280 ft</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Details</h4><p><strong>Flight:</strong> CLE &rarr; DEN, morning departure, arrive ~10:30am MT</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites by Hilton Denver Downtown</a><p style="margin-top:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">4-night stay this visit (3 before the road trip + 1 at the end)</p>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/16th_street_mall_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/16th_street_mall_01.jpg');"><span class="photo-emoji">&#x1F3D9;&#xFE0F;</span><span>16th Street Mall</span></a><a class="photo-link" href="images/embassy_suites_03.jpg" target="_blank" rel="noopener" style="background-image:url('images/embassy_suites_03.jpg');"><span class="photo-emoji">&#x1F3E8;</span><span>Embassy Suites</span></a><a class="photo-link" href="images/denver_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/denver_01.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Denver Skyline</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 2 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number denver">DAY 2 &mdash; Sat Jun 19</span>
+                    <span class="day-title">Denver &mdash; Visiting Friends</span>
+                    <span class="day-drive">&#x1F3D9;&#xFE0F; City day</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Denver Area</div>
+                    <iframe src="https://maps.google.com/maps?q=Denver,+CO&t=&z=11&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Free hot breakfast at Embassy Suites</li><li>Hang with friends &mdash; their pick</li><li><a class="spot-link" href="https://www.dmns.org/" target="_blank" rel="noopener">Denver Museum of Nature &amp; Science</a> (dinosaur hall is amazing)</li><li><a class="spot-link" href="https://www.redrocksonline.com/" target="_blank" rel="noopener">Red Rocks Park &amp; Amphitheatre</a></li><li>Hotel pool time for the kids</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Denver Highlights</h4><p>&#x1F3B8; <strong>Red Rocks:</strong> Even without a concert, the amphitheatre and Trading Post Trail are spectacular</p><p>&#x1F4B0; <strong>Budget Tip:</strong> Embassy Suites free breakfast + evening reception saves ~$100/day</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 2)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/red_rocks_amphitheatre_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/red_rocks_amphitheatre_02.jpg');"><span class="photo-emoji">&#x1F3B8;</span><span>Red Rocks Amphitheatre</span></a><a class="photo-link" href="images/denver_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/denver_02.jpg');"><span class="photo-emoji">&#x1F996;</span><span>Denver Museum</span></a><a class="photo-link" href="images/union_station_denver_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/union_station_denver_01.jpg');"><span class="photo-emoji">&#x1F682;</span><span>Union Station</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 3 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number denver">DAY 3 &mdash; Sun Jun 20</span>
+                    <span class="day-title">Denver Bonus Day (NEW!)</span>
+                    <span class="day-drive">&#x1F3D9;&#xFE0F; Relaxed day</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Extra day in Denver &mdash; unique to the Northern Loop itinerary</li><li>Option: Drive up to <a class='spot-link' href='https://www.nps.gov/romo/' target='_blank' rel='noopener'>RMNP east side</a> as a day trip (optional scout)</li><li>Or: Downtown Denver &mdash; Children's Museum, Coors Field tour, Confluence Park</li><li>Big dinner out with friends (last one before RV food for a while!)</li><li>Pack and prep for RV pickup tomorrow morning</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Bonus Day Tips</h4><p>&#x1F4A1; This is the extra day you gain from not going to Vegas</p><p>&#x1F3EA; Use it to hit a grocery store and pre-buy bulk items for the RV (cheaper than King Soopers near the depot)</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 3)</a>
+                    </div>
+                </div></div>
+            </div>
+
+            <!-- DAY 4 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 4 &mdash; Mon Jun 21</span>
+                    <span class="day-title">Pick Up RV &rarr; RMNP &rarr; Grand Lake</span>
+                    <span class="day-drive">&#x1F690; ~90 mi / 3 hrs with stops</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Denver &rarr; RMNP &rarr; Grand Lake</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Denver,+CO&daddr=Estes+Park,+CO+to:Rocky+Mountain+National+Park+to:Grand+Lake,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Pick up RV at <a class="spot-link" href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener">Cruise America</a> Denver depot (9am)</li><li>RV orientation &amp; walkthrough</li><li>Drive to <a class="spot-link" href="https://www.visitestespark.com/" target="_blank" rel="noopener">Estes Park</a> (gateway to RMNP, ~1.5 hrs)</li><li>Enter <a class="spot-link" href="https://www.nps.gov/romo/" target="_blank" rel="noopener">Rocky Mountain NP</a>, drive the legendary <a class="spot-link" href="https://www.nps.gov/thingstodo/enjoy-a-scenic-drive-on-trail-ridge-road.htm" target="_blank" rel="noopener">Trail Ridge Road</a></li><li>Stop at <a class="spot-link" href="https://www.nps.gov/romo/alpine_visitor_center.htm" target="_blank" rel="noopener">Alpine Visitor Center</a> (11,796 ft!)</li><li>Exit west side &rarr; camp near Grand Lake</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Rocky Mountain NP</h4><p>&#x26F0;&#xFE0F; <strong>Trail Ridge Road:</strong> Highest continuous paved road in North America &mdash; 12,183 ft!</p><p>&#x1F3AB; <strong>Timed Entry:</strong> Reserve at <a class="spot-link" href="https://www.recreation.gov/timed-entry/10086910" target="_blank" rel="noopener">recreation.gov</a></p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.recreation.gov/camping/campgrounds/232450" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Elk Creek Campground, Grand Lake (single night)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/trail_ridge_road_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/trail_ridge_road_02.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Trail Ridge Road</span></a><a class="photo-link" href="images/rocky_mountain_np_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/rocky_mountain_np_02.jpg');"><span class="photo-emoji">&#x1F98C;</span><span>Elk Meadows</span></a><a class="photo-link" href="images/alpine_visitor_center_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/alpine_visitor_center_01.jpg');"><span class="photo-emoji">&#x26F0;&#xFE0F;</span><span>Alpine Visitor Center</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 5 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 5 &mdash; Tue Jun 22</span>
+                    <span class="day-title">Grand Lake &rarr; Grand Teton NP</span>
+                    <span class="day-drive">&#x1F690; ~480 mi / 7 hrs (long day)</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Lake &rarr; Grand Teton</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Grand+Lake,+CO&daddr=Colter+Bay+Village,+Grand+Teton+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Early departure &mdash; the longest drive of the trip</li><li>Head north on US-40 &rarr; I-80 W through Rawlins, WY</li><li>Lunch stop in Rock Springs or Pinedale, WY</li><li>Scenery shifts from plains to mountain valleys</li><li>Arrive at Grand Teton NP by late afternoon</li><li>First views of the Teton Range &mdash; jaw-dropping</li><li>Set up camp at Colter Bay RV Park, early night</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Road Trip Tips</h4><p>&#x1F3B5; Download playlists/audiobooks before leaving &mdash; Wyoming has spotty service</p><p>&#x26FD; Fill up in Rawlins and Rock Springs</p><p>&#x1F3AE; Travel games, audiobooks, car bingo for the kids</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.gtlc.com/camping" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Colter Bay RV Park, Grand Teton NP &mdash; full hookups</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/grand_teton_np_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_01.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Teton Range</span></a><a class="photo-link" href="images/grand_teton_np_03.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_03.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Wyoming Open Road</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 6 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 6 &mdash; Wed Jun 23</span>
+                    <span class="day-title">Grand Teton National Park</span>
+                    <span class="day-drive">&#x1F3DE;&#xFE0F; Park day</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Sunrise at <a class="spot-link" href="https://www.nps.gov/places/000/schwabacher-landing.htm" target="_blank" rel="noopener">Schwabacher Landing</a> (iconic reflection shot)</li><li>Boat shuttle across <a class="spot-link" href="https://www.nps.gov/grte/planyourvisit/jennylakeplan.htm" target="_blank" rel="noopener">Jenny Lake</a> &rarr; hike to <a class="spot-link" href="https://www.nps.gov/thingstodo/hiddenfalls.htm" target="_blank" rel="noopener">Hidden Falls &amp; Inspiration Point</a> (2.4 mi)</li><li>Lunch on the Jenny Lake shore or at the Lodge</li><li>Drive the 42-mile <a class="spot-link" href="https://www.nps.gov/grte/planyourvisit/drives.htm" target="_blank" rel="noopener">Scenic Loop Road</a></li><li><a class="spot-link" href="https://www.nps.gov/places/000/mormon-row.htm" target="_blank" rel="noopener">Mormon Row</a> historic barns</li><li>Evening: <a class="spot-link" href="https://www.nps.gov/thingstodo/oxbowbend.htm" target="_blank" rel="noopener">Oxbow Bend</a> at sunset to spot moose</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Must-See</h4><p>&#x1F98C; Wildlife: Moose, elk, bald eagles, bears</p><p>&#x1F4F8; Photo ops: Schwabacher, Mormon Row, Snake River Overlook</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.gtlc.com/camping" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Colter Bay RV Park (Night 2)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/jenny_lake_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/jenny_lake_01.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Jenny Lake</span></a><a class="photo-link" href="images/mormon_row_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mormon_row_01.jpg');"><span class="photo-emoji">&#x1F3DA;&#xFE0F;</span><span>Mormon Row Barns</span></a><a class="photo-link" href="images/oxbow_bend_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/oxbow_bend_01.jpg');"><span class="photo-emoji">&#x1F98C;</span><span>Oxbow Bend Moose</span></a><a class="photo-link" href="images/grand_teton_np_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_02.jpg');"><span class="photo-emoji">&#x1F4F8;</span><span>Schwabacher Landing</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 7 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 7 &mdash; Thu Jun 24</span>
+                    <span class="day-title">Grand Teton &rarr; Yellowstone (Fishing Bridge)</span>
+                    <span class="day-drive">&#x1F690; ~80 mi / 2 hrs</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Grand Teton &rarr; Fishing Bridge</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Colter+Bay+Village,+WY&daddr=Fishing+Bridge+RV+Park,+Yellowstone+National+Park&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Easy morning at Colter Bay, pack up</li><li>Drive north into <a class="spot-link" href="https://www.nps.gov/yell/" target="_blank" rel="noopener">Yellowstone</a> via South Entrance</li><li>Stop at <a class="spot-link" href="https://www.nps.gov/places/lewis-falls.htm" target="_blank" rel="noopener">Lewis Falls</a></li><li>Continue to Fishing Bridge RV Park &mdash; set up camp for 4 nights!</li><li><a class="spot-link" href="https://www.nps.gov/thingstodo/yell-trail-west-thumb-geyser-basin.htm" target="_blank" rel="noopener">West Thumb Geyser Basin</a> &mdash; geothermal pools on Yellowstone Lake</li><li>Dinner at Lake Hotel or at camp</li><li>Explore Fishing Bridge / Lake area, walk the boardwalk</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Home Base for 4 Nights!</h4><p>&#x1F3D5;&#xFE0F; <strong>Fishing Bridge RV Park</strong> is the only full-hookup RV park inside Yellowstone &mdash; central location, showers, laundry, dump station, RV store across the street</p><p>&#x1F9CA; Stock the fridge &mdash; dining options inside the park are limited and pricey</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park &mdash; full hookups (Night 1 of 4)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/yellowstone_np_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/yellowstone_np_01.jpg');"><span class="photo-emoji">&#x1F30B;</span><span>Yellowstone</span></a><a class="photo-link" href="images/yellowstone_np_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/yellowstone_np_02.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Yellowstone Lake</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 8 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 8 &mdash; Fri Jun 25</span>
+                    <span class="day-title">Yellowstone &mdash; Old Faithful &amp; Grand Prismatic</span>
+                    <span class="day-drive">&#x1F3DE;&#xFE0F; Day trip ~100 mi</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Early departure &mdash; drive to <a class="spot-link" href="https://www.nps.gov/yell/planyourvisit/exploreoldfaithful.htm" target="_blank" rel="noopener">Old Faithful</a> (~1 hr from Fishing Bridge)</li><li>Watch Old Faithful erupt (every ~90 min)</li><li>Walk the Upper Geyser Basin boardwalk &mdash; Morning Glory Pool, Castle Geyser</li><li>Stroll through <a class="spot-link" href="https://www.yellowstonenationalparklodges.com/lodgings/hotel/old-faithful-inn/" target="_blank" rel="noopener">Old Faithful Inn</a> log lobby</li><li>Lunch at Old Faithful</li><li><a class="spot-link" href="https://www.nps.gov/thingstodo/yell-trail-grand-prismatic-overlook.htm" target="_blank" rel="noopener">Grand Prismatic Spring</a> &mdash; from the overlook trail for the rainbow view</li><li><a class="spot-link" href="https://www.nps.gov/thingstodo/yell-norris-geyser-basin-trails.htm" target="_blank" rel="noopener">Norris Geyser Basin</a> on the way back if time allows</li><li>Back to Fishing Bridge for dinner</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Yellowstone Fun Facts</h4><p>&#x1F30B; Yellowstone sits on a <strong>supervolcano</strong></p><p>&#x1F4A8; Old Faithful erupts ~17 times per day</p><p>&#x1F308; Grand Prismatic is 370 ft wide &mdash; the largest hot spring in the US</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park (Night 2 of 4)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/old_faithful_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/old_faithful_01.jpg');"><span class="photo-emoji">&#x1F4A8;</span><span>Old Faithful</span></a><a class="photo-link" href="images/grand_prismatic_spring_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_01.jpg');"><span class="photo-emoji">&#x1F308;</span><span>Grand Prismatic</span></a><a class="photo-link" href="images/grand_prismatic_spring_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_02.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Morning Glory Pool</span></a><a class="photo-link" href="images/yellowstone_np_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/yellowstone_np_01.jpg');"><span class="photo-emoji">&#x1F3E8;</span><span>Old Faithful Inn</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 9 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 9 &mdash; Sat Jun 26</span>
+                    <span class="day-title">Yellowstone &mdash; Grand Canyon &amp; Hayden Valley</span>
+                    <span class="day-drive">&#x1F3DE;&#xFE0F; Short drives from camp</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Morning: <a class="spot-link" href="https://www.nps.gov/thingstodo/yell-grand-canyon-of-the-yellowstone.htm" target="_blank" rel="noopener">Grand Canyon of the Yellowstone</a> &mdash; Artist Point</li><li>Walk the North Rim and South Rim drives &mdash; multiple overlooks</li><li>Brink of Lower Falls trail (steep but kid-doable, 328 steps down)</li><li>Lunch at Canyon Village</li><li>Afternoon: <a class="spot-link" href="https://www.nps.gov/places/000/hayden-valley-at-alum-creek.htm" target="_blank" rel="noopener">Hayden Valley</a> drive &mdash; bison herds galore</li><li>Bring binoculars, scan for grizzlies along Yellowstone River</li><li>Sunset at Hayden Valley &mdash; prime wildlife hour</li><li>S'mores at camp</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Kid-Favorite Day</h4><p>&#x1F4CF; <strong>Lower Falls:</strong> 308 feet &mdash; twice the height of Niagara</p><p>&#x1F403; Hayden Valley has the densest bison concentration in the park</p><p>&#x26A0;&#xFE0F; Safety: Stay 25 yards from bison, 100 yards from bears/wolves</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park (Night 3 of 4)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/grand_canyon_yellowstone_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_01.jpg');"><span class="photo-emoji">&#x1F4A7;</span><span>Lower Falls</span></a><a class="photo-link" href="images/grand_canyon_yellowstone_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_02.jpg');"><span class="photo-emoji">&#x1F5FB;</span><span>Artist Point</span></a><a class="photo-link" href="images/hayden_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/hayden_valley_01.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Hayden Valley Bison</span></a><a class="photo-link" href="images/lower_yellowstone_falls_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lower_yellowstone_falls_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Yellowstone Canyon</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 10 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 10 &mdash; Sun Jun 27</span>
+                    <span class="day-title">Yellowstone &mdash; Lamar Valley &amp; Mammoth</span>
+                    <span class="day-drive">&#x1F3DE;&#xFE0F; Day trip ~150 mi</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Pre-dawn departure (tough but so worth it!) &mdash; drive to Lamar Valley</li><li>Wolf-watching at <a class="spot-link" href="https://www.nps.gov/places/000/lamar-valley-wildlife-watching.htm" target="_blank" rel="noopener">Lamar Valley</a> at first light &mdash; "America's Serengeti"</li><li>Bring binoculars; wolf-watchers often set up scopes at pullouts and share</li><li>Spot bison herds with calves, pronghorn, coyotes, bald eagles</li><li>Late breakfast at Roosevelt Lodge</li><li><a class="spot-link" href="https://www.nps.gov/places/tower-fall.htm" target="_blank" rel="noopener">Tower Fall</a> stop</li><li>Afternoon: <a class="spot-link" href="https://www.nps.gov/yell/planyourvisit/mammoth-hot-springs.htm" target="_blank" rel="noopener">Mammoth Hot Springs</a> travertine terraces</li><li>Drive back to Fishing Bridge via Norris for dinner (or eat in Mammoth)</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Wildlife Gold Day</h4><p>&#x1F43A; Lamar Valley at dawn is your best wolf-sighting chance in the Lower 48</p><p>&#x1F52D; A cheap spotting scope or good binoculars makes this day 10x better</p><p>&#x1F3D4;&#xFE0F; Mammoth terraces look like a geothermal wedding cake &mdash; unique in the world</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park (Night 4 of 4, final night!)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/lamar_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_01.jpg');"><span class="photo-emoji">&#x1F43A;</span><span>Lamar Valley</span></a><a class="photo-link" href="images/lamar_valley_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_02.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Bison Herds</span></a><a class="photo-link" href="images/mammoth_hot_springs_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_01.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Mammoth Terraces</span></a><a class="photo-link" href="images/mammoth_hot_springs_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_02.jpg');"><span class="photo-emoji">&#x1F54D;</span><span>Travertine</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 11 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 11 &mdash; Mon Jun 28</span>
+                    <span class="day-title">Yellowstone &rarr; Cody, WY</span>
+                    <span class="day-drive">&#x1F690; ~80 mi / 2 hrs</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Yellowstone &rarr; Cody</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Fishing+Bridge+RV+Park,+Yellowstone&daddr=Cody,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Leisurely morning, break camp at Fishing Bridge</li><li>Exit Yellowstone via the East Entrance &mdash; most scenic route out!</li><li>Drive through <a class="spot-link" href="https://en.wikipedia.org/wiki/Wapiti_Valley" target="_blank" rel="noopener">Wapiti Valley</a> (Teddy Roosevelt called it &ldquo;the most scenic 50 miles in America&rdquo;)</li><li>Arrive in <a class="spot-link" href="https://www.codychamber.org/" target="_blank" rel="noopener">Cody, WY</a></li><li>Visit the <a class="spot-link" href="https://centerofthewest.org/" target="_blank" rel="noopener"><strong>Buffalo Bill Center of the West</strong></a> &mdash; 5 museums in one! Plains Indians, firearms, Western art, natural history, Buffalo Bill himself</li><li>Kids love the Plains Indian Museum and the Draper Natural History Museum</li><li>Evening: <a class="spot-link" href="https://www.codystampederodeo.com/" target="_blank" rel="noopener">Cody Nite Rodeo</a> (runs nightly all summer &mdash; "Rodeo Capital of the World")</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Cody Highlights</h4><p>&#x1F3B7; <strong>Buffalo Bill Center</strong> is often rated one of the best museums in the American West &mdash; budget 3-4 hours minimum</p><p>&#x1F434; <strong>Cody Nite Rodeo:</strong> An authentic Western experience, kids under 12 often half price</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.codyponderosa.com/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Ponderosa Campground, Cody WY (single night)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/cody_wy_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_01.jpg');"><span class="photo-emoji">&#x1F3C7;</span><span>Cody, WY</span></a><a class="photo-link" href="images/cody_wy_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_02.jpg');"><span class="photo-emoji">&#x1F3DB;&#xFE0F;</span><span>Buffalo Bill Center</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 12 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 12 &mdash; Tue Jun 29</span>
+                    <span class="day-title">Cody &rarr; Thermopolis &rarr; Lander</span>
+                    <span class="day-drive">&#x1F690; ~200 mi / 4 hrs</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Cody &rarr; Thermopolis &rarr; Lander</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Cody,+WY&daddr=Hot+Springs+State+Park,+Thermopolis,+WY+to:Lander,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Morning: one more stop at Buffalo Bill Center if kids want</li><li>Drive south to <a class="spot-link" href="https://wyoparks.wyo.gov/index.php/places-to-go/hot-springs" target="_blank" rel="noopener"><strong>Hot Springs State Park</strong></a> in Thermopolis, WY (~85 mi, 1.5 hrs)</li><li>Swim at the <strong>State Bath House</strong> &mdash; free! (yes, really free) Home to the world's largest mineral hot springs</li><li>Kids will love the hot soak + the (small) water slides at nearby commercial pools</li><li>See the Rainbow Terraces and the bison herd in the state park</li><li>Lunch in Thermopolis</li><li>Continue south to Lander, WY (~120 mi, 2.5 hrs)</li><li>Camp overnight in Lander &mdash; quaint gateway town to Wind River Range</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Thermopolis Magic</h4><p>&#x1F54D; The <strong>State Bath House</strong> maintains a 104&deg;F pool open to everyone for free &mdash; it&rsquo;s written into the 1896 treaty with the Shoshone and Arapaho that bought the springs</p><p>&#x1F9A3; The state park even has a small wild bison herd to spot</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.landercampground.com/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Lander City Park or Lander RV Park (single night)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/thermopolis_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_01.jpg');"><span class="photo-emoji">&#x1F54D;</span><span>Hot Springs State Park</span></a><a class="photo-link" href="images/thermopolis_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_02.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Thermopolis</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 13 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 13 &mdash; Wed Jun 30</span>
+                    <span class="day-title">Lander &rarr; Cheyenne, WY</span>
+                    <span class="day-drive">&#x1F690; ~250 mi / 4.5 hrs</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Lander &rarr; Cheyenne</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Lander,+WY&daddr=Cheyenne,+WY&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Morning walk in Lander or Sinks Canyon State Park (5 mi from town &mdash; where the Popo Agie River disappears underground!)</li><li>Drive southeast through the Red Desert &mdash; vast open Wyoming</li><li>Lunch stop in Rawlins or Medicine Bow</li><li>Arrive Cheyenne, Wyoming's capital, mid-afternoon</li><li>Visit the <a class="spot-link" href="https://www.oldwestmuseum.org/" target="_blank" rel="noopener">Cheyenne Frontier Days Old West Museum</a></li><li>Walk around <a class="spot-link" href="https://www.cheyenne.org/" target="_blank" rel="noopener">downtown Cheyenne</a> &mdash; historic Wyoming State Capitol, big boot statues, Union Pacific depot</li><li>Dinner in Cheyenne</li></ul>
+                    </div>
+                    <div class="day-info"><h4>The Cowboy State Tour</h4><p>&#x1F920; Cheyenne calls itself the <strong>Magic City of the Plains</strong> and hosts the world's largest outdoor rodeo (Frontier Days) every July</p><p>&#x1F31E; <strong>Sinks Canyon</strong> near Lander is a geological oddity: the river sinks into a cave and emerges from a spring downstream</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://koa.com/campgrounds/cheyenne/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Cheyenne KOA (single night)</a>
+                    </div>
+                </div></div>
+            </div>
+
+            <!-- DAY 14 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 14 &mdash; Thu Jul 1</span>
+                    <span class="day-title">Cheyenne &rarr; Estes Park &amp; RMNP East</span>
+                    <span class="day-drive">&#x1F690; ~100 mi / 2 hrs</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Cheyenne &rarr; Estes Park</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Cheyenne,+WY&daddr=Estes+Park,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Relaxed morning departure &mdash; short drive today!</li><li>Cross back into Colorado</li><li>Arrive <a class="spot-link" href="https://www.visitestespark.com/" target="_blank" rel="noopener">Estes Park</a> &mdash; the east-side gateway to RMNP</li><li>Check in at RV resort, set up camp for 2 nights</li><li>Afternoon: enter RMNP east side &mdash; completely different feel from the west!</li><li><a class="spot-link" href="https://www.nps.gov/romo/planyourvisit/bear-lake-trailhead.htm" target="_blank" rel="noopener">Bear Lake</a> &mdash; easy 0.8 mi paved loop around the lake, stunning</li><li>Drive to Sprague Lake or Dream Lake for another short hike</li><li>Stroll Estes Park downtown &mdash; Taffy Shop (since 1935!), Ben &amp; Jerry's</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Welcome to the East Side</h4><p>&#x1F43B; <strong>Elk are everywhere</strong> in Estes Park &mdash; they literally walk down main street in summer evenings</p><p>&#x1F3EC; Stay the iconic <a class="spot-link" href="https://www.stanleyhotel.com/" target="_blank" rel="noopener">Stanley Hotel</a> (from The Shining) is a fun drive-by or lunch stop</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://koa.com/campgrounds/estes-park/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Estes Park KOA Holiday &mdash; full hookups (Night 1 of 2)</a>
+                    </div>
+                <div class="photo-strip"><a class="photo-link" href="images/estes_park_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/estes_park_01.jpg');"><span class="photo-emoji">&#x1F3D8;&#xFE0F;</span><span>Estes Park Town</span></a><a class="photo-link" href="images/bear_lake_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/bear_lake_01.jpg');"><span class="photo-emoji">&#x1F3DE;&#xFE0F;</span><span>Bear Lake</span></a><a class="photo-link" href="images/rocky_mountain_np_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/rocky_mountain_np_01.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>RMNP East Side</span></a></div>
+                </div></div>
+            </div>
+
+            <!-- DAY 15 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number ">DAY 15 &mdash; Fri Jul 2</span>
+                    <span class="day-title">RMNP East Day &rarr; Denver</span>
+                    <span class="day-drive">&#x1F690; ~75 mi / 1.5 hrs</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                <div class="day-map">
+                    <div class="day-map-label">&#x1F5FA;&#xFE0F; Route: Estes Park &rarr; Denver</div>
+                    <iframe src="https://maps.google.com/maps?saddr=Estes+Park,+CO&daddr=Denver,+CO&t=&ie=UTF8&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Sunrise at Bear Lake &mdash; breathtaking when the light hits</li><li><a class="spot-link" href="https://www.nps.gov/romo/planyourvisit/emerald_lake_trail.htm" target="_blank" rel="noopener">Emerald Lake Trail</a> (3.6 mi round trip, moderate) &mdash; best day hike on the east side</li><li>Or easier option: Alberta Falls (1.6 mi) + Nymph Lake</li><li>Picnic lunch at the trailhead</li><li>Afternoon: last wildlife drive along Moraine Park for elk</li><li>Drop RV at Cruise America Denver by 4pm</li><li>Uber / rental transfer back to Embassy Suites Denver for one final hotel night</li><li>Celebratory family dinner downtown &mdash; you earned it!</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Trip Finale</h4><p>&#x1F3C6; <strong>16 days, 3 parks, ~1,850 miles, countless bison, and one epic family memory</strong></p><p>&#x1F3AC; Don't forget to dump the RV tanks and fill the gas tank before returning</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 4, farewell dinner)</a>
+                    </div>
+                </div></div>
+            </div>
+
+            <!-- DAY 16 -->
+            <div class="day-card fade-in" onclick="toggleDay(this)">
+                <div class="day-header">
+                    <span class="day-number vegas">DAY 16 &mdash; Sat Jul 3</span>
+                    <span class="day-title">Denver &rarr; Home!</span>
+                    <span class="day-drive">&#x2708;&#xFE0F; DEN &rarr; CLE</span>
+                    <span class="day-expand-icon">&#x25BC;</span>
+                </div>
+                <div class="day-details"><div class="day-body">
+                    <div class="day-activities"><h4>Activities</h4>
+                        <ul><li>Sleep in &mdash; you've earned it!</li><li>Embassy Suites free breakfast</li><li>Last morning exploring Denver downtown</li><li>Afternoon flight DEN &rarr; CLE</li><li>Home in time for July 4th fireworks tomorrow! &#x1F386;</li></ul>
+                    </div>
+                    <div class="day-info"><h4>Fly Home</h4><p>&#x2708;&#xFE0F; Afternoon flight, arrive CLE evening of July 3rd</p><p>&#x1F386; Perfect timing for July 4th fireworks the next day</p><p style="margin-top:1rem;color:var(--sunset-gold);font-weight:700;font-size:1.1rem;">&#x1F3C6; Achievement Unlocked: The Northern Loop!</p><p style="margin-top:0.5rem;font-size:0.85rem;">~1,850 mi &bull; 3 NPs &bull; 16 days &bull; 2 states (WY, CO)</p>
+                    </div>
+                </div></div>
+            </div>
+</div>
+</div>
+
+<!-- PARKS -->
+<div class="tab-content" id="tab-parks">
+<div class="section">
+    <h2 class="section-title">OUR 3 NATIONAL PARKS</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Fewer parks, more time in each &mdash; especially Yellowstone!</p>
+    <div class="parks-grid">
+        <a class="park-card fade-in" href="https://www.nps.gov/romo/" target="_blank" rel="noopener" style="background-image:url('images/rocky_mountain_np_01.jpg');background-size:cover;background-position:center;">
+            <div class="park-emoji">&#x1F3D4;&#xFE0F;</div>
+            <h3>Rocky Mountain</h3>
+            <p>Trail Ridge Road climbs above 12,000 feet. Visit twice &mdash; west side on the way out, east side (Bear Lake) on the way back.</p>
+            <div class="park-facts"><span class="park-fact">&#x1F4CD; Colorado</span><span class="park-fact">&#x26F0;&#xFE0F; 12,183 ft road</span><span class="park-fact">&#x1F4C5; Days 4 &amp; 14-15</span></div>
+            <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/romo/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/romo/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span></div>
+        </a>
+        <a class="park-card fade-in" href="https://www.nps.gov/grte/" target="_blank" rel="noopener" style="background-image:url('images/grand_teton_np_01.jpg');background-size:cover;background-position:center;">
+            <div class="park-emoji">&#x1F3D4;&#xFE0F;</div>
+            <h3>Grand Teton</h3>
+            <p>Jagged peaks rising 7,000 feet above the valley floor. Jenny Lake, moose, and the most dramatic mountain views in America.</p>
+            <div class="park-facts"><span class="park-fact">&#x1F4CD; Wyoming</span><span class="park-fact">&#x1F3D4;&#xFE0F; 13,775 ft peak</span><span class="park-fact">&#x1F4C5; Days 5-6</span></div>
+            <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/grte/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/grte/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span></div>
+        </a>
+        <a class="park-card fade-in" href="https://www.nps.gov/yell/" target="_blank" rel="noopener" style="background-image:url('images/yellowstone_np_01.jpg');background-size:cover;background-position:center;">
+            <div class="park-emoji">&#x1F30B;</div>
+            <h3>Yellowstone (4 DAYS!)</h3>
+            <p>The main event. Four full days base-camped at Fishing Bridge lets us see geysers, waterfalls, canyons, and wildlife without rushing.</p>
+            <div class="park-facts"><span class="park-fact">&#x1F4CD; Wyoming</span><span class="park-fact">&#x1F321;&#xFE0F; 10,000+ thermal features</span><span class="park-fact">&#x1F4C5; Days 7-10</span></div>
+            <div class="park-link-row"><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/yell/learn/photosmultimedia/photogallery.htm','_blank')">&#x1F4F7; Photos</span><span class="park-link-btn" onclick="event.stopPropagation();window.open('https://www.nps.gov/yell/planyourvisit/hiking.htm','_blank')">&#x1F97E; Trails</span></div>
+        </a>
+    </div>
+
+    <h2 class="section-title" style="margin-top:3rem;">BONUS STOPS</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Unique places we get to visit on the Northern Loop that aren't on the standard itinerary.</p>
+    <div class="parks-grid">
+        <a class="park-card fade-in" href="https://centerofthewest.org/" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_02.jpg');background-size:cover;background-position:center;min-height:280px;">
+            <div class="park-emoji">&#x1F3DB;&#xFE0F;</div>
+            <h3>Cody, WY</h3>
+            <p>Home of the Buffalo Bill Center of the West &mdash; 5 museums in one, including the Plains Indian Museum. Plus nightly rodeos all summer.</p>
+            <div class="park-facts"><span class="park-fact">&#x1F4CD; Wyoming</span><span class="park-fact">&#x1F4C5; Day 11</span></div>
+        </a>
+        <a class="park-card fade-in" href="https://wyoparks.wyo.gov/index.php/places-to-go/hot-springs" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_01.jpg');background-size:cover;background-position:center;min-height:280px;">
+            <div class="park-emoji">&#x1F54D;</div>
+            <h3>Thermopolis Hot Springs</h3>
+            <p>World's largest mineral hot springs. The State Bath House is free by treaty &mdash; soak in 104&deg;F mineral water at Wyoming's oldest state park.</p>
+            <div class="park-facts"><span class="park-fact">&#x1F4CD; Wyoming</span><span class="park-fact">&#x1F4C5; Day 12</span></div>
+        </a>
+        <a class="park-card fade-in" href="https://www.visitestespark.com/" target="_blank" rel="noopener" style="background-image:url('images/estes_park_01.jpg');background-size:cover;background-position:center;min-height:280px;">
+            <div class="park-emoji">&#x1F3D8;&#xFE0F;</div>
+            <h3>Estes Park, CO</h3>
+            <p>Gateway to the east side of RMNP. Bear Lake, Emerald Lake, Moraine Park elk meadows, and the famous Stanley Hotel.</p>
+            <div class="park-facts"><span class="park-fact">&#x1F4CD; Colorado</span><span class="park-fact">&#x1F4C5; Days 14-15</span></div>
+        </a>
+    </div>
+</div>
+</div>
+
+<!-- RV -->
+<div class="tab-content" id="tab-rv">
+<div class="section">
+    <h2 class="section-title">OUR HOME ON WHEELS</h2>
+    <div class="rv-showcase">
+        <div class="rv-visual fade-in">
+            <span class="rv-big-emoji">&#x1F690;</span>
+            <h3 style="font-family:'Bangers',cursive;font-size:2rem;color:var(--sunset-gold);"><a href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener" style="color:var(--sunset-gold);text-decoration:none;">Cruise America C-25</a></h3>
+            <p style="color:rgba(255,255,255,0.6);margin-top:0.5rem;">Class C Motorhome &mdash; 25 ft</p>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:1rem;">The sweet spot for a family of 4: big enough to sleep comfortably, small enough for park roads.</p>
+            <div style="display:flex;gap:0.5rem;margin-top:1.2rem;justify-content:center;flex-wrap:wrap;">
+                <a class="photo-link" href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#3a4a5a,#1a2a3a);width:130px;height:85px;"><span class="photo-emoji">&#x1F690;</span><span>C-25 Exterior</span></a>
+                <a class="photo-link" href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#4a3a2a,#2a1a10);width:130px;height:85px;"><span class="photo-emoji">&#x1F6CF;&#xFE0F;</span><span>Sleeping Layout</span></a>
+                <a class="photo-link" href="https://www.cruiseamerica.com/rv-rentals" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#2a4a3a,#1a2a20);width:130px;height:85px;"><span class="photo-emoji">&#x1F373;</span><span>Kitchen &amp; Interior</span></a>
+            </div>
+        </div>
+        <div class="rv-specs fade-in">
+            <div class="rv-spec"><span class="rv-spec-label">Length</span><span class="rv-spec-value">25 feet</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Sleeps</span><span class="rv-spec-value">5 (perfect for 4)</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Beds</span><span class="rv-spec-value">Queen over-cab + dinette converts</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Bathroom</span><span class="rv-spec-value">Full (toilet + shower)</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Kitchen</span><span class="rv-spec-value">Stove, fridge, microwave, sink</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">A/C &amp; Heat</span><span class="rv-spec-value">Yes &mdash; essential!</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Generator</span><span class="rv-spec-value">Built-in</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Fuel Economy</span><span class="rv-spec-value">~8-10 MPG</span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Provider</span><span class="rv-spec-value"><a href="https://www.cruiseamerica.com/" target="_blank" rel="noopener" style="color:var(--sunset-gold);">Cruise America</a></span></div>
+            <div class="rv-spec"><span class="rv-spec-label">Pickup / Drop-off</span><span class="rv-spec-value">Denver (round trip)</span></div>
+        </div>
+    </div>
+    <div style="margin-top:2rem;background:rgba(91,140,90,0.1);border:1px solid var(--sage-green);border-radius:16px;padding:1.5rem;" class="fade-in">
+        <h3 style="color:var(--sage-green);margin-bottom:0.8rem;">&#x1F4A1; Why the C-25?</h3>
+        <ul style="list-style:none;padding:0;">
+            <li style="padding:0.3rem 0;">&#x2705; <strong>Queen over-cab bed</strong> &mdash; parents up top, kids on the dinette</li>
+            <li style="padding:0.3rem 0;">&#x2705; <strong>Full bathroom</strong> &mdash; no midnight campground walks</li>
+            <li style="padding:0.3rem 0;">&#x2705; <strong>Kitchen with fridge</strong> &mdash; cook meals, save hundreds</li>
+            <li style="padding:0.3rem 0;">&#x2705; <strong>25 ft is manageable</strong> &mdash; fits standard campsites</li>
+            <li style="padding:0.3rem 0;">&#x2705; <strong>A/C and heat both matter</strong> &mdash; hot days, cold mountain mornings</li>
+            <li style="padding:0.3rem 0;">&#x2705; <strong>Round-trip rental</strong> &mdash; no one-way fees, return in Denver</li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<!-- BUDGET -->
+<div class="tab-content" id="tab-budget">
+<div class="section">
+    <h2 class="section-title">TRIP BUDGET</h2>
+    <div class="budget-container">
+        <div class="budget-items">
+            <div class="budget-item fade-in"><span class="budget-icon">&#x2708;&#xFE0F;</span><div><div class="budget-label">Flights (CLE &harr; DEN round-trip)</div><div class="budget-sublabel">4 passengers, round-trip is cheaper than two one-ways</div></div><div class="budget-amount">$1,300</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F3E8;</span><div><div class="budget-label"><a class="spot-link" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">Embassy Suites Denver</a> (4 nights)</div><div class="budget-sublabel">3 nights before + 1 night after RV &mdash; free breakfast included</div></div><div class="budget-amount">$880</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F690;</span><div><div class="budget-label"><a class="spot-link" href="https://www.cruiseamerica.com/" target="_blank" rel="noopener">RV Rental</a> (11 days)</div><div class="budget-sublabel">Cruise America C-25, round trip Denver (no one-way fee!)</div></div><div class="budget-amount">$2,400</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F6E1;&#xFE0F;</span><div><div class="budget-label">RV Insurance</div><div class="budget-sublabel">VIP coverage, 11 days @ $30/day</div></div><div class="budget-amount">$330</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x26FD;</span><div><div class="budget-label">Gas / Fuel</div><div class="budget-sublabel">~1,850 mi at 9 MPG, ~$3.50/gal</div></div><div class="budget-amount">$720</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F3D5;&#xFE0F;</span><div><div class="budget-label">Campground Fees</div><div class="budget-sublabel">11 nights: Colter Bay RV x2 + Fishing Bridge RV x4 + Estes KOA x2 + 3 single-night stops</div></div><div class="budget-amount">$990</div></div>
+            
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F3AB;</span><div><div class="budget-label"><a class="spot-link" href="https://www.nps.gov/planyourvisit/passes.htm" target="_blank" rel="noopener">America the Beautiful Pass</a></div><div class="budget-sublabel">All national parks for 1 year &mdash; covers all 3!</div></div><div class="budget-amount">$80</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F354;</span><div><div class="budget-label">Food &amp; Groceries</div><div class="budget-sublabel">Mostly cooking in RV + restaurants in Denver</div></div><div class="budget-amount">$1,400</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F3DB;&#xFE0F;</span><div><div class="budget-label">Cody Museum &amp; Attractions</div><div class="budget-sublabel">Buffalo Bill Center of the West + Cody Nite Rodeo + Thermopolis pools</div></div><div class="budget-amount">$200</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F434;</span><div><div class="budget-label">Activities &amp; Excursions</div><div class="budget-sublabel">Jenny Lake boat shuttle, horseback in GTeton or RMNP, souvenirs</div></div><div class="budget-amount">$450</div></div>
+            <div class="budget-item fade-in"><span class="budget-icon">&#x1F9F0;</span><div><div class="budget-label">Supplies &amp; Miscellaneous</div><div class="budget-sublabel">Binoculars, bear spray, sunscreen, layers for cold mountain mornings</div></div><div class="budget-amount">$300</div></div>
+        </div>
+        <div>
+            <div class="budget-total-card fade-in">
+                <div class="budget-total-label">Estimated Total</div>
+                <div class="budget-total-amount">$9,050</div>
+                <div class="budget-total-note">~$566 per day for the family<br>or ~$2,263 per person<br><span style="color:#fff;">$1,115 less than the Vegas itinerary!</span></div>
+                <div class="budget-bar-container">
+                    <div class="budget-bar-item"><div class="budget-bar-header"><span>Transportation</span><span>$4,750</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:52%;background:var(--sky-blue);"></div></div></div>
+                    <div class="budget-bar-item"><div class="budget-bar-header"><span>Lodging</span><span>$1,870</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:21%;background:var(--sage-green);"></div></div></div>
+                    <div class="budget-bar-item"><div class="budget-bar-header"><span>Food</span><span>$1,400</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:15%;background:var(--sunset-gold);"></div></div></div>
+                    <div class="budget-bar-item"><div class="budget-bar-header"><span>Activities</span><span>$730</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:8%;background:var(--desert-orange);"></div></div></div>
+                    <div class="budget-bar-item"><div class="budget-bar-header"><span>Other</span><span>$300</span></div><div class="budget-bar"><div class="budget-bar-fill" style="width:3%;background:var(--canyon-red);"></div></div></div>
+                </div>
+            </div>
+            <div style="margin-top:1.5rem;background:rgba(245,166,35,0.1);border:1px solid var(--sunset-gold);border-radius:12px;padding:1.2rem;" class="fade-in">
+                <h4 style="color:var(--sunset-gold);margin-bottom:0.5rem;">&#x1F4B0; Money-Saving Tips</h4>
+                <ul style="list-style:none;padding:0;font-size:0.9rem;">
+                    <li style="padding:0.2rem 0;">&bull; <a class="spot-link" href="https://www.nps.gov/planyourvisit/passes.htm" target="_blank" rel="noopener">America the Beautiful Pass</a> = $80 vs. $35/park &times; 6 = $130 savings</li>
+                    <li style="padding:0.2rem 0;">&bull; Embassy Suites free breakfast + reception saves ~$100/day</li>
+                    <li style="padding:0.2rem 0;">&bull; Cooking in the RV saves ~$100/day vs. restaurants</li>
+                    <li style="padding:0.2rem 0;">&bull; Book flights 3-4 months out for best CLE rates</li>
+                    <li style="padding:0.2rem 0;">&bull; Book RV 6+ months early at <a class="spot-link" href="https://www.cruiseamerica.com/" target="_blank" rel="noopener">cruiseamerica.com</a></li>
+                    <li style="padding:0.2rem 0;">&bull; Use Hilton Honors points for Denver if you have them!</li>
+                    <li style="padding:0.2rem 0;">&bull; Book campgrounds at <a class="spot-link" href="https://www.recreation.gov/" target="_blank" rel="noopener">recreation.gov</a> 6 months ahead</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- PACKING -->
+<div class="tab-content" id="tab-packing">
+<div class="section">
+    <h2 class="section-title">PACKING CHECKLIST</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);margin-bottom:2rem;">Click items to check them off!</p>
+    <div class="packing-grid">
+        <div class="packing-category fade-in"><h3>&#x1F97E; Hiking &amp; Outdoors</h3>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Hiking boots (broken in!)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Water shoes (Thermopolis, lakes)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Daypack / backpack</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Water bottles (2L+ each)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Hiking poles (optional)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Binoculars (for wildlife!)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Headlamps / flashlights</div>
+        </div>
+        <div class="packing-category fade-in"><h3>&#x1F455; Clothing</h3>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Moisture-wicking shirts</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Shorts &amp; lightweight pants</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Light jacket (mountain mornings are cold!)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Rain jacket</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Swimsuit (pools + Thermopolis hot springs)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Hat / sun hat</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Sunglasses</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Warm layers (Yellowstone mornings are cold!)</div>
+        </div>
+        <div class="packing-category fade-in"><h3>&#x1F9F4; Health &amp; Safety</h3>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Sunscreen SPF 50+</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Bug spray</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>First aid kit</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Medications / prescriptions</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Aloe vera gel</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Lip balm with SPF</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Hand sanitizer</div>
+        </div>
+        <div class="packing-category fade-in"><h3>&#x1F4F1; Tech &amp; Entertainment</h3>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Camera + extra batteries</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Phone chargers + car charger</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Portable battery pack</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Downloaded offline maps (AllTrails)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Audiobooks / podcasts</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Card games / travel games</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Junior Ranger booklets (free at parks!)</div>
+        </div>
+        <div class="packing-category fade-in"><h3>&#x1F3D5;&#xFE0F; Camping</h3>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Camping chairs (4)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>S'mores supplies</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Marshmallow roasting sticks</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Cooler for day trips</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Paper towels / trash bags</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Dish soap &amp; sponge</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Extra blankets</div>
+        </div>
+        <div class="packing-category fade-in"><h3>&#x1F4CB; Important Documents</h3>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Driver's licenses (both adults)</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>RV rental confirmation</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Flight confirmations</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Embassy Suites reservation</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Binoculars for wolf/bison spotting</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Campground reservations</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>America the Beautiful Pass</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>RMNP timed entry permit</div>
+            <div class="pack-item" onclick="this.classList.toggle('checked')"><div class="pack-check"></div>Insurance cards</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- QUIZ -->
+<div class="tab-content" id="tab-quiz">
+<div class="section">
+    <h2 class="section-title">NATIONAL PARKS FUN FACTS QUIZ</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);margin-bottom:2rem;">How much do you know about the parks we're visiting?</p>
+    <div class="quiz-container"><div class="quiz-card">
+        <div class="quiz-question" id="quizQuestion">Loading...</div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-score" id="quizScore"></div>
+        <button class="quiz-next" id="quizNext" onclick="nextQuestion()" style="display:none;">Next Question &rarr;</button>
+    </div></div>
+</div>
+</div>
+
+<!-- PASSPORT GAME -->
+<div class="tab-content" id="tab-passport">
+<div class="section">
+    <h2 class="section-title">JUNIOR RANGER PASSPORT</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;max-width:600px;margin-left:auto;margin-right:auto;">Collect stamps at each of the 7 parks by completing mini-challenges. Fill your passport to become a Junior Ranger!</p>
+    <div class="passport-wrap" id="passportRoot"></div>
+</div>
+</div>
+
+<!-- GAME MODAL -->
+<div class="game-modal" id="gameModal">
+    <div class="game-modal-inner">
+        <button class="game-modal-close" onclick="closePassportModal()">&times;</button>
+        <div id="gameModalContent"></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:3rem;color:rgba(255,255,255,0.3);font-size:0.85rem;">
+    <p>Made with &hearts; for the Colburn Family Adventure 2027 &mdash; Northern Loop variant</p>
+    <p style="margin-top:0.5rem;">&#x1F690; Denver &rarr; RMNP &rarr; Grand Teton &rarr; Yellowstone (4 days!) &rarr; Cody &rarr; Thermopolis &rarr; Estes Park &rarr; Denver</p>
+    <p style="margin-top:0.8rem;"><a href="index.html" style="color:var(--sunset-gold);">&larr; Back to Original (Vegas One-Way) Itinerary</a></p>
+</div>
+
+<script>
+// Stars
+const starsEl=document.getElementById('stars');
+for(let i=0;i<150;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.width=s.style.height=(Math.random()*3+1)+'px';s.style.animationDelay=Math.random()*3+'s';s.style.animationDuration=(Math.random()*2+2)+'s';starsEl.appendChild(s);}
+
+// Tabs
+document.querySelectorAll('.nav-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active');window.scrollTo({top:document.querySelector('.nav-bar').offsetTop,behavior:'smooth'});setTimeout(initObserver,100);});});
+
+// Day cards
+function toggleDay(card){if(event.target.closest('a'))return;card.classList.toggle('expanded');}
+
+// Map tooltips
+document.querySelectorAll('.map-pin').forEach(pin=>{pin.addEventListener('mouseenter',e=>{const tt=document.getElementById('mapTooltip');document.getElementById('tooltipName').textContent=pin.dataset.name;document.getElementById('tooltipInfo').textContent=pin.dataset.info;const r=pin.getBoundingClientRect();const mr=pin.closest('.route-map-container').getBoundingClientRect();tt.style.left=(r.left-mr.left+20)+'px';tt.style.top=(r.top-mr.top-60)+'px';tt.classList.add('show');});pin.addEventListener('mouseleave',()=>{document.getElementById('mapTooltip').classList.remove('show');});});
+
+// Countdown
+function updateCountdown(){const target=new Date('2027-06-18T08:00:00-04:00');const now=new Date();const diff=target-now;if(diff<=0){document.getElementById('cd-days').textContent='\u{1F389}';document.getElementById('cd-hours').textContent="IT'S";document.getElementById('cd-mins').textContent='TIME';document.getElementById('cd-secs').textContent='!!!';return;}document.getElementById('cd-days').textContent=Math.floor(diff/(1000*60*60*24));document.getElementById('cd-hours').textContent=Math.floor((diff%(1000*60*60*24))/(1000*60*60));document.getElementById('cd-mins').textContent=Math.floor((diff%(1000*60*60))/(1000*60));document.getElementById('cd-secs').textContent=Math.floor((diff%(1000*60))/1000);}
+updateCountdown();setInterval(updateCountdown,1000);
+
+// Quiz
+const quizData=[
+{q:"How high does Trail Ridge Road climb in Rocky Mountain NP?",options:["8,000 ft","10,000 ft","Over 12,000 ft","14,000 ft"],correct:2},
+{q:"How often does Old Faithful erupt?",options:["Every 10 minutes","About every 90 minutes","Once a day","Every 6 hours"],correct:1},
+{q:"What famous person does Cody, WY's big museum honor?",options:["Buffalo Bill","Daniel Boone","Davy Crockett","Teddy Roosevelt"],correct:0},
+{q:"What's special about Thermopolis Hot Springs?",options:["It's ice cold","It's the world's largest mineral hot springs","It's underwater","It's fake"],correct:1},
+{q:"Yellowstone sits on top of a...",options:["Glacier","Gold mine","Supervolcano","Underground lake"],correct:2},
+{q:"What is the tallest peak in Grand Teton NP?",options:["Mount Everest","Grand Teton at 13,775 ft","Pikes Peak","Mount Rainier"],correct:1},
+{q:"What lake has the famous 0.8 mi loop on RMNP's east side?",options:["Jenny Lake","Bear Lake","Lake Powell","Yellowstone Lake"],correct:1},
+{q:"What movie was filmed at Goblin Valley State Park?",options:["Star Wars","Galaxy Quest","Mad Max","Dune"],correct:1},
+{q:"How tall is Yellowstone's Lower Falls?",options:["100 feet","308 feet \u2014 twice Niagara!","500 feet","50 feet"],correct:1},
+{q:"What animal might you see at Oxbow Bend in Grand Teton?",options:["Penguins","Moose","Flamingos","Polar bears"],correct:1},
+{q:"What famous movie was filmed at Dead Horse Point?",options:["Star Wars","Thelma & Louise","Indiana Jones","Jurassic Park"],correct:1},
+{q:"Landscape Arch is longer than a...",options:["School bus","Basketball court","Football field","Swimming pool"],correct:2},
+{q:"How many bison live in Yellowstone?",options:["About 50","About 500","About 5,000","About 50,000"],correct:2},
+{q:"What city is called the Mile High City?",options:["Salt Lake City","Denver","Las Vegas","Phoenix"],correct:1},
+{q:"Where is the only full-hookup RV park INSIDE Yellowstone?",options:["Madison","Canyon Village","Fishing Bridge","Mammoth"],correct:2}
+];
+let currentQ=0,score=0,answered=false;
+let shuffled=[...quizData].sort(()=>Math.random()-0.5);
+function loadQuestion(){if(currentQ>=shuffled.length){document.getElementById('quizQuestion').textContent='Quiz Complete!';document.getElementById('quizOptions').innerHTML='';document.getElementById('quizScore').textContent=`Final Score: ${score}/${shuffled.length}! ${score>=12?'National Park Expert!':score>=8?'Great job!':'Study up on the road!'}`;document.getElementById('quizNext').textContent='Play Again';document.getElementById('quizNext').style.display='inline-block';document.getElementById('quizNext').onclick=()=>{currentQ=0;score=0;shuffled=[...quizData].sort(()=>Math.random()-0.5);document.getElementById('quizNext').onclick=nextQuestion;document.getElementById('quizNext').textContent='Next Question \u2192';loadQuestion();};return;}answered=false;const q=shuffled[currentQ];document.getElementById('quizQuestion').textContent=q.q;document.getElementById('quizScore').textContent=`Score: ${score}/${currentQ}`;document.getElementById('quizNext').style.display='none';const el=document.getElementById('quizOptions');el.innerHTML='';q.options.forEach((opt,i)=>{const btn=document.createElement('button');btn.className='quiz-option';btn.textContent=opt;btn.addEventListener('click',()=>checkAnswer(i,q.correct));el.appendChild(btn);});}
+function checkAnswer(sel,correct){if(answered)return;answered=true;const opts=document.querySelectorAll('.quiz-option');opts[correct].classList.add('correct');if(sel===correct)score++;else opts[sel].classList.add('wrong');document.getElementById('quizScore').textContent=`Score: ${score}/${currentQ+1}`;document.getElementById('quizNext').style.display='inline-block';}
+function nextQuestion(){currentQ++;loadQuestion();}
+loadQuestion();
+
+// Scroll animations
+function initObserver(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>{el.classList.remove('visible');obs.observe(el);});}
+initObserver();
+
+
+// ==========================================
+// JUNIOR RANGER PASSPORT GAME
+// ==========================================
+const PASSPORT_KEY = 'colburn_passport_v1';
+
+const passportParks = [
+    {
+        id: 'romo',
+        name: 'Rocky Mountain',
+        icon: '\u26F0\uFE0F',
+        days: 'Day 3',
+        heroImage: 'rocky_mountain_np_01.jpg',
+        quiz: [
+            { q: "What's the highest paved road in any US national park?", options: ["Trail Ridge Road", "Sky High Highway", "Eagle Pass", "Alpine Way"], correct: 0 },
+            { q: "How high does Trail Ridge Road climb?", options: ["8,000 ft", "10,000 ft", "Over 12,000 ft", "15,000 ft"], correct: 2 },
+            { q: "Which animal is most common in RMNP meadows?", options: ["Penguins", "Elk", "Kangaroos", "Lions"], correct: 1 },
+            { q: "What state is Rocky Mountain NP in?", options: ["Utah", "Wyoming", "Colorado", "Montana"], correct: 2 },
+            { q: "What's at 11,796 ft in RMNP?", options: ["A hotel", "Alpine Visitor Center", "A ski resort", "A waterfall"], correct: 1 }
+        ],
+        memory: ['rocky_mountain_np_01.jpg','rocky_mountain_np_02.jpg','rocky_mountain_np_03.jpg','trail_ridge_road_02.jpg','alpine_visitor_center_01.jpg','trail_ridge_road_03.jpg'],
+        spotIt: { q: 'Which photo shows Trail Ridge Road?', correct: 'trail_ridge_road_02.jpg', decoys: ['old_faithful_01.jpg','delicate_arch_01.jpg','zion_narrows_01.jpg'] }
+    },
+    {
+        id: 'grte',
+        name: 'Grand Teton',
+        icon: '\u1F3D4\uFE0F',
+        days: 'Days 4-5',
+        heroImage: 'grand_teton_np_01.jpg',
+        quiz: [
+            { q: "How tall is the Grand Teton peak?", options: ["8,000 ft", "10,500 ft", "13,775 ft", "20,000 ft"], correct: 2 },
+            { q: "What lake is famous for mountain reflections?", options: ["Jenny Lake", "Lake Erie", "Lake Powell", "Bear Lake"], correct: 0 },
+            { q: "What animal might you see at Oxbow Bend?", options: ["Penguins", "Moose", "Flamingos", "Sharks"], correct: 1 },
+            { q: "What historic area has pioneer barns?", options: ["Mormon Row", "Jackson Lodge", "Teton Village", "Snake Flats"], correct: 0 },
+            { q: "What state is Grand Teton in?", options: ["Idaho", "Wyoming", "Montana", "Utah"], correct: 1 }
+        ],
+        memory: ['grand_teton_np_01.jpg','grand_teton_np_02.jpg','grand_teton_np_03.jpg','jenny_lake_01.jpg','mormon_row_01.jpg','oxbow_bend_01.jpg'],
+        spotIt: { q: "Which photo shows Mormon Row's famous barns?", correct: 'mormon_row_01.jpg', decoys: ['bellagio_01.jpg','old_faithful_01.jpg','bryce_canyon_np_01.jpg'] }
+    },
+    {
+        id: 'yell',
+        name: 'Yellowstone',
+        icon: '\u1F30B',
+        days: 'Days 6-7',
+        heroImage: 'yellowstone_np_01.jpg',
+        quiz: [
+            { q: "How often does Old Faithful erupt?", options: ["Every 10 min", "About every 90 min", "Once a day", "Every 6 hours"], correct: 1 },
+            { q: "Yellowstone sits on top of a...", options: ["Glacier", "Gold mine", "Supervolcano", "Underground lake"], correct: 2 },
+            { q: "What's the famous rainbow-colored hot spring?", options: ["Grand Prismatic", "Rainbow Pool", "Morning Glory", "Castle Geyser"], correct: 0 },
+            { q: "About how many bison live in Yellowstone?", options: ["About 50", "About 500", "About 5,000", "About 50,000"], correct: 2 },
+            { q: "How tall is Lower Yellowstone Falls?", options: ["100 ft", "308 ft (twice Niagara!)", "500 ft", "1,000 ft"], correct: 1 }
+        ],
+        memory: ['yellowstone_np_01.jpg','yellowstone_np_02.jpg','yellowstone_np_03.jpg','old_faithful_01.jpg','grand_prismatic_spring_01.jpg','grand_canyon_yellowstone_01.jpg'],
+        spotIt: { q: 'Which photo shows Grand Prismatic Spring?', correct: 'grand_prismatic_spring_01.jpg', decoys: ['jenny_lake_01.jpg','mesa_arch_01.jpg','zion_narrows_01.jpg'] }
+    }
+];
+
+let passportState = (function() {
+    try {
+        const saved = localStorage.getItem(PASSPORT_KEY);
+        if (saved) return JSON.parse(saved);
+    } catch(e) {}
+    return {
+        activeProfile: 'kid1',
+        profiles: {
+            kid1: { name: 'Player 1', stamps: {} },
+            kid2: { name: 'Player 2', stamps: {} }
+        }
+    };
+})();
+
+function savePassportState() {
+    try { localStorage.setItem(PASSPORT_KEY, JSON.stringify(passportState)); } catch(e) {}
+}
+
+function getActiveProfile() { return passportState.profiles[passportState.activeProfile]; }
+function getStamps(parkId) {
+    const p = getActiveProfile();
+    return p.stamps[parkId] || [false, false, false];
+}
+function setStamp(parkId, idx) {
+    const p = getActiveProfile();
+    if (!p.stamps[parkId]) p.stamps[parkId] = [false, false, false];
+    p.stamps[parkId][idx] = true;
+    savePassportState();
+}
+function totalStampsForProfile(profileId) {
+    const p = passportState.profiles[profileId];
+    let total = 0;
+    for (const k in p.stamps) total += p.stamps[k].filter(Boolean).length;
+    return total;
+}
+
+function renderPassportHome() {
+    const root = document.getElementById('passportRoot');
+    if (!root) return;
+    const active = getActiveProfile();
+    const totalStamps = totalStampsForProfile(passportState.activeProfile);
+    const maxStamps = passportParks.length * 3;
+    const pct = Math.round((totalStamps / maxStamps) * 100);
+
+    let html = '<div class="profile-switcher">';
+    html += '<span class="label">Player:</span>';
+    ['kid1','kid2'].forEach(pid => {
+        const p = passportState.profiles[pid];
+        const active = passportState.activeProfile === pid;
+        html += `<button class="profile-btn ${active ? 'active' : ''}" onclick="switchProfile('${pid}')">${p.name} <span class="stamps-count">(${totalStampsForProfile(pid)}/${maxStamps})</span></button>`;
+    });
+    html += '<input class="profile-name-input" type="text" value="' + escapeHtml(active.name) + '" onchange="renameProfile(this.value)" maxlength="20" placeholder="Your name">';
+    html += '</div>';
+
+    html += '<div class="progress-overall">';
+    html += `<div class="progress-overall-header"><span>${escapeHtml(active.name)}'s Progress</span><span style="color:var(--sunset-gold)">${totalStamps} / ${maxStamps} stamps</span></div>`;
+    html += `<div class="progress-bar-big"><div class="progress-bar-big-fill" style="width:${pct}%"></div></div>`;
+    if (totalStamps === maxStamps) {
+        html += '<div style="text-align:center;margin-top:0.8rem;"><button class="game-btn" onclick="showCertificate()">\u1F3C6 View Your Certificate!</button></div>';
+    }
+    html += '</div>';
+
+    html += '<div class="passport-grid">';
+    passportParks.forEach(park => {
+        const stamps = getStamps(park.id);
+        const earned = stamps.filter(Boolean).length;
+        const isComplete = earned === 3;
+        const icons = ['\u1F4DC','\u1F9E9','\u1F50D']; // trivia, memory, spot-it
+        let stampsHtml = '';
+        for (let i = 0; i < 3; i++) {
+            if (stamps[i]) {
+                stampsHtml += `<div class="stamp-slot earned" data-icon="${icons[i]}"></div>`;
+            } else {
+                stampsHtml += `<div class="stamp-slot"></div>`;
+            }
+        }
+        html += `<div class="passport-park-card ${isComplete ? 'complete' : ''}" style="background-image:url('images/${park.heroImage}');" onclick="openParkDetail('${park.id}')">
+            <div class="passport-park-card-inner">
+                <div>
+                    <div class="passport-park-name">${park.name}</div>
+                    <div class="passport-park-days">${park.days} \u00B7 ${earned}/3 stamps</div>
+                </div>
+                <div class="stamp-row">${stampsHtml}</div>
+            </div>
+        </div>`;
+    });
+    html += '</div>';
+
+    root.innerHTML = html;
+}
+
+function switchProfile(pid) {
+    passportState.activeProfile = pid;
+    savePassportState();
+    renderPassportHome();
+}
+
+function renameProfile(name) {
+    const clean = (name || '').trim().slice(0, 20) || 'Player';
+    getActiveProfile().name = clean;
+    savePassportState();
+    renderPassportHome();
+}
+
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function openPassportModal(contentHtml) {
+    document.getElementById('gameModalContent').innerHTML = contentHtml;
+    document.getElementById('gameModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closePassportModal() {
+    document.getElementById('gameModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function openParkDetail(parkId) {
+    const park = passportParks.find(p => p.id === parkId);
+    if (!park) return;
+    const stamps = getStamps(parkId);
+    const challenges = [
+        { idx: 0, icon: '\u1F4DC', title: 'Park Trivia', desc: '5 questions about this park' },
+        { idx: 1, icon: '\u1F9E9', title: 'Memory Match', desc: 'Find all 6 matching pairs' },
+        { idx: 2, icon: '\u1F50D', title: 'Spot It!', desc: 'Which photo is the landmark?' }
+    ];
+    let html = `<div class="modal-title">${park.name}</div>`;
+    html += `<div class="modal-subtitle">${park.days} \u00B7 Complete all 3 challenges to earn your Park Expert badge</div>`;
+    html += '<div class="challenge-list">';
+    challenges.forEach(c => {
+        const done = stamps[c.idx];
+        html += `<button class="challenge-card ${done ? 'done' : ''}" onclick="launchChallenge('${parkId}',${c.idx})">
+            <div class="challenge-icon">${c.icon}</div>
+            <div><div class="challenge-title">${c.title}</div><div class="challenge-desc">${c.desc}</div></div>
+            <div class="challenge-status">${done ? '\u2713' : ''}</div>
+        </button>`;
+    });
+    html += '</div>';
+    openPassportModal(html);
+}
+
+function launchChallenge(parkId, type) {
+    const park = passportParks.find(p => p.id === parkId);
+    if (!park) return;
+    if (type === 0) renderTrivia(park);
+    else if (type === 1) renderMemory(park);
+    else if (type === 2) renderSpotIt(park);
+}
+
+// ----- TRIVIA MINI-GAME -----
+function renderTrivia(park) {
+    let qIdx = 0, score = 0;
+    const questions = park.quiz.slice().sort(() => Math.random() - 0.5);
+    function showQ() {
+        if (qIdx >= questions.length) {
+            const passed = score >= 4;
+            let html = `<div class="modal-title">${park.name}</div><div class="game-result">`;
+            html += `<div class="big">${score}/${questions.length}</div>`;
+            html += `<p style="margin-top:0.8rem;">${passed ? 'Great job! You earned the Trivia stamp! \u1F4DC' : 'Keep trying! You need 4/5 to earn the stamp.'}</p>`;
+            html += `<button class="game-btn" onclick="${passed ? `awardStamp('${park.id}',0)` : `renderTrivia(passportParks.find(p=>p.id==='${park.id}'))`}">${passed ? 'Collect Stamp' : 'Try Again'}</button>`;
+            html += `<button class="game-btn" style="margin-left:0.5rem;background:rgba(255,255,255,0.1);" onclick="closePassportModal();openParkDetail('${park.id}')">Back</button>`;
+            html += '</div>';
+            openPassportModal(html);
+            return;
+        }
+        const q = questions[qIdx];
+        let html = `<div class="modal-title">${park.name}</div>`;
+        html += `<div class="trivia-progress">Question ${qIdx + 1} of ${questions.length} \u00B7 Score: ${score}</div>`;
+        html += `<div class="trivia-q">${q.q}</div>`;
+        html += '<div class="trivia-opts">';
+        q.options.forEach((opt, i) => {
+            html += `<button class="trivia-opt" data-i="${i}">${opt}</button>`;
+        });
+        html += '</div>';
+        openPassportModal(html);
+        document.querySelectorAll('.trivia-opt').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const i = parseInt(btn.dataset.i);
+                document.querySelectorAll('.trivia-opt').forEach(b => b.style.pointerEvents = 'none');
+                document.querySelectorAll('.trivia-opt')[q.correct].classList.add('correct');
+                if (i !== q.correct) btn.classList.add('wrong');
+                else score++;
+                setTimeout(() => { qIdx++; showQ(); }, 900);
+            });
+        });
+    }
+    showQ();
+}
+
+// ----- MEMORY MATCH MINI-GAME -----
+function renderMemory(park) {
+    const pairs = park.memory.slice(0, 6);
+    const deck = pairs.concat(pairs).sort(() => Math.random() - 0.5);
+    let flipped = [], matched = 0, moves = 0, locked = false;
+    function build() {
+        let html = `<div class="modal-title">${park.name}</div>`;
+        html += '<div class="modal-subtitle">Find all 6 matching pairs!</div>';
+        html += `<div class="memory-stats"><div>Moves: <strong id="memMoves">0</strong></div><div>Pairs: <strong id="memPairs">0/6</strong></div></div>`;
+        html += '<div class="memory-board" id="memBoard">';
+        deck.forEach((img, i) => {
+            html += `<div class="memory-card" data-i="${i}" data-img="${img}">
+                <div class="memory-card-inner">
+                    <div class="memory-card-face memory-card-front">\u2753</div>
+                    <div class="memory-card-face memory-card-back" style="background-image:url('images/${img}')"></div>
+                </div>
+            </div>`;
+        });
+        html += '</div>';
+        openPassportModal(html);
+        document.querySelectorAll('.memory-card').forEach(card => {
+            card.addEventListener('click', () => handleCard(card));
+        });
+    }
+    function handleCard(card) {
+        if (locked) return;
+        if (card.classList.contains('matched') || card.classList.contains('flipped')) return;
+        card.classList.add('flipped');
+        flipped.push(card);
+        if (flipped.length === 2) {
+            moves++;
+            document.getElementById('memMoves').textContent = moves;
+            const [a, b] = flipped;
+            if (a.dataset.img === b.dataset.img) {
+                setTimeout(() => {
+                    a.classList.add('matched');
+                    b.classList.add('matched');
+                    a.classList.remove('flipped');
+                    b.classList.remove('flipped');
+                    matched++;
+                    document.getElementById('memPairs').textContent = matched + '/6';
+                    flipped = [];
+                    if (matched === 6) finish();
+                }, 400);
+            } else {
+                locked = true;
+                setTimeout(() => {
+                    a.classList.remove('flipped');
+                    b.classList.remove('flipped');
+                    flipped = [];
+                    locked = false;
+                }, 900);
+            }
+        }
+    }
+    function finish() {
+        setTimeout(() => {
+            let html = `<div class="modal-title">${park.name}</div><div class="game-result">`;
+            html += `<div class="big">\u1F389</div>`;
+            html += `<p>You matched all 6 pairs in ${moves} moves!</p>`;
+            html += `<button class="game-btn" onclick="awardStamp('${park.id}',1)">Collect Stamp</button>`;
+            html += '</div>';
+            openPassportModal(html);
+        }, 600);
+    }
+    build();
+}
+
+// ----- SPOT IT MINI-GAME -----
+function renderSpotIt(park) {
+    const s = park.spotIt;
+    const options = [s.correct, ...s.decoys].sort(() => Math.random() - 0.5);
+    let html = `<div class="modal-title">${park.name}</div>`;
+    html += `<div class="spot-q">${s.q}</div>`;
+    html += '<div class="spot-grid">';
+    options.forEach(img => {
+        html += `<div class="spot-option" data-img="${img}" style="background-image:url('images/${img}')"></div>`;
+    });
+    html += '</div>';
+    openPassportModal(html);
+    document.querySelectorAll('.spot-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const correct = opt.dataset.img === s.correct;
+            document.querySelectorAll('.spot-option').forEach(o => {
+                o.style.pointerEvents = 'none';
+                if (o.dataset.img === s.correct) o.classList.add('correct');
+                else if (o === opt) o.classList.add('wrong');
+            });
+            setTimeout(() => {
+                let html = `<div class="modal-title">${park.name}</div><div class="game-result">`;
+                if (correct) {
+                    html += `<div class="big">\u1F31F Correct!</div><p>You spotted it!</p>`;
+                    html += `<button class="game-btn" onclick="awardStamp('${park.id}',2)">Collect Stamp</button>`;
+                } else {
+                    html += `<div class="big">\u274C</div><p>Not quite! Try again.</p>`;
+                    html += `<button class="game-btn" onclick="renderSpotIt(passportParks.find(p=>p.id==='${park.id}'))">Try Again</button>`;
+                    html += `<button class="game-btn" style="margin-left:0.5rem;background:rgba(255,255,255,0.1);" onclick="closePassportModal();openParkDetail('${park.id}')">Back</button>`;
+                }
+                html += '</div>';
+                openPassportModal(html);
+            }, 1100);
+        });
+    });
+}
+
+function awardStamp(parkId, idx) {
+    setStamp(parkId, idx);
+    closePassportModal();
+    showStampEarnedAnimation(parkId, idx);
+    setTimeout(() => { renderPassportHome(); openParkDetail(parkId); }, 2300);
+}
+
+function showStampEarnedAnimation(parkId, idx) {
+    const park = passportParks.find(p => p.id === parkId);
+    const icons = ['\u1F4DC','\u1F9E9','\u1F50D'];
+    const titles = ['Trivia Master!','Memory Pro!','Eagle Eye!'];
+    const overlay = document.createElement('div');
+    overlay.className = 'stamp-earned-overlay';
+    overlay.innerHTML = `<div class="stamp-earned-badge">
+        <div class="icon">${icons[idx]}</div>
+        <div class="title">${titles[idx]}</div>
+        <div class="sub">${park.name}</div>
+    </div>`;
+    // Confetti
+    const colors = ['#F5A623','#E8751A','#C1440E','#5B8C5A','#3B82F6'];
+    for (let i = 0; i < 40; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.background = colors[i % colors.length];
+        c.style.left = '50%';
+        c.style.top = '50%';
+        c.style.setProperty('--tx', (Math.random() * 800 - 400) + 'px');
+        c.style.setProperty('--ty', (Math.random() * 600 + 100) + 'px');
+        c.style.animationDelay = (Math.random() * 0.3) + 's';
+        overlay.appendChild(c);
+    }
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.remove(), 2500);
+}
+
+function showCertificate() {
+    const active = getActiveProfile();
+    const dateStr = 'June 18 \u2013 July 3, 2027';
+    let html = `<div class="certificate">
+        <h2>Junior Ranger Certificate</h2>
+        <div class="seal">\u1F3C5</div>
+        <p style="font-size:1.05rem;">This certifies that</p>
+        <div class="name">${escapeHtml(active.name)}</div>
+        <p style="font-size:1.05rem;margin-top:0.8rem;">has successfully visited all 7 National Parks<br>on the Great Western Road Trip</p>
+        <p style="font-style:italic;margin-top:0.5rem;">${dateStr}</p>
+        <p style="margin-top:1rem;font-weight:700;">Congratulations, Junior Ranger! \u1F389</p>
+    </div>
+    <div style="text-align:center;margin-top:1rem;"><button class="game-btn" onclick="closePassportModal()">Close</button></div>`;
+    openPassportModal(html);
+}
+
+// Initialize passport on first tab open
+function initPassportIfNeeded() {
+    if (document.getElementById('passportRoot') && !document.getElementById('passportRoot').innerHTML) {
+        renderPassportHome();
+    }
+}
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.nav-btn');
+    if (btn && btn.dataset.tab === 'passport') setTimeout(initPassportIfNeeded, 50);
+});
+// Close modal on backdrop click
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'gameModal') closePassportModal();
+});
+// ESC to close modal
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePassportModal();
+});
+
+
+</script>
+</body>
+</html>
