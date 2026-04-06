@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive itinerary for the Colburn family's 16-day Northern Loop road trip: Denver, Rocky Mountain NP, Grand Teton, Yellowstone (4 days!), Cody, Thermopolis, Estes Park, and back. June 11-26, 2027.">
+    <meta property="og:title" content="Colburn Family Road Trip 2027 — Northern Loop">
+    <meta property="og:description" content="16 days, 3 national parks, 4 days in Yellowstone. Interactive itinerary with maps, photos, passport game, and booking timeline.">
+    <meta property="og:image" content="https://tpcolburn.github.io/colburn-road-trip-2027/images/hero_cartoon.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tpcolburn.github.io/colburn-road-trip-2027/">
     <title>Colburn Road Trip 2027 &mdash; Northern Loop</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap');
@@ -78,8 +84,8 @@
 
         /* Hero */
         .hero { min-height: 100vh; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero_cartoon.jpg') center/cover no-repeat; opacity: 0.75; z-index: 0; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,12,41,0.85) 0%, rgba(15,12,41,0.55) 28%, rgba(15,12,41,0.05) 50%, rgba(15,12,41,0.15) 100%); z-index: 1; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url('images/hero_cartoon.jpg') center/cover no-repeat; opacity: 0.9; z-index: 0; }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,12,41,0.6) 0%, rgba(15,12,41,0.35) 28%, rgba(15,12,41,0.05) 50%, rgba(15,12,41,0.12) 100%); z-index: 1; }
         .hero-content { text-align: center; z-index: 3; padding: 2.5rem 2rem 2rem; position: relative; }
         .hero h1 { font-family: 'Bangers', cursive; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: 4px; color: var(--sunset-gold); line-height: 1.1; margin-bottom: 0.5rem; -webkit-text-stroke: 2px rgba(0,0,0,0.85); paint-order: stroke fill; text-shadow: 0 3px 0 rgba(0,0,0,0.75), 0 6px 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.6); }
         .hero h2 { font-size: clamp(1.2rem, 3vw, 2rem); color: var(--sand); font-weight: 600; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
@@ -130,7 +136,7 @@
         .day-expand-icon { font-size: 1.2rem; transition: transform 0.3s; color: var(--sunset-gold); }
         .day-card.expanded .day-expand-icon { transform: rotate(180deg); }
         .day-details { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-        .day-card.expanded .day-details { max-height: 2000px; }
+        .day-card.expanded .day-details { max-height: 5000px; }
         .day-body { padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
         .day-activities, .day-info { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1rem; }
         .day-activities h4, .day-info h4 { color: var(--sunset-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
@@ -160,7 +166,6 @@
         /* RV */
         .rv-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
         .rv-visual { background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border-radius: 20px; padding: 2rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-        .rv-big-emoji { font-size: 8rem; display: block; margin-bottom: 1rem; }
         .rv-specs { display: grid; gap: 0.8rem; }
         .rv-spec { display: flex; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 0.7rem 1rem; border-radius: 10px; }
         .rv-spec-label { color: rgba(255,255,255,0.6); }
@@ -215,11 +220,11 @@
         .countdown-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
 
         /* Responsive */
+        @media (max-width: 1024px) { .budget-total-card { position: static; } }
         @media (max-width: 768px) {
             .day-body { grid-template-columns: 1fr; }
             .rv-showcase { grid-template-columns: 1fr; }
             .budget-container { grid-template-columns: 1fr; }
-            .budget-total-card { position: static; }
             .quiz-options { grid-template-columns: 1fr; }
             .timeline { padding-left: 2rem; }
             .day-card::before { left: -1.6rem; }
@@ -232,7 +237,7 @@
         .day-map .leaflet-map-container { width: 100%; height: 320px; border-radius: 0 0 12px 12px; }
         .day-map .leaflet-map-container .leaflet-control-attribution { font-size: 9px; }
         .day-map-label { background: rgba(245,166,35,0.15); border-left: 3px solid var(--sunset-gold); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 700; color: var(--sunset-gold); text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-        .day-map-label .gmaps-link { color: #fff; background: rgba(91,140,90,0.6); padding: 0.2rem 0.6rem; border-radius: 12px; text-decoration: none; font-size: 0.7rem; letter-spacing: 0.5px; transition: background 0.2s; white-space: nowrap; }
+        .day-map-label .gmaps-link { color: #fff; background: rgba(91,140,90,0.7); padding: 0.25rem 0.7rem; border-radius: 12px; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.5px; transition: background 0.2s; white-space: nowrap; border-left: 3px solid var(--sage-green); }
         .day-map-label .gmaps-link:hover { background: var(--sage-green); }
 
         /* ===== PASSPORT GAME ===== */
@@ -540,7 +545,7 @@
                     </div>
                     <div class="day-info"><h4>Details</h4><p><strong>Flight:</strong> CLE &rarr; DEN, afternoon/evening departure, arrive Denver ~7pm MT</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites by Hilton Denver Downtown</a><p style="margin-top:0.6rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">4-night stay this visit (3 before the road trip + 1 at the end)</p>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/16th_street_mall_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/16th_street_mall_01.jpg');"><span class="photo-emoji">&#x1F3D9;&#xFE0F;</span><span>16th Street Mall</span></a><a class="photo-link" href="images/embassy_suites_03.jpg" target="_blank" rel="noopener" style="background-image:url('images/embassy_suites_03.jpg');"><span class="photo-emoji">&#x1F3E8;</span><span>Embassy Suites</span></a><a class="photo-link" href="images/denver_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/denver_01.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Denver Skyline</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="16th Street Mall" href="images/16th_street_mall_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/16th_street_mall_01.jpg');"><span class="photo-emoji">&#x1F3D9;&#xFE0F;</span><span>16th Street Mall</span></a><a class="photo-link" role="img" aria-label="Embassy Suites" href="images/embassy_suites_03.jpg" target="_blank" rel="noopener" style="background-image:url('images/embassy_suites_03.jpg');"><span class="photo-emoji">&#x1F3E8;</span><span>Embassy Suites</span></a><a class="photo-link" role="img" aria-label="Denver Skyline" href="images/denver_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/denver_01.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Denver Skyline</span></a></div>
                 </div></div>
             </div>
 
@@ -562,7 +567,7 @@
                     </div>
                     <div class="day-info"><h4>Denver Highlights</h4><p>&#x1F3B8; <strong>Red Rocks:</strong> Even without a concert, the amphitheatre and Trading Post Trail are spectacular</p><p>&#x1F4B0; <strong>Budget Tip:</strong> Embassy Suites free breakfast + evening reception saves ~$100/day</p><p><strong>Where we stay:</strong></p><a class="stay-badge hotel" href="https://www.hilton.com/en/hotels/deneses-embassy-suites-denver-downtown-convention-center/" target="_blank" rel="noopener">&#x1F3E8; Embassy Suites Denver (Night 2)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/red_rocks_amphitheatre_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/red_rocks_amphitheatre_02.jpg');"><span class="photo-emoji">&#x1F3B8;</span><span>Red Rocks Amphitheatre</span></a><a class="photo-link" href="images/denver_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/denver_02.jpg');"><span class="photo-emoji">&#x1F996;</span><span>Denver Museum</span></a><a class="photo-link" href="images/union_station_denver_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/union_station_denver_01.jpg');"><span class="photo-emoji">&#x1F682;</span><span>Union Station</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Red Rocks Amphitheatre" href="images/red_rocks_amphitheatre_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/red_rocks_amphitheatre_02.jpg');"><span class="photo-emoji">&#x1F3B8;</span><span>Red Rocks Amphitheatre</span></a><a class="photo-link" role="img" aria-label="Denver Museum" href="images/denver_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/denver_02.jpg');"><span class="photo-emoji">&#x1F996;</span><span>Denver Museum</span></a><a class="photo-link" role="img" aria-label="Union Station" href="images/union_station_denver_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/union_station_denver_01.jpg');"><span class="photo-emoji">&#x1F682;</span><span>Union Station</span></a></div>
                 </div></div>
             </div>
 
@@ -602,7 +607,7 @@
                     <div class="day-info"><h4>Rocky Mountain NP</h4><p>&#x26F0;&#xFE0F; <strong>Trail Ridge Road:</strong> Highest continuous paved road in North America &mdash; 12,183 ft!</p><p>&#x1F3AB; <strong>Timed Entry:</strong> Reserve at <a class="spot-link" href="https://www.recreation.gov/timed-entry/10086910" target="_blank" rel="noopener">recreation.gov</a></p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.windingriverresort.com/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Winding River Resort, Grand Lake (single night, full hookups)</a>
                     <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;">Note: Timber Creek Campground (RMNP west) is closed for sewer rehab through 2027</p>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/trail_ridge_tundra.jpg" target="_blank" rel="noopener" style="background-image:url('images/trail_ridge_tundra.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Trail Ridge Tundra</span></a><a class="photo-link" href="images/dream_lake_romo.jpg" target="_blank" rel="noopener" style="background-image:url('images/dream_lake_romo.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Dream Lake</span></a><a class="photo-link" href="images/alpine_visitor_center_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/alpine_visitor_center_01.jpg');"><span class="photo-emoji">&#x26F0;&#xFE0F;</span><span>Alpine Visitor Center</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Trail Ridge Tundra" href="images/trail_ridge_tundra.jpg" target="_blank" rel="noopener" style="background-image:url('images/trail_ridge_tundra.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Trail Ridge Tundra</span></a><a class="photo-link" role="img" aria-label="Dream Lake" href="images/dream_lake_romo.jpg" target="_blank" rel="noopener" style="background-image:url('images/dream_lake_romo.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Dream Lake</span></a><a class="photo-link" role="img" aria-label="Alpine Visitor Center" href="images/alpine_visitor_center_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/alpine_visitor_center_01.jpg');"><span class="photo-emoji">&#x26F0;&#xFE0F;</span><span>Alpine Visitor Center</span></a></div>
                 </div></div>
             </div>
 
@@ -624,7 +629,7 @@
                     </div>
                     <div class="day-info"><h4>Road Trip Tips</h4><p>&#x1F3B5; Download playlists/audiobooks before leaving &mdash; Wyoming has spotty service</p><p>&#x26FD; Fill up in Rawlins and Rock Springs</p><p>&#x1F3AE; Travel games, audiobooks, car bingo for the kids</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.gtlc.com/camping" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Colter Bay RV Park, Grand Teton NP &mdash; full hookups</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/snake_river_overlook.jpg" target="_blank" rel="noopener" style="background-image:url('images/snake_river_overlook.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Teton Range First View</span></a><a class="photo-link" href="images/longs_peak_romo.jpg" target="_blank" rel="noopener" style="background-image:url('images/longs_peak_romo.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Wyoming Mountains</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Teton Range First View" href="images/snake_river_overlook.jpg" target="_blank" rel="noopener" style="background-image:url('images/snake_river_overlook.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>Teton Range First View</span></a><a class="photo-link" role="img" aria-label="Wyoming Mountains" href="images/longs_peak_romo.jpg" target="_blank" rel="noopener" style="background-image:url('images/longs_peak_romo.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Wyoming Mountains</span></a></div>
                 </div></div>
             </div>
 
@@ -642,7 +647,7 @@
                     </div>
                     <div class="day-info"><h4>Must-See</h4><p>&#x1F98C; Wildlife: Moose, elk, bald eagles, bears</p><p>&#x1F4F8; Photo ops: Schwabacher, Mormon Row, Snake River Overlook</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.gtlc.com/camping" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Colter Bay RV Park (Night 2)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/jenny_lake_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/jenny_lake_01.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Jenny Lake</span></a><a class="photo-link" href="images/mormon_row_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mormon_row_01.jpg');"><span class="photo-emoji">&#x1F3DA;&#xFE0F;</span><span>Mormon Row Barns</span></a><a class="photo-link" href="images/oxbow_bend_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/oxbow_bend_01.jpg');"><span class="photo-emoji">&#x1F98C;</span><span>Oxbow Bend Moose</span></a><a class="photo-link" href="images/schwabacher_landing.jpg" target="_blank" rel="noopener" style="background-image:url('images/schwabacher_landing.jpg');"><span class="photo-emoji">&#x1F4F8;</span><span>Schwabacher Landing</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Jenny Lake" href="images/jenny_lake_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/jenny_lake_01.jpg');"><span class="photo-emoji">&#x1F30A;</span><span>Jenny Lake</span></a><a class="photo-link" role="img" aria-label="Mormon Row Barns" href="images/mormon_row_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mormon_row_01.jpg');"><span class="photo-emoji">&#x1F3DA;&#xFE0F;</span><span>Mormon Row Barns</span></a><a class="photo-link" role="img" aria-label="Oxbow Bend Moose" href="images/oxbow_bend_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/oxbow_bend_01.jpg');"><span class="photo-emoji">&#x1F98C;</span><span>Oxbow Bend Moose</span></a><a class="photo-link" role="img" aria-label="Schwabacher Landing" href="images/schwabacher_landing.jpg" target="_blank" rel="noopener" style="background-image:url('images/schwabacher_landing.jpg');"><span class="photo-emoji">&#x1F4F8;</span><span>Schwabacher Landing</span></a></div>
                 </div></div>
             </div>
 
@@ -664,7 +669,7 @@
                     </div>
                     <div class="day-info"><h4>Home Base for 4 Nights!</h4><p>&#x1F3D5;&#xFE0F; <strong>Fishing Bridge RV Park</strong> is the only full-hookup RV park inside Yellowstone &mdash; central location, showers, laundry, dump station, RV store across the street</p><p>&#x1F9CA; Stock the fridge &mdash; dining options inside the park are limited and pricey</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park &mdash; full hookups (Night 1 of 4)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/grand_canyon_yellowstone_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_01.jpg');"><span class="photo-emoji">&#x1F30B;</span><span>Yellowstone Canyon</span></a><a class="photo-link" href="images/lamar_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Yellowstone Wilds</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Yellowstone Canyon" href="images/grand_canyon_yellowstone_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_01.jpg');"><span class="photo-emoji">&#x1F30B;</span><span>Yellowstone Canyon</span></a><a class="photo-link" role="img" aria-label="Yellowstone Wilds" href="images/lamar_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Yellowstone Wilds</span></a></div>
                 </div></div>
             </div>
 
@@ -682,7 +687,7 @@
                     </div>
                     <div class="day-info"><h4>Yellowstone Fun Facts</h4><p>&#x1F30B; Yellowstone sits on a <strong>supervolcano</strong></p><p>&#x1F4A8; Old Faithful erupts ~17 times per day</p><p>&#x1F308; Grand Prismatic is 370 ft wide &mdash; the largest hot spring in the US</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park (Night 2 of 4)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/old_faithful_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/old_faithful_01.jpg');"><span class="photo-emoji">&#x1F4A8;</span><span>Old Faithful</span></a><a class="photo-link" href="images/grand_prismatic_spring_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_01.jpg');"><span class="photo-emoji">&#x1F308;</span><span>Grand Prismatic</span></a><a class="photo-link" href="images/grand_prismatic_spring_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_02.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Morning Glory Pool</span></a><a class="photo-link" href="images/mammoth_hot_springs_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_01.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Mammoth Terraces</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Old Faithful" href="images/old_faithful_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/old_faithful_01.jpg');"><span class="photo-emoji">&#x1F4A8;</span><span>Old Faithful</span></a><a class="photo-link" role="img" aria-label="Grand Prismatic" href="images/grand_prismatic_spring_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_01.jpg');"><span class="photo-emoji">&#x1F308;</span><span>Grand Prismatic</span></a><a class="photo-link" role="img" aria-label="Morning Glory Pool" href="images/grand_prismatic_spring_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_prismatic_spring_02.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Morning Glory Pool</span></a><a class="photo-link" role="img" aria-label="Mammoth Terraces" href="images/mammoth_hot_springs_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_01.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Mammoth Terraces</span></a></div>
                 </div></div>
             </div>
 
@@ -700,7 +705,7 @@
                     </div>
                     <div class="day-info"><h4>Kid-Favorite Day</h4><p>&#x1F4CF; <strong>Lower Falls:</strong> 308 feet &mdash; twice the height of Niagara</p><p>&#x1F403; Hayden Valley has the densest bison concentration in the park</p><p>&#x26A0;&#xFE0F; Safety: Stay 25 yards from bison, 100 yards from bears/wolves</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park (Night 3 of 4)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/grand_canyon_yellowstone_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_01.jpg');"><span class="photo-emoji">&#x1F4A7;</span><span>Lower Falls</span></a><a class="photo-link" href="images/grand_canyon_yellowstone_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_02.jpg');"><span class="photo-emoji">&#x1F5FB;</span><span>Artist Point</span></a><a class="photo-link" href="images/hayden_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/hayden_valley_01.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Hayden Valley Bison</span></a><a class="photo-link" href="images/lower_yellowstone_falls_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lower_yellowstone_falls_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Yellowstone Canyon</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Lower Falls" href="images/grand_canyon_yellowstone_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_01.jpg');"><span class="photo-emoji">&#x1F4A7;</span><span>Lower Falls</span></a><a class="photo-link" role="img" aria-label="Artist Point" href="images/grand_canyon_yellowstone_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/grand_canyon_yellowstone_02.jpg');"><span class="photo-emoji">&#x1F5FB;</span><span>Artist Point</span></a><a class="photo-link" role="img" aria-label="Hayden Valley Bison" href="images/hayden_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/hayden_valley_01.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Hayden Valley Bison</span></a><a class="photo-link" role="img" aria-label="Yellowstone Canyon" href="images/lower_yellowstone_falls_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lower_yellowstone_falls_01.jpg');"><span class="photo-emoji">&#x1F305;</span><span>Yellowstone Canyon</span></a></div>
                 </div></div>
             </div>
 
@@ -718,7 +723,7 @@
                     </div>
                     <div class="day-info"><h4>Wildlife Gold Day</h4><p>&#x1F43A; Lamar Valley at dawn is your best wolf-sighting chance in the Lower 48</p><p>&#x1F52D; A cheap spotting scope or good binoculars makes this day 10x better</p><p>&#x1F3D4;&#xFE0F; Mammoth terraces look like a geothermal wedding cake &mdash; unique in the world</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.yellowstonenationalparklodges.com/stay/camping/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Fishing Bridge RV Park (Night 4 of 4, final night!)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/lamar_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_01.jpg');"><span class="photo-emoji">&#x1F43A;</span><span>Lamar Valley</span></a><a class="photo-link" href="images/lamar_valley_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_02.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Bison Herds</span></a><a class="photo-link" href="images/mammoth_hot_springs_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_01.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Mammoth Terraces</span></a><a class="photo-link" href="images/mammoth_hot_springs_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_02.jpg');"><span class="photo-emoji">&#x1F54D;</span><span>Travertine</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Lamar Valley" href="images/lamar_valley_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_01.jpg');"><span class="photo-emoji">&#x1F43A;</span><span>Lamar Valley</span></a><a class="photo-link" role="img" aria-label="Bison Herds" href="images/lamar_valley_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/lamar_valley_02.jpg');"><span class="photo-emoji">&#x1F403;</span><span>Bison Herds</span></a><a class="photo-link" role="img" aria-label="Mammoth Terraces" href="images/mammoth_hot_springs_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_01.jpg');"><span class="photo-emoji">&#x2668;&#xFE0F;</span><span>Mammoth Terraces</span></a><a class="photo-link" role="img" aria-label="Travertine" href="images/mammoth_hot_springs_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/mammoth_hot_springs_02.jpg');"><span class="photo-emoji">&#x1F54D;</span><span>Travertine</span></a></div>
                 </div></div>
             </div>
 
@@ -740,7 +745,7 @@
                     </div>
                     <div class="day-info"><h4>Cody Highlights</h4><p>&#x1F3B7; <strong>Buffalo Bill Center</strong> is often rated one of the best museums in the American West &mdash; budget 3-4 hours minimum</p><p>&#x1F434; <strong>Cody Nite Rodeo:</strong> An authentic Western experience, kids under 12 often half price</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://www.codyponderosa.com/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Ponderosa Campground, Cody WY (single night)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/cody_wy_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_01.jpg');"><span class="photo-emoji">&#x1F3C7;</span><span>Cody, WY</span></a><a class="photo-link" href="images/cody_wy_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_02.jpg');"><span class="photo-emoji">&#x1F3DB;&#xFE0F;</span><span>Buffalo Bill Center</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Cody, WY" href="images/cody_wy_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_01.jpg');"><span class="photo-emoji">&#x1F3C7;</span><span>Cody, WY</span></a><a class="photo-link" role="img" aria-label="Buffalo Bill Center" href="images/cody_wy_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/cody_wy_02.jpg');"><span class="photo-emoji">&#x1F3DB;&#xFE0F;</span><span>Buffalo Bill Center</span></a></div>
                 </div></div>
             </div>
 
@@ -762,7 +767,7 @@
                     </div>
                     <div class="day-info"><h4>Thermopolis Magic</h4><p>&#x1F54D; The <strong>State Bath House</strong> maintains a 104&deg;F pool open to everyone for free &mdash; it&rsquo;s written into the 1896 treaty with the Shoshone and Arapaho that bought the springs</p><p>&#x1F9A3; The state park even has a small wild bison herd to spot</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://wyoparks.wyo.gov/index.php/places-to-go/sinks-canyon" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Sinks Canyon State Park Campground, Lander WY (single night)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/thermopolis_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_01.jpg');"><span class="photo-emoji">&#x1F54D;</span><span>Hot Springs State Park</span></a><a class="photo-link" href="images/thermopolis_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_02.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Thermopolis</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Hot Springs State Park" href="images/thermopolis_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_01.jpg');"><span class="photo-emoji">&#x1F54D;</span><span>Hot Springs State Park</span></a><a class="photo-link" role="img" aria-label="Thermopolis" href="images/thermopolis_02.jpg" target="_blank" rel="noopener" style="background-image:url('images/thermopolis_02.jpg');"><span class="photo-emoji">&#x1F304;</span><span>Thermopolis</span></a></div>
                 </div></div>
             </div>
 
@@ -805,7 +810,7 @@
                     </div>
                     <div class="day-info"><h4>Welcome to the East Side</h4><p>&#x1F43B; <strong>Elk are everywhere</strong> in Estes Park &mdash; they literally walk down main street in summer evenings</p><p>&#x1F3EC; Stay the iconic <a class="spot-link" href="https://www.stanleyhotel.com/" target="_blank" rel="noopener">Stanley Hotel</a> (from The Shining) is a fun drive-by or lunch stop</p><p><strong>Where we stay:</strong></p><a class="stay-badge camp" href="https://koa.com/campgrounds/estes-park/" target="_blank" rel="noopener">&#x1F3D5;&#xFE0F; Estes Park KOA Holiday &mdash; full hookups (Night 1 of 2)</a>
                     </div>
-                <div class="photo-strip"><a class="photo-link" href="images/estes_park_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/estes_park_01.jpg');"><span class="photo-emoji">&#x1F3D8;&#xFE0F;</span><span>Estes Park Town</span></a><a class="photo-link" href="images/bear_lake_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/bear_lake_01.jpg');"><span class="photo-emoji">&#x1F3DE;&#xFE0F;</span><span>Bear Lake</span></a><a class="photo-link" href="images/rocky_mountain_np_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/rocky_mountain_np_01.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>RMNP East Side</span></a></div>
+                <div class="photo-strip"><a class="photo-link" role="img" aria-label="Estes Park Town" href="images/estes_park_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/estes_park_01.jpg');"><span class="photo-emoji">&#x1F3D8;&#xFE0F;</span><span>Estes Park Town</span></a><a class="photo-link" role="img" aria-label="Bear Lake" href="images/bear_lake_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/bear_lake_01.jpg');"><span class="photo-emoji">&#x1F3DE;&#xFE0F;</span><span>Bear Lake</span></a><a class="photo-link" role="img" aria-label="RMNP East Side" href="images/rocky_mountain_np_01.jpg" target="_blank" rel="noopener" style="background-image:url('images/rocky_mountain_np_01.jpg');"><span class="photo-emoji">&#x1F3D4;&#xFE0F;</span><span>RMNP East Side</span></a></div>
                 </div></div>
             </div>
 
@@ -948,42 +953,42 @@
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;" class="fade-in">
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_exterior_01.jpg" alt="Cruise America C-25 exterior" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_exterior_01.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_exterior_01.jpg" alt="Cruise America C-25 exterior" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Exterior &mdash; Side View</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">The Cruise America C-25 with the recognizable branding. Ford E-350 chassis, 25 ft total.</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_exterior_04.jpg" alt="Cruise America RV on the open road" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_exterior_04.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_exterior_04.jpg" alt="Cruise America RV on the open road" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">On the Open Road</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">A Cruise America RV rolling through South Dakota. That back graphic might look familiar from our route!</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_exterior_02.jpg" alt="Cruise America RV front view" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_exterior_02.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_exterior_02.jpg" alt="Cruise America RV front view" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Front View &mdash; Cab Area</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Ford E-350 cab with the over-cab sleeping area (the bump on top &mdash; that's where Mom &amp; Dad sleep!).</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_exterior_03.jpg" alt="Cruise America RV rear view" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_exterior_03.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_exterior_03.jpg" alt="Cruise America RV rear view" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Rear View</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">The back of the C-25 showing the entry door, rear window, and bumper step.</span></div>
         </div>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem;" class="fade-in">
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_interior_kitchen.jpg" alt="RV kitchen and dinette area" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_interior_kitchen.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_interior_kitchen.jpg" alt="RV kitchen and dinette area" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Kitchen &amp; Dinette &mdash; Daytime</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Stove, sink, fridge on the left. Dinette table on the right &mdash; this is where you eat, play cards, and plan the next day's hikes.</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_interior_dinette.jpg" alt="RV interior looking forward from dinette" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_interior_dinette.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_interior_dinette.jpg" alt="RV interior looking forward from dinette" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Interior View &mdash; Forward</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Looking toward the cab from the dinette. You can see the over-cab sleeping loft above the driver&rsquo;s seats.</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_interior_rear_view.jpg" alt="RV interior looking forward from rear" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_interior_rear_view.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_interior_rear_view.jpg" alt="RV interior looking forward from rear" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Full Interior &mdash; Rear View</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Standing at the back, looking forward through the whole living space: bathroom door on left, kitchen, dinette, then cab.</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_overcab_bed.jpg" alt="Over-cab sleeping area in motorhome" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_overcab_bed.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_overcab_bed.jpg" alt="Over-cab sleeping area in motorhome" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Over-Cab Bed &mdash; Nighttime</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">The cozy sleeping loft above the cab. Queen-size mattress for the parents. The kids sleep on the converted dinette below.</span></div>
         </div>
         <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-            <img src="images/rv_interior_living.jpg" alt="RV living area" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;">
+            <a href="images/rv_interior_living.jpg" target="_blank" rel="noopener" title="Click to view full size"><img src="images/rv_interior_living.jpg" alt="RV living area" loading="lazy" style="width:100%;height:280px;object-fit:cover;display:block;cursor:zoom-in;"></a>
             <div style="padding:0.8rem;background:rgba(255,255,255,0.05);"><strong style="color:var(--sunset-gold);">Living Area Detail</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Storage cabinets, overhead lighting, and the general living space. Everything you need in 25 feet.</span></div>
         </div>
     </div>
@@ -1493,7 +1498,7 @@ function toggleDay(card, e){e = e || window.event; if(e && e.target && e.target.
 document.querySelectorAll('.map-pin').forEach(pin=>{pin.addEventListener('mouseenter',e=>{const tt=document.getElementById('mapTooltip');document.getElementById('tooltipName').textContent=pin.dataset.name;document.getElementById('tooltipInfo').textContent=pin.dataset.info;const r=pin.getBoundingClientRect();const mr=pin.closest('.route-map-container').getBoundingClientRect();tt.style.left=(r.left-mr.left+20)+'px';tt.style.top=(r.top-mr.top-60)+'px';tt.classList.add('show');});pin.addEventListener('mouseleave',()=>{document.getElementById('mapTooltip').classList.remove('show');});});
 
 // Countdown
-function updateCountdown(){const target=new Date('2027-06-11T15:00:00-04:00');const now=new Date();const diff=target-now;if(diff<=0){document.getElementById('cd-days').textContent='\u{1F389}';document.getElementById('cd-hours').textContent="IT'S";document.getElementById('cd-mins').textContent='TIME';document.getElementById('cd-secs').textContent='!!!';return;}document.getElementById('cd-days').textContent=Math.floor(diff/(1000*60*60*24));document.getElementById('cd-hours').textContent=Math.floor((diff%(1000*60*60*24))/(1000*60*60));document.getElementById('cd-mins').textContent=Math.floor((diff%(1000*60*60))/(1000*60));document.getElementById('cd-secs').textContent=Math.floor((diff%(1000*60))/1000);}
+function updateCountdown(){const target=new Date('2027-06-11T15:00:00-04:00');const tripEnd=new Date('2027-06-26T20:00:00-04:00');const now=new Date();if(now>tripEnd){document.getElementById('cd-days').textContent='\u{1F3C6}';document.getElementById('cd-hours').textContent='TRIP';document.getElementById('cd-mins').textContent='DONE';document.getElementById('cd-secs').textContent='\u{2764}';return;}const diff=target-now;if(diff<=0){document.getElementById('cd-days').textContent='\u{1F389}';document.getElementById('cd-hours').textContent="IT'S";document.getElementById('cd-mins').textContent='GO';document.getElementById('cd-secs').textContent='TIME';return;}document.getElementById('cd-days').textContent=Math.floor(diff/(1000*60*60*24));document.getElementById('cd-hours').textContent=Math.floor((diff%(1000*60*60*24))/(1000*60*60));document.getElementById('cd-mins').textContent=Math.floor((diff%(1000*60*60))/(1000*60));document.getElementById('cd-secs').textContent=Math.floor((diff%(1000*60))/1000);}
 updateCountdown();setInterval(updateCountdown,1000);
 
 // Quiz
@@ -1504,7 +1509,7 @@ const quizData=[
 {q:"What's special about Thermopolis Hot Springs?",options:["It's ice cold","It's the world's largest mineral hot springs","It's underwater","It's fake"],correct:1},
 {q:"Yellowstone sits on top of a...",options:["Glacier","Gold mine","Supervolcano","Underground lake"],correct:2},
 {q:"What is the tallest peak in Grand Teton NP?",options:["Mount Everest","Grand Teton at 13,775 ft","Pikes Peak","Mount Rainier"],correct:1},
-{q:"What lake has the famous 0.8 mi loop on RMNP's east side?",options:["Jenny Lake","Bear Lake","Lake Powell","Yellowstone Lake"],correct:1},
+{q:"What lake has the easy paved loop trail on RMNP's east side?",options:["Jenny Lake","Bear Lake","Lake Powell","Yellowstone Lake"],correct:1},
 {q:"What movie was filmed at Goblin Valley State Park?",options:["Star Wars","Galaxy Quest","Mad Max","Dune"],correct:1},
 {q:"How tall is Yellowstone's Lower Falls?",options:["100 feet","308 feet \u2014 twice Niagara!","500 feet","50 feet"],correct:1},
 {q:"What animal might you see at Oxbow Bend in Grand Teton?",options:["Penguins","Moose","Flamingos","Polar bears"],correct:1},
@@ -2038,6 +2043,49 @@ document.addEventListener('click', function(e) {
         });
     }, 50);
 });
+
+
+
+// ==========================================
+// PACKING LIST PERSISTENCE
+// ==========================================
+const PACKING_KEY = 'colburn_packing_v1';
+
+function getPackingState() {
+    try { return JSON.parse(localStorage.getItem(PACKING_KEY)) || {}; } catch(e) { return {}; }
+}
+
+function savePackingState(state) {
+    try { localStorage.setItem(PACKING_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function initPackingList() {
+    const state = getPackingState();
+    const items = document.querySelectorAll('.pack-item');
+    items.forEach((item, i) => {
+        // Remove old inline onclick
+        item.removeAttribute('onclick');
+        // Restore saved state
+        if (state[i]) item.classList.add('checked');
+        // Add click handler with persistence
+        item.addEventListener('click', function() {
+            this.classList.toggle('checked');
+            const newState = getPackingState();
+            newState[i] = this.classList.contains('checked');
+            savePackingState(newState);
+        });
+    });
+}
+
+// Initialize when packing tab is opened
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.nav-btn');
+    if (btn && btn.dataset.tab === 'packing') {
+        setTimeout(initPackingList, 50);
+    }
+});
+// Also init if packing tab is already visible on load
+if (document.querySelector('#tab-packing.active')) initPackingList();
 
 
 </script>
