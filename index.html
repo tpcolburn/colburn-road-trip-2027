@@ -126,7 +126,7 @@
         .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--purple), var(--sky-blue), var(--sage-green), var(--sunset-gold), var(--canyon-red), var(--desert-orange)); }
         .day-card { position: relative; background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; margin-bottom: 1.5rem; overflow: hidden; transition: all 0.3s; cursor: pointer; }
         .day-card::before { content: ''; position: absolute; left: -2.35rem; top: 1.5rem; width: 16px; height: 16px; background: var(--sunset-gold); border-radius: 50%; border: 3px solid var(--dark); z-index: 2; }
-        .day-card:hover { border-color: var(--desert-orange); box-shadow: 0 5px 25px rgba(232,117,26,0.15); }
+        .day-card:hover { border-color: var(--desert-orange); box-shadow: 0 8px 30px rgba(232,117,26,0.18); transform: translateY(-3px); }
         .day-header { display: flex; align-items: center; padding: 1.2rem 1.5rem; gap: 1rem; flex-wrap: wrap; }
         .day-number { background: linear-gradient(135deg, var(--canyon-red), var(--desert-orange)); color: white; font-weight: 800; font-size: 0.85rem; padding: 0.4rem 0.8rem; border-radius: 20px; white-space: nowrap; }
         .day-number.denver { background: linear-gradient(135deg, var(--purple), #8B5CF6); }
@@ -138,7 +138,7 @@
         .day-details { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
         .day-card.expanded .day-details { max-height: 5000px; }
         .day-body { padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .day-activities, .day-info { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1rem; }
+        .day-activities, .day-info { background: rgba(0,0,0,0.2); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 12px; padding: 1rem; }
         .day-activities h4, .day-info h4 { color: var(--sunset-gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
         .day-activities ul { list-style: none; padding: 0; }
         .day-activities li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem; }
@@ -382,8 +382,8 @@
         .segment-header .seg-title { font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 1px; color: var(--sunset-gold); }
         .segment-header .seg-days { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: auto; }
         .explore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.8rem; }
-        .explore-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; }
-        .explore-card:hover { border-color: rgba(245,166,35,0.3); background: rgba(255,255,255,0.06); }
+        .explore-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+        .explore-card:hover { border-color: rgba(245,166,35,0.3); background: rgba(255,255,255,0.09); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
         .explore-card-top { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.4rem; }
         .explore-card-top .card-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
         .explore-card-top .card-name { font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
@@ -2741,7 +2741,15 @@ function awardStamp(parkId, idx) {
     setTimeout(() => { renderPassportHome(); openParkDetail(parkId); }, 2300);
 }
 
+function playStampSound() {
+    try {
+        const a = new Audio('data:audio/wav;base64,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');
+        a.volume = 0.4;
+        a.play();
+    } catch(e) {}
+}
 function showStampEarnedAnimation(parkId, idx) {
+    playStampSound();
     const park = passportParks.find(p => p.id === parkId);
     const icons = ['📜','🧩','🔍'];
     const titles = ['Trivia Master!','Memory Pro!','Eagle Eye!'];
