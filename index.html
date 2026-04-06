@@ -374,6 +374,35 @@
 
         @media (max-width: 640px) { .booking-details { grid-template-columns: 1fr; } .phase-when { display: none; } }
 
+
+        /* ===== EXPLORE TAB ===== */
+        .explore-segment { margin-bottom: 2.5rem; }
+        .segment-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; padding: 0.8rem 1.2rem; border-radius: 12px; background: linear-gradient(90deg, rgba(245,166,35,0.15), rgba(245,166,35,0.03)); border-left: 4px solid var(--sunset-gold); flex-wrap: wrap; }
+        .segment-header .seg-icon { font-size: 1.6rem; }
+        .segment-header .seg-title { font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 1px; color: var(--sunset-gold); }
+        .segment-header .seg-days { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: auto; }
+        .explore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.8rem; }
+        .explore-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.2rem; transition: border-color 0.2s, background 0.2s; display: flex; flex-direction: column; }
+        .explore-card:hover { border-color: rgba(245,166,35,0.3); background: rgba(255,255,255,0.06); }
+        .explore-card-top { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.4rem; }
+        .explore-card-top .card-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .explore-card-top .card-name { font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
+        .explore-card-top .card-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 8px; white-space: nowrap; margin-left: auto; flex-shrink: 0; }
+        .type-food { background: rgba(232,117,26,0.2); color: var(--desert-orange); }
+        .type-activity { background: rgba(91,140,90,0.2); color: var(--sage-green); }
+        .type-nature { background: rgba(59,130,246,0.2); color: var(--sky-blue); }
+        .type-history { background: rgba(108,63,197,0.2); color: var(--purple); }
+        .type-quirky { background: rgba(245,166,35,0.2); color: var(--sunset-gold); }
+        .type-free { background: rgba(91,140,90,0.15); color: var(--sage-green); }
+        .explore-desc { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; flex: 1; }
+        .explore-meta { display: flex; gap: 0.6rem; margin-top: 0.5rem; flex-wrap: wrap; }
+        .explore-tag { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 6px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+        .explore-filter-bar { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: center; }
+        .filter-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); padding: 0.35rem 0.8rem; border-radius: 16px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover, .filter-btn.active { border-color: var(--sunset-gold); color: var(--sunset-gold); background: rgba(245,166,35,0.1); }
+
+        @media (max-width: 640px) { .explore-grid { grid-template-columns: 1fr; } }
+
         .tab-content { display: none; }
         .tab-content.active { display: block; }
     </style>
@@ -401,6 +430,7 @@
     <button class="nav-btn" data-tab="rv">Our RV</button>
     <button class="nav-btn" data-tab="budget">Budget</button>
     <button class="nav-btn" data-tab="booking">&#x1F4C5; Booking Timeline</button>
+    <button class="nav-btn" data-tab="explore">&#x1F30E; Explore</button>
     <button class="nav-btn" data-tab="packing">Packing List</button>
     <button class="nav-btn" data-tab="quiz">Fun Facts Quiz</button>
     <button class="nav-btn" data-tab="passport">&#x1F3D5;&#xFE0F; Passport Game</button>
@@ -1383,6 +1413,755 @@
 </div>
 </div>
 
+<!-- EXPLORE -->
+<div class="tab-content" id="tab-explore">
+<div class="section">
+    <h2 class="section-title">EXPLORE ALONG THE WAY</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.5);margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto;">Activities, attractions, landmarks, and restaurants to consider at each stop. Not everything on here is a must-do &mdash; pick and choose based on energy levels, weather, and what sounds fun that day.</p>
+
+    <div class="explore-filter-bar" id="exploreFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="food">&#x1F354; Food</button>
+        <button class="filter-btn" data-filter="activity">&#x1F3AF; Activities</button>
+        <button class="filter-btn" data-filter="nature">&#x1F332; Nature</button>
+        <button class="filter-btn" data-filter="history">&#x1F3DB;&#xFE0F; History</button>
+        <button class="filter-btn" data-filter="quirky">&#x2728; Quirky</button>
+        <button class="filter-btn" data-filter="free">&#x1F4B0; Free</button>
+    </div>
+
+    <div class="explore-timeline" id="exploreTimeline">
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F3D9;&#xFE0F;</span>
+                <span class="seg-title">Denver</span>
+                <span class="seg-days">Days 1&ndash;3</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F420;</span>
+                    <span class="card-name">Downtown Denver Aquarium</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Interactive marine exhibits with touch pools, sea otters, jellyfish, and shark feeding shows. Great rainy-day option.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Book online</span><span class="explore-tag">Ages 3+</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F682;</span>
+                    <span class="card-name">Colorado Railroad Museum (Golden)</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">Historic narrow-gauge train rides through scenic mountain terrain. Explore vintage train cars and take a ride.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">25 min from Denver</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F996;</span>
+                    <span class="card-name">Denver Museum of Nature &amp; Science</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">OMNIMAX theater, world-class dinosaur collection, planetarium shows. Plan 3+ hours.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Book OMNIMAX ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DE;&#xFE0F;</span>
+                    <span class="card-name">Washington Park</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">155-acre urban park with playgrounds, boating lake, walking trails. Paddle boats available for rent.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F3D4;&#xFE0F;</span>
+                <span class="seg-title">Estes Park, RMNP &amp; Grand Lake</span>
+                <span class="seg-days">Day 4</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3CE;&#xFE0F;</span>
+                    <span class="card-name">Fun City (Estes Park)</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Bumper boats, go-karts, mini golf, bungee trampolines. Kids ages 9-12 love the racing.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F6A1;</span>
+                    <span class="card-name">Estes Park Aerial Tramway</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">600-ft elevation ride with panoramic alpine views. Runs late May through early September.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="quirky">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F36C;</span>
+                    <span class="card-name">The Taffy Shop (since 1935)</span>
+                    <span class="card-type type-quirky">Quirky</span>
+                </div>
+                <div class="explore-desc">Homemade saltwater taffy &mdash; watch live taffy-pulling through the window. An Estes Park institution.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Free to watch</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DE;&#xFE0F;</span>
+                    <span class="card-name">Sprague Lake Trail (RMNP)</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">Easy &lt;1 mile loop around a pristine lake. Great chance to spot moose, elk, and muskrats.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Bring binoculars</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F368;</span>
+                    <span class="card-name">The Munchin&rsquo; House</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">40 flavors of homemade ice cream, fudge, and taffy since 1968. Essential post-hike stop.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F6F6;</span>
+                    <span class="card-name">Lake Estes Marina</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Kayaking, paddleboarding, fishing, and pontoon boat rentals on a stunning mountain lake.</div>
+                <div class="explore-meta"><span class="explore-tag">$&ndash;$$</span><span class="explore-tag">Walk-in or book</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F40E;</span>
+                    <span class="card-name">National Park Gateway Stables</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Horseback riding into Rocky Mountain NP. 2-hour to full-day options available.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Book ahead (required)</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F355;</span>
+                    <span class="card-name">Firefly Pizzeria (Grand Lake)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Neapolitan wood-fired pizza in a charming lakeside setting. Open May through October.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F965;</span>
+                    <span class="card-name">One Love (Grand Lake)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Caribbean-inspired: jerk chicken, curry fries, island guacamole. Fun flavors the kids might not try at home.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F6E3;&#xFE0F;</span>
+                <span class="seg-title">I-80 Wyoming &amp; Grand Teton Approach</span>
+                <span class="seg-days">Day 5</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="quirky">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F366;</span>
+                    <span class="card-name">Little America Travel Center (I-80)</span>
+                    <span class="card-type type-quirky">Quirky</span>
+                </div>
+                <div class="explore-desc">Famous for its 75-cent ice cream cones and the giant Sinclair Dinosaur statue outside. A legendary road trip pit stop.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3F0;</span>
+                    <span class="card-name">Fort Bridger State Historic Site</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">Recreated 1843 Oregon Trail trading post with 28 historic buildings and museum. Fur trade history comes alive.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-around</span></div>
+            </div>
+            <div class="explore-card" data-type="quirky">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F332;</span>
+                    <span class="card-name">Tree Rock (I-80 median)</span>
+                    <span class="card-type type-quirky">Quirky</span>
+                </div>
+                <div class="explore-desc">A pine tree growing out of a boulder, discovered by railroad workers in the 1860s. Visible from the highway.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Photo from car</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F6F6;</span>
+                    <span class="card-name">Colter Bay Marina (Grand Teton)</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Canoe/kayak rentals, fishing, scenic lake cruises. Breakfast and dinner cruises available.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Book cruises ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F9AD;</span>
+                    <span class="card-name">Heron Pond &ndash; Swan Lake Loop</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">Easy 3.2-mile flat hike through forest with lake views. Good chance of spotting beavers, herons, and moose.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Start early</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F3DE;&#xFE0F;</span>
+                <span class="seg-title">Grand Teton &amp; Jackson, WY</span>
+                <span class="seg-days">Days 5&ndash;7</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F6A3;</span>
+                    <span class="card-name">Jenny Lake Scenic Boat Tour</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Ranger-guided boat trip with interpretive commentary. Round-trip or one-way with hike option.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-up at dock</span></div>
+            </div>
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F98C;</span>
+                    <span class="card-name">Ranger-Led Programs at Colter Bay</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">Daily programs on geology, wildlife, tipi demonstrations, and Native American culture.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Check schedule</span></div>
+            </div>
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1FAA8;</span>
+                    <span class="card-name">Teton Boulder Park (Jackson)</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">Artificial bouldering wall at Phil Baux Park with varied difficulty. Kids love the climbing challenge.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Walk-up</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F355;</span>
+                    <span class="card-name">Pinky G&rsquo;s Pizzeria (Jackson)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Award-winning New York-style pizza. Voted best pizza in Jackson Hole by locals. Giant slices.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F37D;&#xFE0F;</span>
+                    <span class="card-name">Calico&rsquo;s Restaurant (Jackson)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">American-Italian restaurant with a 1.5-acre play yard. Parents relax while kids safely play within view.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Can get busy</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3A8;</span>
+                    <span class="card-name">National Museum of Wildlife Art</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">World-class wildlife art perched on a bluff overlooking the Elk Refuge. Outdoor sculpture trail + interactive kids&rsquo; section.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Allow 2+ hrs</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F9E9;</span>
+                    <span class="card-name">Jackson Hole Children&rsquo;s Museum</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Hands-on interactive exhibits with toys, games, and crafts. Less crowded than big-city museums.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F30B;</span>
+                <span class="seg-title">Yellowstone National Park</span>
+                <span class="seg-days">Days 7&ndash;10</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F98E;</span>
+                    <span class="card-name">Fishing Bridge Visitor Center</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">Small animal exhibits plus Junior Ranger booklets for the kids. The Ranger talks here are excellent.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">First stop</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F985;</span>
+                    <span class="card-name">Pelican Creek Nature Trail</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">Short loop near Yellowstone Lake with excellent bird spotting. Peaceful early-morning walk.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Dawn best</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F43B;</span>
+                    <span class="card-name">Storm Point Trail</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">NPS says wildlife sighting is &ldquo;guaranteed&rdquo; on this moderate loop. Great for teaching observation skills.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Morning</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F6A2;</span>
+                    <span class="card-name">Lake Yellowstone Scenic Cruise</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">1-hour boat tour on Yellowstone Lake. Reduced pricing for kids 11 and under.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Book at Lake area</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F373;</span>
+                    <span class="card-name">Old Faithful Lodge Cafeteria</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Sandwiches, BBQ, hot dogs, wraps &mdash; casual family dining with views of the geyser basin.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">No reservation</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F36E;</span>
+                    <span class="card-name">Bear Paw Deli (Old Faithful)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Quick sandwiches and ice cream &mdash; grab lunch and eat while watching Old Faithful erupt.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-up</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F969;</span>
+                    <span class="card-name">Old West Dinner Cookout</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Communal rustic picnic dining with cowboy entertainment. Arrives by horse-drawn wagon or horseback.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Reservation required</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F356;</span>
+                    <span class="card-name">Obsidian Dining Room (Snow Lodge)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Upscale casual with wild game &mdash; bison, elk, duck. For adventurous eaters wanting to try local game.</div>
+                <div class="explore-meta"><span class="explore-tag">$$$</span><span class="explore-tag">Dinner reservation</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F366;</span>
+                    <span class="card-name">Terrace Grill (Mammoth)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Breakfast and ice cream with fast counter service. Convenient fuel-up before exploring Mammoth terraces.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F920;</span>
+                <span class="seg-title">Cody, Wyoming</span>
+                <span class="seg-days">Day 11</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DB;&#xFE0F;</span>
+                    <span class="card-name">Buffalo Bill Center of the West</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">5 world-class museums in one &mdash; Wild West, art, Plains Indians, firearms, natural history. Budget 3+ hours.</div>
+                <div class="explore-meta"><span class="explore-tag">$$$</span><span class="explore-tag">Book online</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F434;</span>
+                    <span class="card-name">Cody Nite Rodeo</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Professional nightly rodeo June&ndash;August with humorous announcers and live music. Authentic Western experience.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">At gate or online</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DA;&#xFE0F;</span>
+                    <span class="card-name">Old Trail Town</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">26 historic frontier buildings (1879&ndash;1901) reassembled from across Wyoming. Walk through at your own pace.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Walk-around</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F6F6;</span>
+                    <span class="card-name">Shoshone River Rafting</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Family-friendly scenic float trips through beautiful canyon scenery. Multiple outfitters in town.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Book ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3AF;</span>
+                    <span class="card-name">Sleeping Giant Zip Lines</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Wyoming&rsquo;s longest zip line course. Thrill-seeking kids ages 9+ love this.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Book ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F56F;&#xFE0F;</span>
+                    <span class="card-name">Heart Mountain WWII Interpretive Center</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">The story of 14,000 Japanese Americans interned during WWII. Important, well-presented, respectful.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">1&ndash;2 hrs</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F356;</span>
+                    <span class="card-name">Bubba&rsquo;s Bar-B-Que</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Hickory-smoked brisket, corn on the cob, baked beans. Breakfast through dinner. Authentic BBQ.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F9C6;</span>
+                    <span class="card-name">Sitti&rsquo;s Table</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Lebanese family-owned, James Beard nominated, featured on Diners, Drive-Ins &amp; Dives. Exceptional quality.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Reservations</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3B6;</span>
+                    <span class="card-name">Cody Cattle Company</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Unlimited BBQ dinner theater with live country-western music. All-you-can-eat appeals to hungry kids.</div>
+                <div class="explore-meta"><span class="explore-tag">$$$</span><span class="explore-tag">Reservation required</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F54D;</span>
+                <span class="seg-title">Thermopolis &amp; Lander, WY</span>
+                <span class="seg-days">Day 12</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F5FF;</span>
+                    <span class="card-name">Legend Rock Petroglyph Site</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">400-meter cliff with 92+ prehistoric petroglyph panels (300+ figures). Ancient mystery kids love.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Bring water</span></div>
+            </div>
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F54D;</span>
+                    <span class="card-name">Hot Springs State Park</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">Free State Bath House (104&deg;F therapeutic water), playground, 6.2 miles of trails, suspension footbridge.</div>
+                <div class="explore-meta"><span class="explore-tag">Free bath house</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3CA;</span>
+                    <span class="card-name">Star Plunge Water Park</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Waterslides, varying temperature pools, and splash zones fed by natural hot springs.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Day pass</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F9B4;</span>
+                    <span class="card-name">Wyoming Dinosaur Center</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Named &ldquo;World&rsquo;s Coolest Places for Kids&rdquo; by TIME. Working dig sites you can actually participate in.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Book dig ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DC;&#xFE0F;</span>
+                    <span class="card-name">Wind River Canyon Scenic Byway</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">Stunning canyon between Thermopolis and Lander. Multiple pulloffs with geological formations spanning 2.7 billion years.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Scenic drive</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F30A;</span>
+                    <span class="card-name">Sinks Canyon State Park</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">The Popo Agie River literally disappears underground and emerges 0.25 miles downstream. Geology mystery for kids.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="quirky">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3ED;</span>
+                    <span class="card-name">Eagle Bronze Foundry Tours (Lander)</span>
+                    <span class="card-type type-quirky">Quirky</span>
+                </div>
+                <div class="explore-desc">Watch artisans create bronze statues from molten metal. Family-owned, $5/person.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Call ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F354;</span>
+                    <span class="card-name">Cowfish (Lander)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Never-frozen half-pound burgers, hand-tossed pizza, garden deck with kid play area in summer.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Busy; reserve</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F950;</span>
+                    <span class="card-name">The Middle Fork (Lander)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Locally-sourced breakfast, scratch pastries, legendary cinnamon rolls. Perfect morning fuel.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Morning best</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F35D;</span>
+                    <span class="card-name">Mulino (Lander)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Casual fine dining with house-made pasta and kids menu. Family-owned, relaxed atmosphere.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Dinner reserve</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F920;</span>
+                <span class="seg-title">Cheyenne &amp; Laramie, WY</span>
+                <span class="seg-days">Day 13</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1FAA8;</span>
+                    <span class="card-name">Vedauwoo Recreation Area (near Laramie)</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">Spectacular granite rock formations &mdash; kids love scrambling and climbing on the boulders. No entrance fee.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">1&ndash;2 hrs</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DB;&#xFE0F;</span>
+                    <span class="card-name">Wyoming Territorial Prison (Laramie)</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">Wild West outlaw history &mdash; Butch Cassidy was imprisoned here. Kids fascinated by the &ldquo;jail&rdquo; experience.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">1&ndash;2 hrs</span></div>
+            </div>
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F9A5;</span>
+                    <span class="card-name">UW Geological Museum (Laramie)</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">Meet &ldquo;Big Al&rdquo; the Allosaurus. Free admission. Planetarium shows available for a small fee.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">1&ndash;2 hrs</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F9C7;</span>
+                    <span class="card-name">Luxury Diner (Cheyenne)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">A 1926 trolley car converted to a diner. Everything scratch-made. Famous apple pie.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F969;</span>
+                    <span class="card-name">Wyoming&rsquo;s Rib &amp; Chop House</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Award-winning ribs with a dedicated kids menu. Casual Western atmosphere.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Walk-in or reserve</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F403;</span>
+                    <span class="card-name">Terry Bison Ranch</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Train tours through a bison herd, pony rides, petting zoo. Hands-on animal experience unique to the region.</div>
+                <div class="explore-meta"><span class="explore-tag">$$&ndash;$$$</span><span class="explore-tag">Call ahead</span></div>
+            </div>
+            <div class="explore-card" data-type="history">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3DB;&#xFE0F;</span>
+                    <span class="card-name">Old West Museum (Cheyenne)</span>
+                    <span class="card-type type-history">History</span>
+                </div>
+                <div class="explore-desc">Cowboy and rodeo history with original wagons, carriages, and Western artifacts.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">1&ndash;2 hrs</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F68B;</span>
+                    <span class="card-name">Cheyenne Street Railway Trolley</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Narrated historic tour of downtown Cheyenne on a vintage trolley. Multiple daily runs in summer.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-up</span></div>
+            </div>
+            <div class="explore-card" data-type="free">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F332;</span>
+                    <span class="card-name">Cheyenne Botanic Gardens</span>
+                    <span class="card-type type-free">Free</span>
+                </div>
+                <div class="explore-desc">Three areas free to explore: main gardens, Shane Smith Conservatory, Paul Smith Children&rsquo;s Village.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Morning best</span></div>
+            </div>
+            <div class="explore-card" data-type="activity">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3C3;</span>
+                    <span class="card-name">Frontier Trampoline Park</span>
+                    <span class="card-type type-activity">Activity</span>
+                </div>
+                <div class="explore-desc">Galactic-themed with zipline, climbing wall, foam pit. High-energy burn for restless kids.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Walk-in or book</span></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="explore-segment">
+            <div class="segment-header">
+                <span class="seg-icon">&#x1F3D4;&#xFE0F;</span>
+                <span class="seg-title">Estes Park Return</span>
+                <span class="seg-days">Days 14&ndash;15</span>
+            </div>
+            <div class="explore-grid">
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F4A7;</span>
+                    <span class="card-name">Alberta Falls Trail (RMNP)</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">1.6-mile moderate hike through shaded forest with a waterfall payoff at the end. Kids love the destination.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Afternoon OK</span></div>
+            </div>
+            <div class="explore-card" data-type="nature">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F33B;</span>
+                    <span class="card-name">Moraine Park Loop (RMNP)</span>
+                    <span class="card-type type-nature">Nature</span>
+                </div>
+                <div class="explore-desc">Scenic driving loop with excellent elk viewing. Multiple pull-offs for short walks.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Dawn/dusk</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F373;</span>
+                    <span class="card-name">The Egg of Estes</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Impressive breakfast spot with creative flavors and friendly staff. Local favorite.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Early morning</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F950;</span>
+                    <span class="card-name">Notchtop Bakery &amp; Cafe</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Organic, locally-sourced ingredients. Outstanding French toast, omelets, and pastries.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">Morning best</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F356;</span>
+                    <span class="card-name">Smokin&rsquo; Dave&rsquo;s BBQ &amp; Brew</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Generous BBQ portions, family favorite. Reliably good food that kids love.</div>
+                <div class="explore-meta"><span class="explore-tag">$$</span><span class="explore-tag">May have wait</span></div>
+            </div>
+            <div class="explore-card" data-type="quirky">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F36C;</span>
+                    <span class="card-name">Purple Mountain Taffy Co.</span>
+                    <span class="card-type type-quirky">Quirky</span>
+                </div>
+                <div class="explore-desc">Handmade taffy and caramels. Same family owns Laura&rsquo;s Candies and Hayley&rsquo;s Ice Cream nearby.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            <div class="explore-card" data-type="quirky">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F3E8;</span>
+                    <span class="card-name">The Stanley Hotel</span>
+                    <span class="card-type type-quirky">Quirky</span>
+                </div>
+                <div class="explore-desc">The hotel that inspired Stephen King&rsquo;s <em>The Shining</em>. Worth a drive-by photo or lobby walk-through.</div>
+                <div class="explore-meta"><span class="explore-tag">Free</span><span class="explore-tag">Lobby open</span></div>
+            </div>
+            <div class="explore-card" data-type="food">
+                <div class="explore-card-top">
+                    <span class="card-emoji">&#x1F366;</span>
+                    <span class="card-name">Caramel Crisp (Estes Park)</span>
+                    <span class="card-type type-food">Food</span>
+                </div>
+                <div class="explore-desc">Kettle corn, artisan ice cream, taffy, and toffee. One-stop sweet shop for end-of-trip treats.</div>
+                <div class="explore-meta"><span class="explore-tag">$</span><span class="explore-tag">Walk-in</span></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 <!-- PACKING -->
 <div class="tab-content" id="tab-packing">
 <div class="section">
@@ -2086,6 +2865,26 @@ document.addEventListener('click', function(e) {
 });
 // Also init if packing tab is already visible on load
 if (document.querySelector('#tab-packing.active')) initPackingList();
+
+
+
+// ==========================================
+// EXPLORE TAB FILTERS
+// ==========================================
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn || !btn.closest('#exploreFilters')) return;
+    document.querySelectorAll('#exploreFilters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('#exploreTimeline .explore-card').forEach(card => {
+        if (filter === 'all' || card.dataset.type === filter) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
 
 
 </script>
