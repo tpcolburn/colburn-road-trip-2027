@@ -387,6 +387,9 @@
         .explore-card-top { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.4rem; }
         .explore-card-top .card-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
         .explore-card-top .card-name { font-weight: 800; font-size: 0.98rem; line-height: 1.3; }
+        .explore-card-top .card-name a { color: #fff; text-decoration: none; transition: color 0.2s; }
+        .explore-card-top .card-name a:hover { color: var(--sunset-gold); text-decoration: underline; }
+        .explore-card-top .card-name a::after { content: ' \2197'; font-size: 0.7em; opacity: 0.5; }
         .explore-card-top .card-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 8px; white-space: nowrap; margin-left: auto; flex-shrink: 0; }
         .type-food { background: rgba(232,117,26,0.2); color: var(--desert-orange); }
         .type-activity { background: rgba(91,140,90,0.2); color: var(--sage-green); }
@@ -1440,7 +1443,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F420;</span>
-                    <span class="card-name">Downtown Denver Aquarium</span>
+                    <span class="card-name"><a href="https://www.aquariumrestaurants.com/downtownaquariumdenver/" target="_blank" rel="noopener">Downtown Denver Aquarium</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Interactive marine exhibits with touch pools, sea otters, jellyfish, and shark feeding shows. Great rainy-day option.</div>
@@ -1449,7 +1452,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F682;</span>
-                    <span class="card-name">Colorado Railroad Museum (Golden)</span>
+                    <span class="card-name"><a href="https://coloradorailroadmuseum.org/" target="_blank" rel="noopener">Colorado Railroad Museum (Golden)</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">Historic narrow-gauge train rides through scenic mountain terrain. Explore vintage train cars and take a ride.</div>
@@ -1458,7 +1461,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F996;</span>
-                    <span class="card-name">Denver Museum of Nature &amp; Science</span>
+                    <span class="card-name"><a href="https://www.dmns.org/" target="_blank" rel="noopener">Denver Museum of Nature &amp; Science</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">OMNIMAX theater, world-class dinosaur collection, planetarium shows. Plan 3+ hours.</div>
@@ -1467,7 +1470,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DE;&#xFE0F;</span>
-                    <span class="card-name">Washington Park</span>
+                    <span class="card-name"><a href="https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Parks-Recreation/Recreation-Centers-Pools/Recreation-Centers/Washington-Park-Recreation-Center" target="_blank" rel="noopener">Washington Park</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">155-acre urban park with playgrounds, boating lake, walking trails. Paddle boats available for rent.</div>
@@ -1486,7 +1489,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3CE;&#xFE0F;</span>
-                    <span class="card-name">Fun City (Estes Park)</span>
+                    <span class="card-name"><a href="https://www.funcityofestes.com/" target="_blank" rel="noopener">Fun City (Estes Park)</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Bumper boats, go-karts, mini golf, bungee trampolines. Kids ages 9-12 love the racing.</div>
@@ -1495,7 +1498,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F6A1;</span>
-                    <span class="card-name">Estes Park Aerial Tramway</span>
+                    <span class="card-name"><a href="https://estestram.com/" target="_blank" rel="noopener">Estes Park Aerial Tramway</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">600-ft elevation ride with panoramic alpine views. Runs late May through early September.</div>
@@ -1504,7 +1507,7 @@
             <div class="explore-card" data-type="quirky">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F36C;</span>
-                    <span class="card-name">The Taffy Shop (since 1935)</span>
+                    <span class="card-name"><a href="https://originaltaffyshop.com/" target="_blank" rel="noopener">The Taffy Shop (since 1935)</a></span>
                     <span class="card-type type-quirky">Quirky</span>
                 </div>
                 <div class="explore-desc">Homemade saltwater taffy &mdash; watch live taffy-pulling through the window. An Estes Park institution.</div>
@@ -1513,7 +1516,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DE;&#xFE0F;</span>
-                    <span class="card-name">Sprague Lake Trail (RMNP)</span>
+                    <span class="card-name"><a href="https://www.nps.gov/thingstodo/romo_spraguelake.htm" target="_blank" rel="noopener">Sprague Lake Trail (RMNP)</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">Easy &lt;1 mile loop around a pristine lake. Great chance to spot moose, elk, and muskrats.</div>
@@ -1522,7 +1525,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F368;</span>
-                    <span class="card-name">The Munchin&rsquo; House</span>
+                    <span class="card-name"><a href="https://themunchinhouse.com/" target="_blank" rel="noopener">The Munchin&rsquo; House</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">40 flavors of homemade ice cream, fudge, and taffy since 1968. Essential post-hike stop.</div>
@@ -1531,7 +1534,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F6F6;</span>
-                    <span class="card-name">Lake Estes Marina</span>
+                    <span class="card-name"><a href="https://evrpd.com/marina/" target="_blank" rel="noopener">Lake Estes Marina</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Kayaking, paddleboarding, fishing, and pontoon boat rentals on a stunning mountain lake.</div>
@@ -1540,7 +1543,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F40E;</span>
-                    <span class="card-name">National Park Gateway Stables</span>
+                    <span class="card-name"><a href="https://skhorses.com/national-park-gateway-stables" target="_blank" rel="noopener">National Park Gateway Stables</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Horseback riding into Rocky Mountain NP. 2-hour to full-day options available.</div>
@@ -1549,7 +1552,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F355;</span>
-                    <span class="card-name">Firefly Pizzeria (Grand Lake)</span>
+                    <span class="card-name"><a href="https://www.fireflypizzeria.com/" target="_blank" rel="noopener">Firefly Pizzeria (Grand Lake)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Neapolitan wood-fired pizza in a charming lakeside setting. Open May through October.</div>
@@ -1558,7 +1561,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F965;</span>
-                    <span class="card-name">One Love (Grand Lake)</span>
+                    <span class="card-name"><a href="https://onelovecateringwp.com/" target="_blank" rel="noopener">One Love (Grand Lake)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Caribbean-inspired: jerk chicken, curry fries, island guacamole. Fun flavors the kids might not try at home.</div>
@@ -1577,7 +1580,7 @@
             <div class="explore-card" data-type="quirky">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F366;</span>
-                    <span class="card-name">Little America Travel Center (I-80)</span>
+                    <span class="card-name"><a href="https://wyoming.littleamerica.com/travel-center/" target="_blank" rel="noopener">Little America Travel Center (I-80)</a></span>
                     <span class="card-type type-quirky">Quirky</span>
                 </div>
                 <div class="explore-desc">Famous for its 75-cent ice cream cones and the giant Sinclair Dinosaur statue outside. A legendary road trip pit stop.</div>
@@ -1586,7 +1589,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3F0;</span>
-                    <span class="card-name">Fort Bridger State Historic Site</span>
+                    <span class="card-name"><a href="https://wyoparks.wyo.gov/index.php/places-to-go/fort-bridger" target="_blank" rel="noopener">Fort Bridger State Historic Site</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">Recreated 1843 Oregon Trail trading post with 28 historic buildings and museum. Fur trade history comes alive.</div>
@@ -1595,7 +1598,7 @@
             <div class="explore-card" data-type="quirky">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F332;</span>
-                    <span class="card-name">Tree Rock (I-80 median)</span>
+                    <span class="card-name"><a href="https://www.atlasobscura.com/places/tree-in-the-rock" target="_blank" rel="noopener">Tree Rock (I-80 median)</a></span>
                     <span class="card-type type-quirky">Quirky</span>
                 </div>
                 <div class="explore-desc">A pine tree growing out of a boulder, discovered by railroad workers in the 1860s. Visible from the highway.</div>
@@ -1604,7 +1607,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F6F6;</span>
-                    <span class="card-name">Colter Bay Marina (Grand Teton)</span>
+                    <span class="card-name"><a href="https://www.nps.gov/places/000/colter-bay-marina-boat-launch.htm" target="_blank" rel="noopener">Colter Bay Marina (Grand Teton)</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Canoe/kayak rentals, fishing, scenic lake cruises. Breakfast and dinner cruises available.</div>
@@ -1613,7 +1616,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F9AD;</span>
-                    <span class="card-name">Heron Pond &ndash; Swan Lake Loop</span>
+                    <span class="card-name"><a href="https://www.nps.gov/thingstodo/heronpond-swanlake.htm" target="_blank" rel="noopener">Heron Pond &ndash; Swan Lake Loop</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">Easy 3.2-mile flat hike through forest with lake views. Good chance of spotting beavers, herons, and moose.</div>
@@ -1632,7 +1635,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F6A3;</span>
-                    <span class="card-name">Jenny Lake Scenic Boat Tour</span>
+                    <span class="card-name"><a href="https://jennylakeboating.com/" target="_blank" rel="noopener">Jenny Lake Scenic Boat Tour</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Ranger-guided boat trip with interpretive commentary. Round-trip or one-way with hike option.</div>
@@ -1641,7 +1644,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F98C;</span>
-                    <span class="card-name">Ranger-Led Programs at Colter Bay</span>
+                    <span class="card-name"><a href="https://www.nps.gov/grte/planyourvisit/ranger-programs.htm" target="_blank" rel="noopener">Ranger-Led Programs at Colter Bay</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">Daily programs on geology, wildlife, tipi demonstrations, and Native American culture.</div>
@@ -1650,7 +1653,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1FAA8;</span>
-                    <span class="card-name">Teton Boulder Park (Jackson)</span>
+                    <span class="card-name"><a href="https://www.tetoncountywy.gov/2818/Community-Parks-Shelters" target="_blank" rel="noopener">Teton Boulder Park (Jackson)</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">Artificial bouldering wall at Phil Baux Park with varied difficulty. Kids love the climbing challenge.</div>
@@ -1659,7 +1662,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F355;</span>
-                    <span class="card-name">Pinky G&rsquo;s Pizzeria (Jackson)</span>
+                    <span class="card-name"><a href="https://pinkygs.com/" target="_blank" rel="noopener">Pinky G&rsquo;s Pizzeria (Jackson)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Award-winning New York-style pizza. Voted best pizza in Jackson Hole by locals. Giant slices.</div>
@@ -1668,7 +1671,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F37D;&#xFE0F;</span>
-                    <span class="card-name">Calico&rsquo;s Restaurant (Jackson)</span>
+                    <span class="card-name"><a href="https://www.calicorestaurant.com/" target="_blank" rel="noopener">Calico&rsquo;s Restaurant (Jackson)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">American-Italian restaurant with a 1.5-acre play yard. Parents relax while kids safely play within view.</div>
@@ -1677,7 +1680,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3A8;</span>
-                    <span class="card-name">National Museum of Wildlife Art</span>
+                    <span class="card-name"><a href="https://www.wildlifeart.org/" target="_blank" rel="noopener">National Museum of Wildlife Art</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">World-class wildlife art perched on a bluff overlooking the Elk Refuge. Outdoor sculpture trail + interactive kids&rsquo; section.</div>
@@ -1686,7 +1689,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F9E9;</span>
-                    <span class="card-name">Jackson Hole Children&rsquo;s Museum</span>
+                    <span class="card-name"><a href="https://www.jhchildrensmuseum.org/" target="_blank" rel="noopener">Jackson Hole Children&rsquo;s Museum</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Hands-on interactive exhibits with toys, games, and crafts. Less crowded than big-city museums.</div>
@@ -1705,7 +1708,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F98E;</span>
-                    <span class="card-name">Fishing Bridge Visitor Center</span>
+                    <span class="card-name"><a href="https://www.nps.gov/yell/planyourvisit/fishing-bridge-visitor-center.htm" target="_blank" rel="noopener">Fishing Bridge Visitor Center</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">Small animal exhibits plus Junior Ranger booklets for the kids. The Ranger talks here are excellent.</div>
@@ -1714,7 +1717,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F985;</span>
-                    <span class="card-name">Pelican Creek Nature Trail</span>
+                    <span class="card-name"><a href="https://www.nps.gov/thingstodo/yell-trail-pelican-creek.htm" target="_blank" rel="noopener">Pelican Creek Nature Trail</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">Short loop near Yellowstone Lake with excellent bird spotting. Peaceful early-morning walk.</div>
@@ -1723,7 +1726,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F43B;</span>
-                    <span class="card-name">Storm Point Trail</span>
+                    <span class="card-name"><a href="https://www.nps.gov/thingstodo/yell-trail-storm-point.htm" target="_blank" rel="noopener">Storm Point Trail</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">NPS says wildlife sighting is &ldquo;guaranteed&rdquo; on this moderate loop. Great for teaching observation skills.</div>
@@ -1732,7 +1735,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F6A2;</span>
-                    <span class="card-name">Lake Yellowstone Scenic Cruise</span>
+                    <span class="card-name"><a href="https://www.yellowstonenationalparklodges.com/adventure/water-adventures/yellowstone-lake-scenicruise/" target="_blank" rel="noopener">Lake Yellowstone Scenic Cruise</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">1-hour boat tour on Yellowstone Lake. Reduced pricing for kids 11 and under.</div>
@@ -1741,7 +1744,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F373;</span>
-                    <span class="card-name">Old Faithful Lodge Cafeteria</span>
+                    <span class="card-name"><a href="https://www.yellowstonenationalparklodges.com/restaurant/old-faithful-lodge-cafeteria-bake-shop/" target="_blank" rel="noopener">Old Faithful Lodge Cafeteria</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Sandwiches, BBQ, hot dogs, wraps &mdash; casual family dining with views of the geyser basin.</div>
@@ -1750,7 +1753,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F36E;</span>
-                    <span class="card-name">Bear Paw Deli (Old Faithful)</span>
+                    <span class="card-name"><a href="https://www.yellowstonenationalparklodges.com/restaurant/old-faithful-inn-bear-paw-deli/" target="_blank" rel="noopener">Bear Paw Deli (Old Faithful)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Quick sandwiches and ice cream &mdash; grab lunch and eat while watching Old Faithful erupt.</div>
@@ -1759,7 +1762,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F969;</span>
-                    <span class="card-name">Old West Dinner Cookout</span>
+                    <span class="card-name"><a href="https://www.yellowstonenationalparklodges.com/adventure/wild-west-adventures/old-west-dinner-cookout/" target="_blank" rel="noopener">Old West Dinner Cookout</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Communal rustic picnic dining with cowboy entertainment. Arrives by horse-drawn wagon or horseback.</div>
@@ -1768,7 +1771,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F356;</span>
-                    <span class="card-name">Obsidian Dining Room (Snow Lodge)</span>
+                    <span class="card-name"><a href="https://www.yellowstonenationalparklodges.com/restaurant/old-faithful-snow-lodge-obsidian-dining-room/" target="_blank" rel="noopener">Obsidian Dining Room (Snow Lodge)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Upscale casual with wild game &mdash; bison, elk, duck. For adventurous eaters wanting to try local game.</div>
@@ -1777,7 +1780,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F366;</span>
-                    <span class="card-name">Terrace Grill (Mammoth)</span>
+                    <span class="card-name"><a href="https://www.yellowstonenationalparklodges.com/restaurant/mammoth-terrace-grill/" target="_blank" rel="noopener">Terrace Grill (Mammoth)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Breakfast and ice cream with fast counter service. Convenient fuel-up before exploring Mammoth terraces.</div>
@@ -1796,7 +1799,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DB;&#xFE0F;</span>
-                    <span class="card-name">Buffalo Bill Center of the West</span>
+                    <span class="card-name"><a href="https://centerofthewest.org/" target="_blank" rel="noopener">Buffalo Bill Center of the West</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">5 world-class museums in one &mdash; Wild West, art, Plains Indians, firearms, natural history. Budget 3+ hours.</div>
@@ -1805,7 +1808,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F434;</span>
-                    <span class="card-name">Cody Nite Rodeo</span>
+                    <span class="card-name"><a href="https://www.codystampederodeo.com/" target="_blank" rel="noopener">Cody Nite Rodeo</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Professional nightly rodeo June&ndash;August with humorous announcers and live music. Authentic Western experience.</div>
@@ -1814,7 +1817,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DA;&#xFE0F;</span>
-                    <span class="card-name">Old Trail Town</span>
+                    <span class="card-name"><a href="https://oldtrailtown.org/" target="_blank" rel="noopener">Old Trail Town</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">26 historic frontier buildings (1879&ndash;1901) reassembled from across Wyoming. Walk through at your own pace.</div>
@@ -1823,7 +1826,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F6F6;</span>
-                    <span class="card-name">Shoshone River Rafting</span>
+                    <span class="card-name"><a href="https://www.riverrunnersofwyoming.com/" target="_blank" rel="noopener">Shoshone River Rafting</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Family-friendly scenic float trips through beautiful canyon scenery. Multiple outfitters in town.</div>
@@ -1832,7 +1835,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3AF;</span>
-                    <span class="card-name">Sleeping Giant Zip Lines</span>
+                    <span class="card-name"><a href="https://skisg.com/zip-line" target="_blank" rel="noopener">Sleeping Giant Zip Lines</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Wyoming&rsquo;s longest zip line course. Thrill-seeking kids ages 9+ love this.</div>
@@ -1841,7 +1844,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F56F;&#xFE0F;</span>
-                    <span class="card-name">Heart Mountain WWII Interpretive Center</span>
+                    <span class="card-name"><a href="https://www.heartmountain.org/" target="_blank" rel="noopener">Heart Mountain WWII Interpretive Center</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">The story of 14,000 Japanese Americans interned during WWII. Important, well-presented, respectful.</div>
@@ -1850,7 +1853,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F356;</span>
-                    <span class="card-name">Bubba&rsquo;s Bar-B-Que</span>
+                    <span class="card-name"><a href="https://bubbasbar-b-que.com/" target="_blank" rel="noopener">Bubba&rsquo;s Bar-B-Que</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Hickory-smoked brisket, corn on the cob, baked beans. Breakfast through dinner. Authentic BBQ.</div>
@@ -1859,7 +1862,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F9C6;</span>
-                    <span class="card-name">Sitti&rsquo;s Table</span>
+                    <span class="card-name"><a href="https://www.sittistable.com/" target="_blank" rel="noopener">Sitti&rsquo;s Table</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Lebanese family-owned, James Beard nominated, featured on Diners, Drive-Ins &amp; Dives. Exceptional quality.</div>
@@ -1868,7 +1871,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3B6;</span>
-                    <span class="card-name">Cody Cattle Company</span>
+                    <span class="card-name"><a href="https://thecodycattlecompany.com/" target="_blank" rel="noopener">Cody Cattle Company</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Unlimited BBQ dinner theater with live country-western music. All-you-can-eat appeals to hungry kids.</div>
@@ -1887,7 +1890,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F5FF;</span>
-                    <span class="card-name">Legend Rock Petroglyph Site</span>
+                    <span class="card-name"><a href="https://wyoparks.wyo.gov/index.php/places-to-go/legend-rock" target="_blank" rel="noopener">Legend Rock Petroglyph Site</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">400-meter cliff with 92+ prehistoric petroglyph panels (300+ figures). Ancient mystery kids love.</div>
@@ -1896,7 +1899,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F54D;</span>
-                    <span class="card-name">Hot Springs State Park</span>
+                    <span class="card-name"><a href="https://wyoparks.wyo.gov/index.php/places-to-go/hot-springs" target="_blank" rel="noopener">Hot Springs State Park</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">Free State Bath House (104&deg;F therapeutic water), playground, 6.2 miles of trails, suspension footbridge.</div>
@@ -1905,7 +1908,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3CA;</span>
-                    <span class="card-name">Star Plunge Water Park</span>
+                    <span class="card-name"><a href="https://starplunge.com/" target="_blank" rel="noopener">Star Plunge Water Park</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Waterslides, varying temperature pools, and splash zones fed by natural hot springs.</div>
@@ -1914,7 +1917,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F9B4;</span>
-                    <span class="card-name">Wyoming Dinosaur Center</span>
+                    <span class="card-name"><a href="https://wyomingdinosaurcenter.org/" target="_blank" rel="noopener">Wyoming Dinosaur Center</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Named &ldquo;World&rsquo;s Coolest Places for Kids&rdquo; by TIME. Working dig sites you can actually participate in.</div>
@@ -1923,7 +1926,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DC;&#xFE0F;</span>
-                    <span class="card-name">Wind River Canyon Scenic Byway</span>
+                    <span class="card-name"><a href="https://travelwyoming.com/listing/wind-river-canyon-scenic-byway/1381/" target="_blank" rel="noopener">Wind River Canyon Scenic Byway</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">Stunning canyon between Thermopolis and Lander. Multiple pulloffs with geological formations spanning 2.7 billion years.</div>
@@ -1932,7 +1935,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F30A;</span>
-                    <span class="card-name">Sinks Canyon State Park</span>
+                    <span class="card-name"><a href="https://wyoparks.wyo.gov/index.php/places-to-go/sinks-canyon" target="_blank" rel="noopener">Sinks Canyon State Park</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">The Popo Agie River literally disappears underground and emerges 0.25 miles downstream. Geology mystery for kids.</div>
@@ -1941,7 +1944,7 @@
             <div class="explore-card" data-type="quirky">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3ED;</span>
-                    <span class="card-name">Eagle Bronze Foundry Tours (Lander)</span>
+                    <span class="card-name"><a href="https://eaglebronze.com/" target="_blank" rel="noopener">Eagle Bronze Foundry Tours (Lander)</a></span>
                     <span class="card-type type-quirky">Quirky</span>
                 </div>
                 <div class="explore-desc">Watch artisans create bronze statues from molten metal. Family-owned, $5/person.</div>
@@ -1950,7 +1953,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F354;</span>
-                    <span class="card-name">Cowfish (Lander)</span>
+                    <span class="card-name"><a href="https://www.cowfishlander.com/" target="_blank" rel="noopener">Cowfish (Lander)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Never-frozen half-pound burgers, hand-tossed pizza, garden deck with kid play area in summer.</div>
@@ -1959,7 +1962,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F950;</span>
-                    <span class="card-name">The Middle Fork (Lander)</span>
+                    <span class="card-name"><a href="https://themiddleforklander.com/" target="_blank" rel="noopener">The Middle Fork (Lander)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Locally-sourced breakfast, scratch pastries, legendary cinnamon rolls. Perfect morning fuel.</div>
@@ -1968,7 +1971,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F35D;</span>
-                    <span class="card-name">Mulino (Lander)</span>
+                    <span class="card-name"><a href="https://mulinolander.com/" target="_blank" rel="noopener">Mulino (Lander)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Casual fine dining with house-made pasta and kids menu. Family-owned, relaxed atmosphere.</div>
@@ -1987,7 +1990,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1FAA8;</span>
-                    <span class="card-name">Vedauwoo Recreation Area (near Laramie)</span>
+                    <span class="card-name"><a href="https://www.fs.usda.gov/r02/mbrtb/recreation/vedauwoo-campground" target="_blank" rel="noopener">Vedauwoo Recreation Area (near Laramie)</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">Spectacular granite rock formations &mdash; kids love scrambling and climbing on the boulders. No entrance fee.</div>
@@ -1996,7 +1999,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DB;&#xFE0F;</span>
-                    <span class="card-name">Wyoming Territorial Prison (Laramie)</span>
+                    <span class="card-name"><a href="https://wyoparks.wyo.gov/index.php/places-to-go/wyoming-territorial-prison" target="_blank" rel="noopener">Wyoming Territorial Prison (Laramie)</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">Wild West outlaw history &mdash; Butch Cassidy was imprisoned here. Kids fascinated by the &ldquo;jail&rdquo; experience.</div>
@@ -2005,7 +2008,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F9A5;</span>
-                    <span class="card-name">UW Geological Museum (Laramie)</span>
+                    <span class="card-name"><a href="https://www.uwyo.edu/geomuseum/" target="_blank" rel="noopener">UW Geological Museum (Laramie)</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">Meet &ldquo;Big Al&rdquo; the Allosaurus. Free admission. Planetarium shows available for a small fee.</div>
@@ -2014,7 +2017,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F9C7;</span>
-                    <span class="card-name">Luxury Diner (Cheyenne)</span>
+                    <span class="card-name"><a href="https://www.luxurydiner.com/" target="_blank" rel="noopener">Luxury Diner (Cheyenne)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">A 1926 trolley car converted to a diner. Everything scratch-made. Famous apple pie.</div>
@@ -2023,7 +2026,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F969;</span>
-                    <span class="card-name">Wyoming&rsquo;s Rib &amp; Chop House</span>
+                    <span class="card-name"><a href="https://ribandchophouse.com/" target="_blank" rel="noopener">Wyoming&rsquo;s Rib &amp; Chop House</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Award-winning ribs with a dedicated kids menu. Casual Western atmosphere.</div>
@@ -2032,7 +2035,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F403;</span>
-                    <span class="card-name">Terry Bison Ranch</span>
+                    <span class="card-name"><a href="https://terrybisonranch.com/" target="_blank" rel="noopener">Terry Bison Ranch</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Train tours through a bison herd, pony rides, petting zoo. Hands-on animal experience unique to the region.</div>
@@ -2041,7 +2044,7 @@
             <div class="explore-card" data-type="history">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3DB;&#xFE0F;</span>
-                    <span class="card-name">Old West Museum (Cheyenne)</span>
+                    <span class="card-name"><a href="https://www.oldwestmuseum.org/" target="_blank" rel="noopener">Old West Museum (Cheyenne)</a></span>
                     <span class="card-type type-history">History</span>
                 </div>
                 <div class="explore-desc">Cowboy and rodeo history with original wagons, carriages, and Western artifacts.</div>
@@ -2050,7 +2053,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F68B;</span>
-                    <span class="card-name">Cheyenne Street Railway Trolley</span>
+                    <span class="card-name"><a href="https://www.cheyenne.org/things-to-do/cheyenne-street-railway-trolley/" target="_blank" rel="noopener">Cheyenne Street Railway Trolley</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Narrated historic tour of downtown Cheyenne on a vintage trolley. Multiple daily runs in summer.</div>
@@ -2059,7 +2062,7 @@
             <div class="explore-card" data-type="free">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F332;</span>
-                    <span class="card-name">Cheyenne Botanic Gardens</span>
+                    <span class="card-name"><a href="https://www.botanic.org/" target="_blank" rel="noopener">Cheyenne Botanic Gardens</a></span>
                     <span class="card-type type-free">Free</span>
                 </div>
                 <div class="explore-desc">Three areas free to explore: main gardens, Shane Smith Conservatory, Paul Smith Children&rsquo;s Village.</div>
@@ -2068,7 +2071,7 @@
             <div class="explore-card" data-type="activity">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3C3;</span>
-                    <span class="card-name">Frontier Trampoline Park</span>
+                    <span class="card-name"><a href="https://www.jumpfrontier.com/" target="_blank" rel="noopener">Frontier Trampoline Park</a></span>
                     <span class="card-type type-activity">Activity</span>
                 </div>
                 <div class="explore-desc">Galactic-themed with zipline, climbing wall, foam pit. High-energy burn for restless kids.</div>
@@ -2087,7 +2090,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F4A7;</span>
-                    <span class="card-name">Alberta Falls Trail (RMNP)</span>
+                    <span class="card-name"><a href="https://www.nps.gov/thingstodo/hike-to-alberta-falls.htm" target="_blank" rel="noopener">Alberta Falls Trail (RMNP)</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">1.6-mile moderate hike through shaded forest with a waterfall payoff at the end. Kids love the destination.</div>
@@ -2096,7 +2099,7 @@
             <div class="explore-card" data-type="nature">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F33B;</span>
-                    <span class="card-name">Moraine Park Loop (RMNP)</span>
+                    <span class="card-name"><a href="https://www.nps.gov/places/romo_morainepark.htm" target="_blank" rel="noopener">Moraine Park Loop (RMNP)</a></span>
                     <span class="card-type type-nature">Nature</span>
                 </div>
                 <div class="explore-desc">Scenic driving loop with excellent elk viewing. Multiple pull-offs for short walks.</div>
@@ -2105,7 +2108,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F373;</span>
-                    <span class="card-name">The Egg of Estes</span>
+                    <span class="card-name"><a href="https://eggofestes.com/" target="_blank" rel="noopener">The Egg of Estes</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Impressive breakfast spot with creative flavors and friendly staff. Local favorite.</div>
@@ -2114,7 +2117,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F950;</span>
-                    <span class="card-name">Notchtop Bakery &amp; Cafe</span>
+                    <span class="card-name"><a href="https://thenotchtop.com/" target="_blank" rel="noopener">Notchtop Bakery &amp; Cafe</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Organic, locally-sourced ingredients. Outstanding French toast, omelets, and pastries.</div>
@@ -2123,7 +2126,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F356;</span>
-                    <span class="card-name">Smokin&rsquo; Dave&rsquo;s BBQ &amp; Brew</span>
+                    <span class="card-name"><a href="https://estespark.smokindavesbbq.com/" target="_blank" rel="noopener">Smokin&rsquo; Dave&rsquo;s BBQ &amp; Brew</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Generous BBQ portions, family favorite. Reliably good food that kids love.</div>
@@ -2132,7 +2135,7 @@
             <div class="explore-card" data-type="quirky">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F36C;</span>
-                    <span class="card-name">Purple Mountain Taffy Co.</span>
+                    <span class="card-name"><a href="https://www.purplemountaintaffy.com/" target="_blank" rel="noopener">Purple Mountain Taffy Co.</a></span>
                     <span class="card-type type-quirky">Quirky</span>
                 </div>
                 <div class="explore-desc">Handmade taffy and caramels. Same family owns Laura&rsquo;s Candies and Hayley&rsquo;s Ice Cream nearby.</div>
@@ -2141,7 +2144,7 @@
             <div class="explore-card" data-type="quirky">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F3E8;</span>
-                    <span class="card-name">The Stanley Hotel</span>
+                    <span class="card-name"><a href="https://www.stanleyhotel.com/" target="_blank" rel="noopener">The Stanley Hotel</a></span>
                     <span class="card-type type-quirky">Quirky</span>
                 </div>
                 <div class="explore-desc">The hotel that inspired Stephen King&rsquo;s <em>The Shining</em>. Worth a drive-by photo or lobby walk-through.</div>
@@ -2150,7 +2153,7 @@
             <div class="explore-card" data-type="food">
                 <div class="explore-card-top">
                     <span class="card-emoji">&#x1F366;</span>
-                    <span class="card-name">Caramel Crisp (Estes Park)</span>
+                    <span class="card-name"><a href="https://www.visitestespark.com/listings/caramel-crisp/67/" target="_blank" rel="noopener">Caramel Crisp (Estes Park)</a></span>
                     <span class="card-type type-food">Food</span>
                 </div>
                 <div class="explore-desc">Kettle corn, artisan ice cream, taffy, and toffee. One-stop sweet shop for end-of-trip treats.</div>
