@@ -1511,8 +1511,8 @@
 <!-- PASSPORT GAME -->
 <div class="tab-content" id="tab-passport">
 <div class="section">
-    <h2 class="section-title">JUNIOR RANGER PASSPORT</h2>
-    <p style="text-align:center;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;max-width:600px;margin-left:auto;margin-right:auto;">Collect stamps at each national park by completing mini-challenges. Fill your passport to become a Junior Ranger!</p>
+    <h2 class="section-title">ROAD TRIP PASSPORT</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;max-width:600px;margin-left:auto;margin-right:auto;">Collect stamps at every stop on our adventure! Complete trivia, memory match, and spot-it challenges to fill your passport.</p>
     <div class="passport-wrap" id="passportRoot"></div>
 </div>
 </div>
@@ -1582,6 +1582,22 @@ const PASSPORT_KEY = 'colburn_passport_v1';
 
 const passportParks = [
     {
+        id: 'asheville',
+        name: 'Biltmore & Asheville',
+        icon: '🏰',
+        days: 'Days 1-2',
+        heroImage: 'biltmore_01.jpg',
+        quiz: [
+            { q: "How many rooms does the Biltmore Estate have?", options: ["50", "135", "250", "400"], correct: 2 },
+            { q: "What famous district in Asheville has artist studios along the French Broad River?", options: ["Music Row", "River Arts District", "Gallery Walk", "Painter's Alley"], correct: 1 },
+            { q: "The Biltmore was built by which wealthy family?", options: ["Rockefeller", "Carnegie", "Vanderbilt", "Morgan"], correct: 2 },
+            { q: "What scenic road connects Asheville to the Smokies?", options: ["Route 66", "Pacific Coast Highway", "Blue Ridge Parkway", "Skyline Drive"], correct: 2 },
+            { q: "What is the highest point on the Blue Ridge Parkway?", options: ["Mount Mitchell", "Richland Balsam (6,053 ft)", "Craggy Gardens", "Waterrock Knob"], correct: 1 }
+        ],
+        memory: ['biltmore_01.jpg','blue_ridge_parkway_01.jpg','gsmnp_01.jpg','laurel_falls_01.jpg','cades_cove_01.jpg','mammoth_cave_01.jpg'],
+        spotIt: { q: 'Which photo shows the Biltmore Estate?', correct: 'biltmore_01.jpg', decoys: ['mammoth_cave_01.jpg','kings_island_01.jpg','gsmnp_01.jpg'] }
+    },
+    {
         id: 'grsm',
         name: 'Great Smokies',
         icon: '⛰️',
@@ -1592,10 +1608,42 @@ const passportParks = [
             { q: "What loop is best for spotting black bears?", options: ["Roaring Fork", "Cades Cove Loop", "Laurel Creek", "Little River Road"], correct: 1 },
             { q: "How tall is Laurel Falls?", options: ["30 ft", "80 ft", "200 ft", "500 ft"], correct: 1 },
             { q: "Does it cost money to enter GSMNP?", options: ["Yes, $35/vehicle", "Yes, $20/person", "No, it's FREE!", "Only on weekends"], correct: 2 },
-            { q: "How many visitors does GSMNP get per year?", options: ["About 3 million", "About 7 million", "About 13 million", "About 20 million"], correct: 2 }
+            { q: "The Great Smokies is the most visited national park. About how many visitors per year?", options: ["About 3 million", "About 7 million", "About 13 million", "About 20 million"], correct: 2 }
         ],
-        memory: ['gsmnp_01.jpg','cades_cove_01.jpg','laurel_falls_01.jpg','blue_ridge_parkway_01.jpg','gatlinburg_skybridge_01.jpg','pigeon_river_rafting_01.jpg'],
+        memory: ['gsmnp_01.jpg','cades_cove_01.jpg','laurel_falls_01.jpg','blue_ridge_parkway_01.jpg','biltmore_01.jpg','gatlinburg_skybridge_01.jpg'],
         spotIt: { q: 'Which photo shows Cades Cove in the Smokies?', correct: 'cades_cove_01.jpg', decoys: ['mammoth_cave_01.jpg','biltmore_01.jpg','kings_island_01.jpg'] }
+    },
+    {
+        id: 'dollywood',
+        name: 'Dollywood',
+        icon: '🎢',
+        days: 'Day 5',
+        heroImage: 'dollywood_01.jpg',
+        quiz: [
+            { q: "Who is Dollywood named after?", options: ["Dolly Madison", "Dolly the sheep", "Dolly Parton", "Dolly Levi"], correct: 2 },
+            { q: "What famous food must you try at Dollywood's Grist Mill?", options: ["Funnel cake", "Turkey legs", "Cinnamon bread", "Cotton candy"], correct: 2 },
+            { q: "What is Lightning Rod at Dollywood?", options: ["A water ride", "The world's fastest wooden launched coaster", "A live show", "A restaurant"], correct: 1 },
+            { q: "What kid-friendly area at Dollywood has its own rides and play areas?", options: ["Snoopy Land", "Wildwood Grove", "Kidz Zone", "Timber Tower"], correct: 1 },
+            { q: "At what age do kids start paying the adult ticket price at Dollywood?", options: ["8", "10", "12", "14"], correct: 1 }
+        ],
+        memory: ['dollywood_01.jpg','gatlinburg_skybridge_01.jpg','pigeon_river_rafting_01.jpg','kings_island_01.jpg','cades_cove_01.jpg','gsmnp_01.jpg'],
+        spotIt: { q: 'Which photo shows Dollywood theme park?', correct: 'dollywood_01.jpg', decoys: ['kings_island_01.jpg','biltmore_01.jpg','blue_ridge_parkway_01.jpg'] }
+    },
+    {
+        id: 'adventure',
+        name: 'Rafting & Gatlinburg',
+        icon: '🛶',
+        days: 'Days 6-7',
+        heroImage: 'pigeon_river_rafting_01.jpg',
+        quiz: [
+            { q: "What river do we raft on near the Smokies?", options: ["Tennessee River", "French Broad River", "Pigeon River", "Little River"], correct: 2 },
+            { q: "What class rapids are on the Upper Pigeon?", options: ["Class I (easy)", "Class III (exciting!)", "Class V (extreme)", "No rapids"], correct: 1 },
+            { q: "What is the minimum age for the Upper Pigeon rafting trip?", options: ["5 years old", "8 years old", "12 years old", "No minimum"], correct: 1 },
+            { q: "The Gatlinburg SkyBridge is the longest what in North America?", options: ["Zip line", "Water slide", "Pedestrian suspension bridge", "Roller coaster"], correct: 2 },
+            { q: "What can you see through the glass panels on the SkyBridge?", options: ["The ocean", "A 500-ft drop to the valley below", "An underground cave", "A swimming pool"], correct: 1 }
+        ],
+        memory: ['pigeon_river_rafting_01.jpg','gatlinburg_skybridge_01.jpg','laurel_falls_01.jpg','gsmnp_01.jpg','dollywood_01.jpg','cades_cove_01.jpg'],
+        spotIt: { q: 'Which photo shows the Gatlinburg SkyBridge?', correct: 'gatlinburg_skybridge_01.jpg', decoys: ['blue_ridge_parkway_01.jpg','dollywood_01.jpg','mammoth_cave_01.jpg'] }
     },
     {
         id: 'maca',
@@ -1604,14 +1652,30 @@ const passportParks = [
         days: 'Day 9',
         heroImage: 'mammoth_cave_01.jpg',
         quiz: [
-            { q: "How many miles of cave have been mapped?", options: ["About 50", "About 200", "Over 420", "Over 1,000"], correct: 2 },
-            { q: "What's the constant temperature inside?", options: ["32\u00B0F", "54\u00B0F", "72\u00B0F", "90\u00B0F"], correct: 1 },
-            { q: "What river runs through the park?", options: ["Ohio River", "Green River", "Kentucky River", "Cave River"], correct: 1 },
-            { q: "What free ferry operates in the park?", options: ["Green River Ferry", "Cave Express", "Kentucky Boat", "Nolin Ferry"], correct: 0 },
+            { q: "Mammoth Cave is the world's longest cave. How many miles mapped?", options: ["About 50", "About 200", "Over 420", "Over 1,000"], correct: 2 },
+            { q: "What's the constant temperature inside Mammoth Cave?", options: ["32\u00B0F (freezing!)", "54\u00B0F (bring a jacket!)", "72\u00B0F (perfect)", "90\u00B0F (hot!)"], correct: 1 },
+            { q: "What free ferry has operated inside the park since the 1800s?", options: ["Green River Ferry", "Cave Express", "Kentucky Boat", "Nolin Ferry"], correct: 0 },
+            { q: "What kind of shoes do you NEED for the cave tours?", options: ["Flip flops", "Sandals", "Closed-toe shoes", "High heels"], correct: 2 },
             { q: "What state is Mammoth Cave in?", options: ["Tennessee", "Virginia", "Kentucky", "West Virginia"], correct: 2 }
         ],
         memory: ['mammoth_cave_01.jpg','biltmore_01.jpg','dollywood_01.jpg','kings_island_01.jpg','blue_ridge_parkway_01.jpg','gsmnp_01.jpg'],
-        spotIt: { q: 'Which photo shows a Mammoth Cave passage?', correct: 'mammoth_cave_01.jpg', decoys: ['gsmnp_01.jpg','dollywood_01.jpg','kings_island_01.jpg'] }
+        spotIt: { q: 'Which photo shows inside Mammoth Cave?', correct: 'mammoth_cave_01.jpg', decoys: ['gsmnp_01.jpg','gatlinburg_skybridge_01.jpg','laurel_falls_01.jpg'] }
+    },
+    {
+        id: 'kingsisland',
+        name: 'Kings Island',
+        icon: '🎢',
+        days: 'Day 11',
+        heroImage: 'kings_island_01.jpg',
+        quiz: [
+            { q: "What is the tallest coaster at Kings Island?", options: ["The Beast", "Banshee", "Orion (300 ft!)", "Diamondback"], correct: 2 },
+            { q: "The Beast holds what world record?", options: ["Fastest coaster", "Tallest loop", "Longest wooden roller coaster", "Most inversions"], correct: 2 },
+            { q: "What kid-friendly area at Kings Island features a famous beagle?", options: ["Mickey Land", "Planet Snoopy", "Scooby World", "Garfield Gardens"], correct: 1 },
+            { q: "Orion reaches a top speed of...", options: ["55 mph", "71 mph", "91 mph", "120 mph"], correct: 2 },
+            { q: "What water park is included free with Kings Island admission?", options: ["Splash Works", "Soak City", "Hurricane Harbor", "Aqua Zone"], correct: 1 }
+        ],
+        memory: ['kings_island_01.jpg','dollywood_01.jpg','pigeon_river_rafting_01.jpg','gatlinburg_skybridge_01.jpg','biltmore_01.jpg','mammoth_cave_01.jpg'],
+        spotIt: { q: 'Which photo shows a Kings Island roller coaster?', correct: 'kings_island_01.jpg', decoys: ['dollywood_01.jpg','gsmnp_01.jpg','pigeon_river_rafting_01.jpg'] }
     }
 ];
 
@@ -1953,15 +2017,16 @@ function showStampEarnedAnimation(parkId, idx) {
 
 function showCertificate() {
     const active = getActiveProfile();
-    const dateStr = 'June 11 \u2013 June 26, 2027';
+    const dateStr = 'June 11 \u2013 June 21, 2027';
     let html = `<div class="certificate">
-        <h2>Junior Ranger Certificate</h2>
+        <h2>Road Trip Explorer Certificate</h2>
         <div class="seal">🏅</div>
         <p style="font-size:1.05rem;">This certifies that</p>
         <div class="name">${escapeHtml(active.name)}</div>
-        <p style="font-size:1.05rem;margin-top:0.8rem;">has successfully visited all 7 National Parks<br>on the Great Western Road Trip</p>
+        <p style="font-size:1.05rem;margin-top:0.8rem;">has completed all 18 challenges across<br>6 epic stops on the Smokies Road Trip!</p>
+        <p style="font-size:0.9rem;margin-top:0.5rem;">Biltmore \u2022 Great Smokies \u2022 Dollywood \u2022 Rafting & Gatlinburg \u2022 Mammoth Cave \u2022 Kings Island</p>
         <p style="font-style:italic;margin-top:0.5rem;">${dateStr}</p>
-        <p style="margin-top:1rem;font-weight:700;">Congratulations, Junior Ranger! 🎉</p>
+        <p style="margin-top:1rem;font-weight:700;">Congratulations, Road Trip Explorer! 🎉</p>
     </div>
     <div style="text-align:center;margin-top:1rem;"><button class="game-btn" onclick="closePassportModal()">Close</button></div>`;
     openPassportModal(html);
